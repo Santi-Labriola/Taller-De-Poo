@@ -11,6 +11,6 @@ package com.mycompany.tallerpoo;
 public class TallerPOO {
 
     public static void main(String[] args) {
-        System.out.println("Hello Grupo!");
+        System.out.println("Hello ksdaodkao!");
     }
 }
