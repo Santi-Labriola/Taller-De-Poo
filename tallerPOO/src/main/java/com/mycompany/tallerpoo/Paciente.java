@@ -51,7 +51,7 @@ public class Paciente extends Persona{ //extender de persona
             }
         }
         else{
-            return -1; //retorna -1 si la fecha de nacimento es mayor a la fecha actual
+            return -1; //retorna -1 si la fecha de nacimento es mayor a la fecha actual.
         }
         return edad;
     }
