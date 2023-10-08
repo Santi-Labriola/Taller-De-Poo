@@ -1,7 +1,7 @@
 
 package Logica;
 public class Usuario {
-  /*  private String nombre;
+   private String nombre;
     private String contraseña;
     
      public Usuario() {
@@ -27,6 +27,6 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-*/
+
    
 }
