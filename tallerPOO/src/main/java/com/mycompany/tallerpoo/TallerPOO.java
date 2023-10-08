@@ -8,6 +8,7 @@ package com.mycompany.tallerpoo;
  *
  * @author 54345
  */
+import static com.mycompany.tallerpoo.ManejoArchivos.*;
 public class TallerPOO {
 
     public static void main(String[] args) {
