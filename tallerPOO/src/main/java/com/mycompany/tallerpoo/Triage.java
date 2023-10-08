@@ -4,6 +4,11 @@
  */
 package com.mycompany.tallerpoo;
 
+/**
+ *
+ * @author Matias
+ */
+
 public class Triage {
     private String Fecha;
     private String hora;
@@ -207,7 +212,3 @@ public class Triage {
     
     */
 }
-   
-    
-
-
