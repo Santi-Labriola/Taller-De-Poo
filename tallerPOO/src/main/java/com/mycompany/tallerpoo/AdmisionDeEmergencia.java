@@ -10,7 +10,7 @@ public class AdmisionDeEmergencia {
     private LocalDate fecha;
     private LocalTime hora;
     private String motivoDeConsulta;
-    public static ArrayList<Paciente> listaPacientes=new ArrayList<>();
+    
 
     public AdmisionDeEmergencia(){
         this.fecha=LocalDate.of(0, 0, 0);
