@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.tallerpoo;
+import java.time.*;
 
 /**
  *
@@ -11,7 +12,7 @@ package com.mycompany.tallerpoo;
 public abstract class Persona {
     
     private String nombre;
-    private String fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private String domicilio;
     private int documento;
     private int telefoFijo;
@@ -19,7 +20,7 @@ public abstract class Persona {
     private String  estadoCivil;
     private String correoElectronico;
 
-    public Persona(String nombre, String fechaNacimiento, String domicilio, int documento, int telefoFijo, int telefonoCelular, String estadoCivil, String correoElectronico) {
+    public Persona(String nombre, LocalDate fechaNacimiento, String domicilio, int documento, int telefoFijo, int telefonoCelular, String estadoCivil, String correoElectronico) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.domicilio = domicilio;
@@ -38,11 +39,11 @@ public abstract class Persona {
         this.nombre = nombre;
     }
 
-    public String getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
