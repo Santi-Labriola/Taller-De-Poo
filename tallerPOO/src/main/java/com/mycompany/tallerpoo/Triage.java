@@ -5,13 +5,21 @@
  */
 package com.mycompany.tallerpoo;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 /**
  *
  * @author Matias
  */
 //
 public class Triage {
-    private String Fecha;
+    private LocalDate Fecha;
     private String hora;
     private int respiracion;
     private int pulso;
@@ -30,11 +38,11 @@ public class Triage {
     private String motivoCambio;
     private String colorFinal;
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return Fecha;
     }
 
-    public void setFecha(String Fecha) {
+    public void setFecha(LocalDate Fecha) {
         this.Fecha = Fecha;
     }
 
@@ -185,31 +193,85 @@ public class Triage {
             dolorAbdominal + signosShock + lesionesLeves + sangrado;
     String color;
     
-    switch(suma){
-        case -1://-1 Dependerá del protocolo específico de la institución 
-            color="Azul";
-        case 0,1,2,3,4:
-            color="Verde";
-        case 5,6,7,8,9:
-            color="Amarillo";
-        case 10,11,12,13,14:
-            color="Naranja";
-            break;
-         default:
-            if (suma >= 15 && suma <= 24) {
-                color = "Rojo";
-            } else {
-                color = "Valor no válido";
-            }
-            break;
+    switch(suma) {
+    case -1: // Dependiendo del protocolo específico de la institución
+        color = "Azul";
+        break;
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+        color = "Verde";
+        break;
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+        color = "Amarillo";
+        break;
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+        color = "Naranja";
+        break;
+    default:
+        if (suma >= 15 && suma <= 24) {
+            color = "Rojo";
+        } else {
+            color = "Valor no válido";
+        }
+        break;
+}
+
+return color;
     }
-        return color;        
+    
+   
+        
+     public static ArrayList<String[]> countColors(String nombreArchivo, LocalDate fecha1, LocalDate fecha2) {
+    File archivo = new File(nombreArchivo);
+    ArrayList<String[]> list = new ArrayList<String[]>();
+     try {
+        BufferedReader entrada = new BufferedReader(new FileReader(archivo));
+        String lectura = entrada.readLine();
+
+        while (lectura != null) {
+            String[] array = lectura.split(",");
+            list.add(array);
+            lectura = entrada.readLine();
+        }
+
+        entrada.close();
+    } catch (FileNotFoundException ex) {
+        ex.printStackTrace();
+    } catch (IOException ex) {
+        ex.printStackTrace();
     }
-    /*
-    FALTA: 
-    +cantTriagePorFecha(fecha1: String, fecha2: String): List String 
+
+    return list;
+}
+    
+    
+    
+    
+}
+/*
+    FALTA: - Triage realizado en un rango de fechas, indicándose la cantidad de cada color
+bandera inicio= fecha1
+bandera limite = fecha2
+leo el archivo y si la fecha que aparece en el es >= fecha1 y <= fecha2, leo el color del triage
+hago contador del color que este en esa fecha, van a ser 5 contadores diferentes
+
++cantTriagePorFecha(fecha1: String, fecha2: String): List String 
+-Entran 2 fechas, 
+-se busca en el archivo .txt esas fechas, se verifican si estan
+- se busca en el txt el color del triage, y se acumula
+
     +triageCambiadosPorFecha(fecha1: String, fecha2: String): Int
     HAY QUE VER BASE DE DATOS
     
     */
-}
