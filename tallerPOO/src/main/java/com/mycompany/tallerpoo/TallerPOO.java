@@ -14,7 +14,7 @@ public class TallerPOO {
 
     public static void main(String[] args) {
         //System.out.println("Hello ksdaodkao!");
-        crearArchivo("Triage.txt");//crea un archivo en el proyecto de net
+        crearArchivo("Archivos\\Triage.txt");//crea un archivo en el proyecto de net
         //crearArchivo("C:\\JavaArchivos\\hola.txt");//crea un archivo tipo txt en el disco c
         
         //escribirArchivo("archivo\\Hola.txt", "andara?");
