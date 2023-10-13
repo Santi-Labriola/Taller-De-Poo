@@ -38,6 +38,29 @@ public class Triage {
     private String motivoCambio;
     private String colorFinal;
 
+    public Triage(LocalDate Fecha, String hora, int respiracion, int pulso, int estadoMental, int conciencia, int difilcutadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal) {
+        this.Fecha = Fecha;
+        this.hora = hora;
+        this.respiracion = respiracion;
+        this.pulso = pulso;
+        this.estadoMental = estadoMental;
+        this.conciencia = conciencia;
+        this.difilcutadRespiracion = difilcutadRespiracion;
+        this.lesionesGraves = lesionesGraves;
+        this.edad = edad;
+        this.fiebre = fiebre;
+        this.vomitos = vomitos;
+        this.dolorAbdominal = dolorAbdominal;
+        this.signosShock = signosShock;
+        this.lesionesLeves = lesionesLeves;
+        this.sangrado = sangrado;
+        this.colorSugerido = colorSugerido;
+        this.motivoCambio = motivoCambio;
+        this.colorFinal = colorFinal;
+    }
+    
+    
+
     public LocalDate getFecha() {
         return Fecha;
     }
