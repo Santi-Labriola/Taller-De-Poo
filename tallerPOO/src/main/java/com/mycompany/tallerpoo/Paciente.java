@@ -1,16 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.tallerpoo;
 import java.time.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author Lucas
  */
 public class Paciente extends Persona{ //extender de persona
     private String personaContacto;
-
+    private ArrayList<ResultadoEstudios> estudios;
+    
     public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
                     int documento, int telefoFijo, int telefonoCelular, 
                     String estadoCivil, String correoElectronico,
@@ -20,6 +20,15 @@ public class Paciente extends Persona{ //extender de persona
         this.personaContacto=personaContacto;
     }
     
+    public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
+                    int documento, int telefoFijo, int telefonoCelular, 
+                    String estadoCivil, String correoElectronico,
+                    String personaContacto, ResultadoEstudios estudios) {
+        
+        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
+        this.personaContacto=personaContacto;
+        this.estudios.add(estudios);
+    }
     
     public String getPersonaContacto() {
         return personaContacto;
@@ -27,6 +36,14 @@ public class Paciente extends Persona{ //extender de persona
 
     public void setPersonaContacto(String personaContacto) {
         this.personaContacto = personaContacto;
+    }
+    
+    public ArrayList<ResultadoEstudios> getEstudios() {
+        return estudios;
+    }
+
+    public void setEstudios(ArrayList<ResultadoEstudios> estudios) {
+        this.estudios = estudios;
     }
     
     public int obtenerEdad(){
