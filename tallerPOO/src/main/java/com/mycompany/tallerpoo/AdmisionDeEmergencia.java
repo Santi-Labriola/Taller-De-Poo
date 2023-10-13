@@ -11,7 +11,7 @@ public class AdmisionDeEmergencia {
     private LocalTime hora;
     private String motivoDeConsulta;
     
-
+    
     public AdmisionDeEmergencia(){
         this.fecha=LocalDate.of(0, 0, 0);
         this.hora=LocalTime.of(0, 0,0);

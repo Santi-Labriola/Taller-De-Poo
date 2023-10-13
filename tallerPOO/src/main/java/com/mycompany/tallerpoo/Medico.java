@@ -28,7 +28,6 @@ public class Medico extends Persona{
         this.matricula = matricula;
     }
     
-    
     //Atender paciente quita de la lista de pacientes para atender, asi los otros
     //medicos ya no pueden verlo
     public void atenderPaciente(Paciente paciente){
