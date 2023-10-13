@@ -227,7 +227,7 @@ public class Triage {
             if (suma >= 15 && suma <= 24) {
                 color = "Rojo";
             } else {
-                color = "Valor no válido";
+                color = "Valor no válido ";
             }
             break;
     }
