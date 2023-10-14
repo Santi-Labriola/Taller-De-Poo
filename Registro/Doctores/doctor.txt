@@ -1,2 +1,0 @@
-Usuario: doctor
-Contraseña: asdas
