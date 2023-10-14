@@ -1,15 +1,88 @@
 
 package Interfaz;
-
+import logica.Sesion;
+import logica.ControlLogin;
+import java.awt.Window;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+import java.util.Formatter;
+import java.util.Properties;
+import logica.ControlLogin;
 public class PantallaLogin extends javax.swing.JFrame {
+    String barra = File.separator;
+    // Ruta relativa a la carpeta "TallerPoovvvv/Registro" dentro del proyecto
+    String Ubicacion = System.getProperty("user.dir") + barra + "BaseDatos"+barra;
 
-    /**
-     * Creates new form Pantalla
-     */
     public PantallaLogin() {
         initComponents();
     }
+    
+    private void registrar() {
+        String nombreUsuario = txtUsuario.getText();
+        String nombreArchivo = nombreUsuario + ".txt"; // Construye el nombre del archivo
 
+        // Crea la carpeta si no existe
+        File crearubi = new File(Ubicacion);
+        crearubi.mkdirs();
+
+        File creararchivo = new File(Ubicacion + barra + nombreArchivo); // Crea el archivo
+
+       if(nombreUsuario.isEmpty() || txtContrasenia.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Complete los campos");
+        } else {
+            try {
+                if (creararchivo.exists()) {
+                    JOptionPane.showMessageDialog(rootPane, "El usuario ya está registrado");
+                } else {
+                    // Escribe en el archivo
+                    Formatter crearformater = new Formatter(creararchivo);
+                    crearformater.format("Usuario: %s%nContraseña: %s", nombreUsuario, txtContrasenia.getText());
+
+                    crearformater.close();
+                    JOptionPane.showMessageDialog(rootPane, "Registro exitoso");
+                }
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Registro incorrecto");
+            }
+        }
+    }
+    /*private void sesion(){
+        //obtengo el nombre del usuario dentro del archivo
+        File direccion = new File(Ubicacion + txtUsuario.getText()+ ".txt" );
+        
+        if(txtUsuario.getText().equals("") || txtContrasenia.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Complete los campos");
+        }else{
+            if(direccion.exists()){
+                try{
+                    FileInputStream aValidar = new FileInputStream(direccion);
+                    Properties validar = new Properties();
+                    validar.load(aValidar);
+                    String contraseña = validar.getProperty("Contraseña");
+                    if(contraseña.equals(txtContrasenia.getText())){
+                   dispose();
+                   /* OpcionesDoc cambio = new OpcionesDoc();
+                    cambio.setVisible(true);
+                    cambio.setLocationRelativeTo(null);*/
+                       
+                   /*ControlLogin control = new ControlLogin();
+                   control.rol(txtUsuario.getText());
+                    }else{
+                    JOptionPane.showMessageDialog(rootPane,"Usuario y/o contraseña incorrecto");
+                    }
+                }catch(Exception e){
+                }
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrecto");
+                
+            }
+                
+        }*/
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +102,8 @@ public class PantallaLogin extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
-        txtContraseña = new javax.swing.JPasswordField();
+        txtContrasenia = new javax.swing.JPasswordField();
+        btnInicioSesion = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -50,14 +124,21 @@ public class PantallaLogin extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña");
 
-        btnLogin.setText("Guardar");
+        btnLogin.setText("Registrar");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
 
-        txtContraseña.setText("jPasswordField1");
+        txtContrasenia.setText("jPasswordField1");
+
+        btnInicioSesion.setText("Iniciar Sesion");
+        btnInicioSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -67,15 +148,16 @@ public class PantallaLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuario)
+                    .addComponent(txtContrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 137, Short.MAX_VALUE)
-                        .addComponent(btnLogin))
-                    .addComponent(txtContraseña))
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnInicioSesion)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLogin)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -88,9 +170,11 @@ public class PantallaLogin extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(btnLogin)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLogin)
+                    .addComponent(btnInicioSesion))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
@@ -101,7 +185,7 @@ public class PantallaLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jLabel4)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,14 +221,22 @@ public class PantallaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-          
+                 
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        OpcionesDocEnferm pantalla = new OpcionesDocEnferm();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+        registrar();
+       
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioSesionActionPerformed
+       
+     Sesion control = new Sesion();
+        System.out.println("hola");
+     control.sesion(txtUsuario.getText(), txtContrasenia.getText());
+    
+      
+    }//GEN-LAST:event_btnInicioSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +244,7 @@ public class PantallaLogin extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInicioSesion;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -161,7 +254,7 @@ public class PantallaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField txtContraseña;
+    private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
