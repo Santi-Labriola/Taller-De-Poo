@@ -38,6 +38,30 @@ public class Triage {
     private String motivoCambio;
     private String colorFinal;
 
+    public Triage() {
+        
+        this.Fecha = LocalDate.of(1, 1, 1);;
+        this.hora = "";
+        this.respiracion = 0;
+        this.pulso = 0;
+        this.estadoMental = 0;
+        this.conciencia = 0;
+        this.difilcutadRespiracion = 0;
+        this.lesionesGraves = 0;
+        this.edad = 0;
+        this.fiebre = 0;
+        this.vomitos = 0;
+        this.dolorAbdominal = 0;
+        this.signosShock = 0;
+        this.lesionesLeves = 0;
+        this.sangrado = 0;
+        this.colorSugerido = "";
+        this.motivoCambio = "";
+        this.colorFinal = "";
+    }
+    
+    
+
     public Triage(LocalDate Fecha, String hora, int respiracion, int pulso, int estadoMental, int conciencia, int difilcutadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal) {
         this.Fecha = Fecha;
         this.hora = hora;
