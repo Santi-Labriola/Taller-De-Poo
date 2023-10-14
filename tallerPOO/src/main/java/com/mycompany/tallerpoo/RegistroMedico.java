@@ -19,6 +19,11 @@ public class RegistroMedico {
     private String lugarAtendido;
     private String diagnostico;
     private String diagnosticoClinico;
+    
+    //public ArrayList<RegistroMedico> registroMedico;
+    //public AdmisionDeEmergencia admisionDeEmergencia;
+    //public ArrayList<Medico> medico;
+    //public Paciente paciente;
 
     public RegistroMedico(LocalDate fecha, LocalTime hora, String lugarAtendido, String diagnostico, String diagnosticoClinico) {
         this.fecha = fecha;

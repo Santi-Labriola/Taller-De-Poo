@@ -12,7 +12,7 @@ package com.mycompany.tallerpoo;
 
 /*
 public class Enfermero /extends persona/ {
-    
+    //public ArrayList<Triage> triage;    
     public Enfermero (String nombre, LocalDate fechaNacimiento, String domicilio, 
                       int documento, int telefoFijo, int telefonoCelular, 
                       String estadoCivil, String correoElectronico) /super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);/{

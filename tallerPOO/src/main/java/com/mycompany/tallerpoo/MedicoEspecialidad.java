@@ -14,6 +14,8 @@ public class MedicoEspecialidad {
     
     private LocalDate fecha;
     private String Universidad; 
+    //public Medico medico;
+    //public Especialidad especialidad;    
 
     public MedicoEspecialidad(LocalDate fecha, String Universidad) {
         this.fecha = fecha;

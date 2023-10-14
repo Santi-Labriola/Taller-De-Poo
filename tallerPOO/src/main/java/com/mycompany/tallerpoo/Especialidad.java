@@ -13,6 +13,8 @@ public class Especialidad {
     private String titulo;
     private String especialidad;
 
+    //public ArrayList<Medico> medico;
+    
     public Especialidad(String titulo, String especialidad) {
         this.titulo = titulo;
         this.especialidad = especialidad;
