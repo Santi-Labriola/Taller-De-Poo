@@ -77,10 +77,7 @@ public class ResultadoEstudios {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-    
-    //public Lista <------- FALTA programar obtenerResultadosDeEstudio(devuelve una lista de los resultados entre dos fechas
-    //no lo empezamos porque falta saber como manejar base de datos/archivos
-    
+
     public static ArrayList obtenerResultadoEstudios(LocalDate fecha){
         //File archivo=new File("data/ResEstudios.txt");
 
@@ -99,8 +96,7 @@ public class ResultadoEstudios {
                 stringA=split[2].split("/");
                 fecha2=LocalDate.of(Integer.parseInt(stringA[2]),Integer.parseInt(stringA[1]),Integer.parseInt(stringA[0]));
                 
-                System.out.println(fecha);
-                System.out.println(fecha2);
+                
                 if (fecha.equals(fecha2)){
                     BufferedReader reader2= new BufferedReader (new FileReader("src/main/java/Archivos/Pacientes/"+split[1]+".txt"));
                     linea=reader2.readLine();
@@ -112,15 +108,13 @@ public class ResultadoEstudios {
                     Paciente pac= new Paciente(splitUsr[0],fecha2,splitUsr[2],
                                        Integer.parseInt(split[1]),Integer.parseInt(splitUsr[3]),
                                   Integer.parseInt(splitUsr[4]),splitUsr[5],splitUsr[6],splitUsr[7]);
-                    System.out.println("asj");
                     
-                    Object[] finalArray =new Object[split.length];
+                    stringA= split[3].split(":");
+                    LocalTime hora=LocalTime.of(Integer.parseInt(stringA[2]),Integer.parseInt(stringA[1]),Integer.parseInt(stringA[0]));
                     
-                    for(int i=0;i<split.length;i++){
-                        finalArray[i]=split[i];
-                    }
-                    finalArray[1]=pac;
-                    lista.add(Arrays.asList(finalArray));
+                    ResultadoEstudios resu= new ResultadoEstudios(fecha,hora,split[4],split[5],pac);
+                   
+                    lista.add(resu);
                 }
                 linea = reader.readLine();
             }
