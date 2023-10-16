@@ -24,7 +24,7 @@ public class Triage {
     private int respiracion;
     private int pulso;
     private int estadoMental;
-    private int conciencia;
+    private int consciencia;
     private int difilcutadRespiracion;
     private int lesionesGraves;
     private int edad;
@@ -45,7 +45,7 @@ public class Triage {
         this.respiracion = 0;
         this.pulso = 0;
         this.estadoMental = 0;
-        this.conciencia = 0;
+        this.consciencia = 0;
         this.difilcutadRespiracion = 0;
         this.lesionesGraves = 0;
         this.edad = 0;
@@ -68,7 +68,7 @@ public class Triage {
         this.respiracion = respiracion;
         this.pulso = pulso;
         this.estadoMental = estadoMental;
-        this.conciencia = conciencia;
+        this.consciencia = consciencia;
         this.difilcutadRespiracion = difilcutadRespiracion;
         this.lesionesGraves = lesionesGraves;
         this.edad = edad;
@@ -106,7 +106,8 @@ public class Triage {
     }
 
     public void setRespiracion(int respiracion) {
-        this.respiracion = respiracion;
+        if (respiracion>=0 && respiracion<=2){
+        this.respiracion = respiracion;}
     }
 
     public int getPulso() {
@@ -114,7 +115,9 @@ public class Triage {
     }
 
     public void setPulso(int pulso) {
-        this.pulso = pulso;
+        if (pulso>=0 && pulso<=1){
+            this.pulso = pulso;
+        }
     }
 
     public int getEstadoMental() {
@@ -122,15 +125,19 @@ public class Triage {
     }
 
     public void setEstadoMental(int estadoMental) {
-        this.estadoMental = estadoMental;
+        if (estadoMental>=0 && estadoMental<=2){
+            this.estadoMental = estadoMental;
+        }
     }
 
-    public int getConciencia() {
-        return conciencia;
+    public int getConsciencia() {
+        return consciencia;
     }
 
-    public void setConciencia(int conciencia) {
-        this.conciencia = conciencia;
+    public void setConsciencia(int consciencia) {
+        if (consciencia>=0 && consciencia<=3){
+            this.consciencia = consciencia;
+        }
     }
 
     public int getDifilcutadRespiracion() {
@@ -138,7 +145,9 @@ public class Triage {
     }
 
     public void setDifilcutadRespiracion(int difilcutadRespiracion) {
-        this.difilcutadRespiracion = difilcutadRespiracion;
+        if(difilcutadRespiracion>=0 && difilcutadRespiracion<=1){
+            this.difilcutadRespiracion = difilcutadRespiracion;
+        }
     }
 
     public int getLesionesGraves() {
@@ -146,7 +155,9 @@ public class Triage {
     }
 
     public void setLesionesGraves(int lesionesGraves) {
-        this.lesionesGraves = lesionesGraves;
+       if(lesionesGraves>=0 && lesionesGraves<=2){ 
+           this.lesionesGraves = lesionesGraves;
+       }
     }
 
     public int getEdad() {
@@ -154,7 +165,9 @@ public class Triage {
     }
 
     public void setEdad(int edad) {
-        this.edad = edad;
+        if(edad>= 0 && edad<=1){
+            this.edad = edad;
+        }
     }
 
     public int getFiebre() {
@@ -162,7 +175,9 @@ public class Triage {
     }
 
     public void setFiebre(int fiebre) {
-        this.fiebre = fiebre;
+        if(fiebre>=0 && fiebre<=2){
+            this.fiebre = fiebre;
+        }
     }
 
     public int getVomitos() {
@@ -170,15 +185,18 @@ public class Triage {
     }
 
     public void setVomitos(int vomitos) {
-        this.vomitos = vomitos;
+        if(vomitos>=0 && vomitos<=2 ){
+            this.vomitos = vomitos;
+        }
     }
 
     public int getDolorAbdominal() {
         return dolorAbdominal;
     }
-
+///////////////////////////////////////////////////////////////////////
     public void setDolorAbdominal(int dolorAbdominal) {
-        this.dolorAbdominal = dolorAbdominal;
+        if(dolorAbdominal>=0 && dolorAbdominal<=2 ){
+            this.dolorAbdominal = dolorAbdominal;}
     }
 
     public int getSignosShock() {
@@ -186,7 +204,9 @@ public class Triage {
     }
 
     public void setSignosShock(int signosShock) {
-        this.signosShock = signosShock;
+        if(signosShock>=0 && signosShock<=3){
+            this.signosShock = signosShock;
+        }
     }
 
     public int getLesionesLeves() {
@@ -194,7 +214,9 @@ public class Triage {
     }
 
     public void setLesionesLeves(int lesionesLeves) {
-        this.lesionesLeves = lesionesLeves;
+        if (lesionesLeves>=0 && lesionesLeves<=1){
+            this.lesionesLeves = lesionesLeves;
+        }
     }
 
     public int getSangrado() {
@@ -202,7 +224,9 @@ public class Triage {
     }
 
     public void setSangrado(int sangrado) {
-        this.sangrado = sangrado;
+        if(sangrado>=0 && sangrado <=2){
+            this.sangrado = sangrado;
+        }
     }
 
     public String getColorSugerido() {
