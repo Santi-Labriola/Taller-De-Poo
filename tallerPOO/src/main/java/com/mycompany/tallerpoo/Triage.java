@@ -264,41 +264,19 @@ public class Triage {
             dolorAbdominal + signosShock + lesionesLeves + sangrado;
     String color;
     
-    switch(suma) {
-    case -1: // Dependiendo del protocolo específico de la institución
-        color = "Azul";
-        break;
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-        color = "Verde";
-        break;
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-        color = "Amarillo";
-        break;
-    case 10:
-    case 11:
-    case 12:
-    case 13:
-    case 14:
-        color = "Naranja";
-        break;
-    default:
-        if (suma >= 15 && suma <= 24) {
-            color = "Rojo";
-        } else {
-            color = "Valor no válido";
-        }
-        break;
-}
+    
+    if (suma >= 15) {
+        return "Rojo (Requiere atención médica inmediata)";
+    } else if (suma >= 10 && suma <= 14) {
+        return "Naranja (Requiere atención médica urgente)";
+    } else if (suma>= 5 && suma <= 9) {
+        return "Amarillo (Requiere atención médica en un plazo más largo)";
+    } else if (suma >= 0 && suma <= 4) {
+        return "Verde (Condiciones no urgentes)";
+    } else {
+        return "Azul (Condiciones que pueden ser tratadas en un entorno no hospitalario)";
+    }
 
-return color;
     }
     
    
