@@ -281,76 +281,63 @@ public class Triage {
     
    
         
-    public static ArrayList cantTriagePorFecha(LocalDate fecha1, LocalDate fecha2) {           
-        
-        ArrayList lista=new ArrayList();
-     try {
-        BufferedReader entrada = new BufferedReader(new FileReader("src/main/java/Archivos/Triage\\Triage.txt"));
-        String linea = entrada.readLine();
-        int rojo=0;
-        int naranja =0;
-        int amarillo =0;
-        int verde =0;
-        int azul=0;
-        String[] array = new String[1];
-        String[] fec= new String [2];
-        int [] colo= new int [4];        
-        LocalDate date;
-        while (linea != null) {
-            array = linea.split(",");
-            fec=array[0].split("-");
-            date=LocalDate.of(Integer.parseInt(fec[2]),
-               Integer.parseInt(fec[1]),Integer.parseInt(fec[0]));
-            
-            
-            if (date.isAfter(fecha1) && date.isBefore(fecha2)){
-                if(array[1].equals("Rojo"))
-                    rojo+=rojo;
-                    colo[0]=rojo;
-                } else if (array[1].equals("Naranja")){
-                    naranja+=naranja;
-                    colo[1]=naranja ;} 
-                    else if(array[1].equals("Amarillo")){
-                    amarillo+=amarillo;
-                    colo[2]=amarillo;} 
-                    else if(array[1].equals("Verde")){
-                    verde+=verde;
-                    colo[3]=verde;} else if(array[1].equals("Azul")){
-                    azul+=azul;
-                    colo[4]=azul;}
-            linea = entrada.readLine();
+    public static ArrayList<Integer> cantTriagePorFecha(LocalDate fecha1, LocalDate fecha2) {
+        ArrayList<Integer> lista = new ArrayList<>();
+        int rojo = 0;
+        int naranja = 0;
+        int amarillo = 0;
+        int verde = 0;
+        int azul = 0;
+
+        try {
+            BufferedReader entrada = new BufferedReader(new FileReader("src/main/java/Archivos/Triage\\\\Triage.txt    "));
+            String linea = entrada.readLine();
+
+            while (linea != null) {
+                String[] array = linea.split(",");
+                String[] fec = array[0].split("-");
+                LocalDate date = LocalDate.of(Integer.parseInt(fec[2]), Integer.parseInt(fec[1]), Integer.parseInt(fec[0]));
+
+                if (date.isAfter(fecha1) && date.isBefore(fecha2)) {
+                    if (array[1].equals("Rojo")) {
+                        rojo++;
+                    } else if (array[1].equals("Naranja")) {
+                        naranja++;
+                    } else if (array[1].equals("Amarillo")) {
+                        amarillo++;
+                    } else if (array[1].equals("Verde")) {
+                        verde++;
+                    } else if (array[1].equals("Azul")) {
+                        azul++;
+                    }
+                }
+                linea = entrada.readLine();
+            }
+
+            lista.add(rojo);
+            lista.add(naranja);
+            lista.add(amarillo);
+            lista.add(verde);
+            lista.add(azul);
+
+            entrada.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        lista.add(colo[0]);
-        lista.add(colo[1]);
-        lista.add(colo[2]);
-        lista.add(colo[3]);
-        lista.add(colo[4]);
-        entrada.close();
-    } catch (FileNotFoundException ex) {
-        ex.printStackTrace();
-    } catch (IOException ex) {
-        ex.printStackTrace();
-    }
 
-    return lista;
+        return lista;
+    }   
+    
+
+    
 }
     
     
+
     
-    
-}
+
 /*
-    FALTA: - Triage realizado en un rango de fechas, indicándose la cantidad de cada color
-bandera inicio= fecha1
-bandera limite = fecha2
-leo el archivo y si la fecha que aparece en el es >= fecha1 y <= fecha2, leo el color del triage
-hago contador del color que este en esa fecha, van a ser 5 contadores diferentes
-
-+cantTriagePorFecha(fecha1: String, fecha2: String): List String 
--Entran 2 fechas, 
--se busca en el archivo .txt esas fechas, se verifican si estan
-- se busca en el txt el color del triage, y se acumula
-
+    FALTA: 
     +triageCambiadosPorFecha(fecha1: String, fecha2: String): Int
     HAY QUE VER BASE DE DATOS
     
