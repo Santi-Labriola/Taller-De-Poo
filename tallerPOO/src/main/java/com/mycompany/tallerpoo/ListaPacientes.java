@@ -55,7 +55,7 @@ public class ListaPacientes {
                 paci.setTelefonoCelular(Integer.parseInt(split[5]));
                 paci.setEstadoCivil(split[6]);
                 paci.setCorreoElectronico(split[7]);
-                paci.setPersonaContacto(split[7]);
+                paci.setPersonaContacto(split[8]);
                 
                 pacientes.add(paci);
                 
