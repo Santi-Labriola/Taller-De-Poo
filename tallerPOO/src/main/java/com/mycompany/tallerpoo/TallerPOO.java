@@ -21,15 +21,23 @@ public class TallerPOO {
         //escribirArchivo("folder\\Triage.txt", "andara?");
         //escribirArchivo("archivo\\Hola.txt", "Felicidades, anda");asi se le puede subir archivos
         
-        //leerArchivo("archivo\\Hola.txt"); //bueno y asi lees todo el contenido de tu archivo- metodo(nombreDeCarpeta, nombredearchivo)
+        //leerArchivo("archivo\\Hola.txt"); //bueno y asi lees todo el contenido de tu archivo- metodo(nombreDeCarpeta, nombredearchivo)       
+       
+        //Paciente paci=new Paciente("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com","Papa de lucas");
+        
+        ListaPacientes listapaci=new ListaPacientes();
+        String ruta= "Archivos/Pacientes.txt";
+        
+        listapaci.leer(ruta);
+        System.out.println(listapaci);
         
         
-        Paciente paci=new Paciente("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com","Papa de lucas");
-        ArrayList lista=ResultadoEstudios.obtenerResultadoEstudios(LocalDate.of(2023,5,10));
-
-        System.out.println(lista);
-        BuscarEstFecha abc=new BuscarEstFecha();
-        abc.setVisible(true);
-        abc.setLocationRelativeTo(null);
+        
+//        ArrayList lista=ResultadoEstudios.obtenerResultadoEstudios(LocalDate.of(2023,5,10));
+//        
+//        System.out.println(lista);
+//        BuscarEstFecha abc=new BuscarEstFecha();
+//        abc.setVisible(true);
+//        abc.setLocationRelativeTo(null);
     }
 }

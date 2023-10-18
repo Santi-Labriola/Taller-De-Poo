@@ -11,6 +11,9 @@ public class Paciente extends Persona{ //extender de persona
     private String personaContacto;
     private ArrayList<ResultadoEstudios> estudios;
     
+    public Paciente(){
+    }
+    
     public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
                     int documento, int telefoFijo, int telefonoCelular, 
                     String estadoCivil, String correoElectronico,
@@ -19,7 +22,7 @@ public class Paciente extends Persona{ //extender de persona
         super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
         this.personaContacto=personaContacto;
     }
-    
+
     public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
                     int documento, int telefoFijo, int telefonoCelular, 
                     String estadoCivil, String correoElectronico,
@@ -72,4 +75,11 @@ public class Paciente extends Persona{ //extender de persona
         }
         return edad;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente{" + "Nombre=" + this.getNombre() + ", Documento=" + this.getDocumento() + '}';
+    }
+
+
 }
