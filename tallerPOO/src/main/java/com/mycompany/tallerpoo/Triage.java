@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -37,6 +38,13 @@ public class Triage {
     private String colorSugerido;
     private String motivoCambio;
     private String colorFinal;
+
+    public Triage (LocalDate Fecha, String colorSugerido) {
+        this.Fecha = Fecha;
+        this.colorSugerido = colorSugerido;
+    }
+    
+    
 
     public Triage() {
         
@@ -280,23 +288,29 @@ public class Triage {
     }
     
    
-        
-    public static ArrayList<Integer> cantTriagePorFecha(LocalDate fecha1, LocalDate fecha2) {
+      
+    public  ArrayList<Integer> cantTriagePorFecha(String archivo, String separador, LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException {        
         ArrayList<Integer> lista = new ArrayList<>();
+        BufferedReader br = null;
+        Triage aver; 
         int rojo = 0;
         int naranja = 0;
         int amarillo = 0;
         int verde = 0;
         int azul = 0;
+        
+        
 
         try {
-            BufferedReader entrada = new BufferedReader(new FileReader("src/main/java/Archivos/Triage\\\\Triage.txt    "));
-            String linea = entrada.readLine();
+            br = new BufferedReader(new FileReader(archivo));
+            String linea = br.readLine();
 
             while (linea != null) {
+                
+                aver = new Triage(); //  CREO QUE HAY HACER UN CONSTRUCTOR CON FECHA Y COLOR PARA PODER APLICAR EL METODO Q ESTA EN LISAT DE JUG
                 String[] array = linea.split(",");
                 String[] fec = array[0].split("-");
-                LocalDate date = LocalDate.of(Integer.parseInt(fec[2]), Integer.parseInt(fec[1]), Integer.parseInt(fec[0]));
+                LocalDate date = LocalDate.of(Integer.parseInt(fec[0]), Integer.parseInt(fec[1]), Integer.parseInt(fec[2]));
 
                 if (date.isAfter(fecha1) && date.isBefore(fecha2)) {
                     if (array[1].equals("Rojo")) {
@@ -311,7 +325,7 @@ public class Triage {
                         azul++;
                     }
                 }
-                linea = entrada.readLine();
+                linea = br.readLine();
             }
 
             lista.add(rojo);
@@ -320,7 +334,7 @@ public class Triage {
             lista.add(verde);
             lista.add(azul);
 
-            entrada.close();
+            br.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -329,16 +343,17 @@ public class Triage {
     }   
     
 
+  
+
+    /*
+    public String toString() {
+        return "Triage{" + "Fecha=" + Fecha + ", hora=" + hora + ", respiracion=" + respiracion + ", pulso=" + pulso + ", estadoMental=" + estadoMental + ", consciencia=" + consciencia + ", difilcutadRespiracion=" + difilcutadRespiracion + ", lesionesGraves=" + lesionesGraves + ", edad=" + edad + ", fiebre=" + fiebre + ", vomitos=" + vomitos + ", dolorAbdominal=" + dolorAbdominal + ", signosShock=" + signosShock + ", lesionesLeves=" + lesionesLeves + ", sangrado=" + sangrado + ", colorSugerido=" + colorSugerido + ", motivoCambio=" + motivoCambio + ", colorFinal=" + colorFinal + '}';
+    } */
+     public String toString() {
+        return "Triage{" + "Fecha=" + Fecha + ", colorSugerido=" + colorSugerido + '}';
+    } 
     
 }
     
     
 
-    
-
-/*
-    FALTA: 
-    +triageCambiadosPorFecha(fecha1: String, fecha2: String): Int
-    HAY QUE VER BASE DE DATOS
-    
-    */
