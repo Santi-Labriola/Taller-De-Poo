@@ -5,6 +5,7 @@
 package com.mycompany.tallerpoo;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -39,59 +40,49 @@ public class ListaTriage {
         return false;
     }
     
-    public void leerArchivo (String archivo, String separador) throws IOException {
-        BufferedReader br = null;
+    public void leer (String archivo) throws IOException {
+        
         Triage tri; 
       
         try {         
-            br = new BufferedReader(new FileReader(archivo));
-            
+            BufferedReader br= new BufferedReader (new FileReader(archivo));
             String linea = br.readLine();
+                        
             
             while (null!=linea) {
-                String [] campos = linea.split(separador);
-                
-                tri = new Triage(); 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                tri.setFecha( LocalDate.parse(campos[0], formatter));        
-                tri.setColorSugerido(campos[1]);
-                tri.setConsciencia(Integer.parseInt(campos[2]));
-                tri.setDifilcutadRespiracion(Integer.parseInt(campos[3]));
-                tri.setDolorAbdominal(Integer.parseInt(campos[4]));
-                tri.setEdad(Integer.parseInt(campos[5]));
-                tri.setEstadoMental(Integer.parseInt(campos[6]));
-                tri.setFiebre(Integer.parseInt(campos[7]));
-                tri.setHora(campos[8]);
-                tri.setLesionesGraves(Integer.parseInt(campos[9]));
-                tri.setLesionesLeves(Integer.parseInt(campos[10]));
-                tri.setPulso(Integer.parseInt(campos[11]));
-                tri.setRespiracion(Integer.parseInt(campos[12]));
-                tri.setSangrado(Integer.parseInt(campos[13]));
-                tri.setSignosShock(Integer.parseInt(campos[14]));
-                tri.setVomitos(Integer.parseInt(campos[15]));
-                tri.setColorFinal(campos[16]);
-                tri.setMotivoCambio(campos[17]);
+                String [] campos = linea.split(",");
+          // Validar que haya al menos dos campos en la línea antes de procesarla
+            if (campos.length >= 2) {
+                String[] splitFecha = campos[0].split("-");
+                LocalDate fec = LocalDate.of(Integer.parseInt(splitFecha[0]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[2]));
+                tri = new Triage();
+                tri.setFecha(fec);
+                tri.setColorSugerido(campos[1].trim()); //  trim() para eliminar espacios en blanco alrededor del color
                 
                 
-                
-                
-                
-                
-                this.agregar(tri);                
+                this.agregar(tri);
                 linea = br.readLine();
-            }            
-        } catch (Exception e) {
-         
-        } finally {
-            if (null!=br) {
-                br.close();
-            }
-        }
-        System.out.println("cant" + this.triages.size());
-        for (Triage tria: triages) {
-            System.out.println(tria.toString());
-        }
+                } else {
+                System.err.println("Línea incorrecta: " + linea);
+                }
+                linea = br.readLine();
+                }
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                ex.printStackTrace();
+                }
+                System.out.println(triages.size());
+                }
+
+    @Override
+    public String toString() {
+        return "ListaTriage{" + "triages=" + triages + '}';
     }
+                
+                
+                
+              
     
     
     

@@ -28,18 +28,19 @@ public class TallerPOO {
         */
         LocalDate fecha1 = LocalDate.of(2023, 1, 1);
         String barra= File.separator;
-        String archivo = "src/main/java/Archivos/Triage.txt";   
+        String archivo ="Archivos/Triage.txt";   
         
         ListaTriage prueba = new ListaTriage();
        // Triage tri = new Triage(fecha1,"Azul");
-        
+        prueba.leer(archivo);
+        System.out.println(prueba);
         ListaPacientes listapaci=new ListaPacientes();
-        prueba.leerArchivo(archivo, ";");
-
+        
 
         
-       // listapaci.leer(ruta);
-       // System.out.println(listapaci);
+        String ruta = "Archivos/Pacientes.txt" ;
+        listapaci.leer(ruta);
+        System.out.println(listapaci);
         
         
         

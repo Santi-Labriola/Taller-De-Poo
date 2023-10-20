@@ -321,7 +321,7 @@ public class Triage {
                         amarillo++;
                     } else if (array[1].equals("Verde")) {
                         verde++;
-                    } else if (array[1].equals("Azul")) {
+                    } else if (array[1].equals("Azul ")) {
                         azul++;
                     }
                 }
