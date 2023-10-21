@@ -13,7 +13,7 @@ import java.util.HashSet;
  * @author Usuario
  */
 public class ListaPacientes {
-    ArrayList <Paciente> pacientes;
+    public ArrayList <Paciente> pacientes;
     
     public ListaPacientes() {
         this.pacientes = new ArrayList<Paciente>();
@@ -29,6 +29,21 @@ public class ListaPacientes {
 
     public void setPacientes(ArrayList<Paciente> pacientes) {
         this.pacientes = pacientes;
+    }
+    
+    public void agregar(Paciente paci){
+        pacientes.add(paci);
+    }
+    
+    public Paciente getPorDni(int dni){
+        for (Paciente paci : this.pacientes){
+            System.out.println(dni);
+            System.out.println(paci.getDocumento());
+            if (paci.getDocumento()==dni){
+                return paci;
+            }        
+        }
+        return null;
     }
     
     public void leer(String archivo){
@@ -57,7 +72,7 @@ public class ListaPacientes {
                 paci.setCorreoElectronico(split[7]);
                 paci.setPersonaContacto(split[8]);
                 
-                pacientes.add(paci);
+                this.agregar(paci);
                 
                 linea = reader.readLine();
             }

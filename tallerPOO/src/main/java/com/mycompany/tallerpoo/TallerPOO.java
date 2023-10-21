@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import InterfazUsuario.BuscarEstFecha;
 import java.io.File;
 import java.io.IOException;
+import java.io.File;
+import java.io.IOException;
 
 
 public class TallerPOO {
@@ -31,15 +33,17 @@ public class TallerPOO {
         String archivo ="Archivos/Triage.txt";   
         
         ListaTriage prueba = new ListaTriage();
-       // Triage tri = new Triage(fecha1,"Azul");
+        //Triage tri = new Triage(fecha1,"Azul");
         prueba.leer(archivo);
         System.out.println(prueba);
+        
         ListaPacientes listapaci=new ListaPacientes();
+        ListaResEstudios listaresu=new ListaResEstudios();
+            
         
-
-        
-        String ruta = "Archivos/Pacientes.txt" ;
-        listapaci.leer(ruta);
+     
+        listapaci.leer("Archivos/Pacientes.txt");
+        listaresu.leer("Archivos/ResEstudios.txt",listapaci);
         System.out.println(listapaci);
         
         
