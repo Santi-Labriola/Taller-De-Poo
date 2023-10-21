@@ -7,38 +7,38 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import java.util.ArrayList;
 
 /**
  *
- * @author Lucas
+ * @author Usuario
  */
-public class ListaResEstudios {
-    protected ArrayList <ResultadoEstudios> resultados;
+public class ListaAdmisiones {
+    
+    protected ArrayList <AdmisionDeEmergencia> admisiones;
 
-    public ListaResEstudios(ArrayList<ResultadoEstudios> resultados) {
-        this.resultados = resultados;
+    public ListaAdmisiones(ArrayList<AdmisionDeEmergencia> admisiones) {
+        this.admisiones = admisiones;
     }
 
-    public ListaResEstudios() {
-        this.resultados=new ArrayList <ResultadoEstudios>();
+    public ListaAdmisiones() {
+        this.admisiones=new ArrayList <AdmisionDeEmergencia>();
     }
 
-    public ArrayList<ResultadoEstudios> getResultados() {
-        return resultados;
+    public ArrayList<AdmisionDeEmergencia> getAdmisiones() {
+        return admisiones;
     }
 
-    public void setResultados(ArrayList<ResultadoEstudios> resultados) {
-        this.resultados = resultados;
+    public void setAdmisiones(ArrayList<AdmisionDeEmergencia> admisiones) {
+        this.admisiones = admisiones;
     }
     
-    public void agregar(ResultadoEstudios resu){
-        resultados.add(resu);
+    public void agregar(AdmisionDeEmergencia adm){
+        admisiones.add(adm);
     }
     
-    public void eliminar(ResultadoEstudios resu){
-        resultados.remove(resu);
+    public void eliminar(AdmisionDeEmergencia adm){
+        admisiones.remove(adm);
     }
     
     public void leer(String archivo){
@@ -60,7 +60,7 @@ public class ListaResEstudios {
                 String[] splitFecha=split[1].split("/");//splitea la fecha 
                 String[] splitHora=split[2].split(":");//splitea la hora
                 
-                ResultadoEstudios resu=new ResultadoEstudios();
+                AdmisionDeEmergencia adm=new AdmisionDeEmergencia();
                 
                 //se inicializar la fecha y hora
                 LocalDate fecha= LocalDate.of(Integer.parseInt(splitFecha[2]),
@@ -71,25 +71,23 @@ public class ListaResEstudios {
                                                 Integer.parseInt(splitHora[1]),
                                                 Integer.parseInt(splitHora[2]));
                 
-                resu.setFecha(fecha);
-                resu.setHora(hora);
-                
-                resu.setTipoDeEstudio(split[3]);
-                resu.setInformeDeEstudio(split[4]);
+                adm.setFecha(fecha);
+                adm.setHora(hora);
+                adm.setMotivoDeConsulta(split[3]);
                
                 /*si se paso la lista de pacientes por parametro, se busca por dni al paciente
                 y hace un setPaciente.
                 */
                 if (listapaci!=null){            
                     Paciente paci=listapaci.getPorDni(Integer.parseInt(split[0]));
-                    resu.setPaciente(paci);
+                    adm.setPaciente(paci);
                     
-                    //si el paciente existe, se añade este resultado de estudio a la lista del paciente.
+                    //si el paciente existe, se añade esta admision a la lista del paciente.
                     if (paci!=null){
-                        paci.agregarEstudio(resu);
+                            paci.agregarAdmision(adm);
                     }
                 }
-                this.agregar(resu);
+                this.agregar(adm);
                 linea = reader.readLine();
             }
         } catch (FileNotFoundException ex) {
@@ -99,4 +97,5 @@ public class ListaResEstudios {
         }
 
     }
+
 }

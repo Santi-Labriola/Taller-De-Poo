@@ -7,10 +7,6 @@ package com.mycompany.tallerpoo;
 import static com.mycompany.tallerpoo.ManejoArchivos.*;
 
 import java.time.*;
-import java.util.ArrayList;
-import InterfazUsuario.BuscarEstFecha;
-import java.io.File;
-import java.io.IOException;
 import java.io.File;
 import java.io.IOException;
 
@@ -39,11 +35,13 @@ public class TallerPOO {
         
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
-            
+        ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
         
      
         listapaci.leer("Archivos/Pacientes.txt");
         listaresu.leer("Archivos/ResEstudios.txt",listapaci);
+        listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
+        
         System.out.println(listapaci);
         
         

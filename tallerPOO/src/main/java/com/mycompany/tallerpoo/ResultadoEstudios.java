@@ -23,6 +23,7 @@ public class ResultadoEstudios {
     }
 
     public ResultadoEstudios(LocalDate fecha, LocalTime hora, String tipoDeEstudio, String informeDeEstudio) {
+ 
         this.fecha = fecha;
         this.hora = hora;
         this.tipoDeEstudio = tipoDeEstudio;
@@ -83,7 +84,7 @@ public class ResultadoEstudios {
 
         ArrayList lista=new ArrayList();
         try {
-            BufferedReader reader= new BufferedReader (new FileReader("src/main/java/Archivos/ResEstudios.txt"));
+            BufferedReader reader= new BufferedReader (new FileReader("Archivos/ResEstudios.txt"));
             
             String linea = reader.readLine();
             String [] split=new String[7];
@@ -98,7 +99,7 @@ public class ResultadoEstudios {
                 
                 
                 if (fecha.equals(fecha2)){
-                    BufferedReader reader2= new BufferedReader (new FileReader("src/main/java/Archivos/Pacientes/"+split[1]+".txt"));
+                    BufferedReader reader2= new BufferedReader (new FileReader("Archivos/Pacientes/"+split[1]+".txt"));
                     linea=reader2.readLine();
                     String[] splitUsr= linea.split(",");
                     stringA=splitUsr[1].split("/");

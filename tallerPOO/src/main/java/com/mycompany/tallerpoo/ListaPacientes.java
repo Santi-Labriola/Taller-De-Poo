@@ -35,11 +35,13 @@ public class ListaPacientes {
         pacientes.add(paci);
     }
     
+    public void eliminar(Paciente paci){
+        pacientes.remove(paci);
+    }
+    
     public Paciente getPorDni(int dni){
         for (Paciente paci : this.pacientes){
-            System.out.println(dni);
-            System.out.println(paci.getDocumento());
-            if (paci.getDocumento()==dni){
+           if (paci.getDocumento()==dni){
                 return paci;
             }        
         }
