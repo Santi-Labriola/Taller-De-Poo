@@ -12,6 +12,8 @@ public class Paciente extends Persona{ //extender de persona
     private ArrayList<ResultadoEstudios> estudios;
     
     public Paciente(){
+        this.personaContacto="";
+        this.estudios=new ArrayList<ResultadoEstudios>();
     }
     
     public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
@@ -49,6 +51,10 @@ public class Paciente extends Persona{ //extender de persona
         this.estudios = estudios;
     }
     
+    public void agregarEstudio(ResultadoEstudios resu){
+        this.estudios.add(resu);
+    }
+    
     public int obtenerEdad(){
         
         int edad;
@@ -78,7 +84,7 @@ public class Paciente extends Persona{ //extender de persona
 
     @Override
     public String toString() {
-        return "Paciente{" + "Nombre=" + this.getNombre() + ", Documento=" + this.getDocumento() + '}';
+        return "Paciente{" + "Nombre=" + this.getNombre() + ", Documento=" + this.getDocumento() + ", Resultados" + this.estudios + '}';
     }
 
 
