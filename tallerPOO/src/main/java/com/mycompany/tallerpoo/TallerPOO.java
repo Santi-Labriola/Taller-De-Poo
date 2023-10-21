@@ -9,6 +9,7 @@ import static com.mycompany.tallerpoo.ManejoArchivos.*;
 import java.time.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class TallerPOO {
@@ -17,19 +18,26 @@ public class TallerPOO {
        
         //Paciente paci=new Paciente("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com","Papa de lucas");
         
-        /*
-        Triage tri= new Triage();                    LocalDate fecha1 = LocalDate.of(2023, 1, 3);
-        LocalDate fecha2 = LocalDate.of(2023, 12, 31);
-        ArrayList<Integer> resultados =tri.cantTriagePorFecha(fecha1, fecha2);
-        System.out.println("Rojo: " + resultados.get(0));                 
-        String ruta= "src/main/java/Archivos/Triage.txt";
-        */
+        
         LocalDate fecha1 = LocalDate.of(2023, 1, 1);
+        LocalDate fecha2 = LocalDate.of(2023, 12, 31);
+        Triage hola= new Triage();
+        ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
+        for (int i = 0; i < resultado.size(); i++) {
+                System.out.println("Recuento de categoría " + i + ": " + resultado.get(i));
+            }
+        
+        
+        
         String barra= File.separator;
         String archivo ="Archivos/Triage.txt";   
         
         ListaTriage prueba = new ListaTriage();
-        //Triage tri = new Triage(fecha1,"Azul");
+        
+        
+        
+        
+        
         prueba.leer(archivo);
         System.out.println(prueba);
         

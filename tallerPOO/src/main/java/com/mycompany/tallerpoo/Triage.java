@@ -289,29 +289,28 @@ public class Triage {
     
    
       
-    public  ArrayList<Integer> cantTriagePorFecha(String archivo, String separador, LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException {        
-        ArrayList<Integer> lista = new ArrayList<>();
-        BufferedReader br = null;
-        Triage aver; 
+     public  ArrayList<Integer> cantTriagePorFecha( LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {        
+        
+         ArrayList lista=new ArrayList();
+                         
         int rojo = 0;
         int naranja = 0;
         int amarillo = 0;
         int verde = 0;
         int azul = 0;
-        
-        
-
+               
         try {
-            br = new BufferedReader(new FileReader(archivo));
+            BufferedReader br= new BufferedReader (new FileReader("Archivos/Triage.txt"));
             String linea = br.readLine();
-
+            
             while (linea != null) {
-                
-                aver = new Triage(); //  CREO QUE HAY HACER UN CONSTRUCTOR CON FECHA Y COLOR PARA PODER APLICAR EL METODO Q ESTA EN LISAT DE JUG
-                String[] array = linea.split(",");
-                String[] fec = array[0].split("-");
-                LocalDate date = LocalDate.of(Integer.parseInt(fec[0]), Integer.parseInt(fec[1]), Integer.parseInt(fec[2]));
-
+                                
+                String [] array = linea.split(",");
+          // Validar que haya al menos dos campos en la línea antes de procesarla
+            if (array.length >= 2) {
+                String[] splitFecha = array[0].split("-");
+                LocalDate date = LocalDate.of(Integer.parseInt(splitFecha[0]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[2]));
+            
                 if (date.isAfter(fecha1) && date.isBefore(fecha2)) {
                     if (array[1].equals("Rojo")) {
                         rojo++;
@@ -327,7 +326,7 @@ public class Triage {
                 }
                 linea = br.readLine();
             }
-
+            }
             lista.add(rojo);
             lista.add(naranja);
             lista.add(amarillo);
@@ -352,8 +351,6 @@ public class Triage {
      public String toString() {
         return "Triage{" + "Fecha=" + Fecha + ", colorSugerido=" + colorSugerido + '}';
     } 
-    
 }
-    
     
 

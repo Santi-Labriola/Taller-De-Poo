@@ -40,6 +40,7 @@ public class ListaTriage {
         return false;
     }
     
+       
     public void leer (String archivo) throws IOException {
         
         Triage tri; 
@@ -61,6 +62,7 @@ public class ListaTriage {
                 
                 
                 this.agregar(tri);
+                
                 linea = br.readLine();
                 } else {
                 System.err.println("Línea incorrecta: " + linea);
@@ -79,6 +81,8 @@ public class ListaTriage {
     public String toString() {
         return "ListaTriage{" + "triages=" + triages + '}';
     }
+                
+                
                 
                 
                 
