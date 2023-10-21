@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.tallerpoo;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -12,17 +10,18 @@ public class Especialidad {
     
     private String titulo;
     private String especialidad;
+    private ArrayList<Medico> medicos;
 
-    //public ArrayList<Medico> medico;
-    
     public Especialidad(String titulo, String especialidad) {
         this.titulo = titulo;
         this.especialidad = especialidad;
+        this.medicos=new ArrayList<Medico>();
     }
     
     public Especialidad() {
         this.titulo = "";
         this.especialidad = "";
+        this.medicos=new ArrayList<Medico>();
     }
 
     public String getTitulo() {
@@ -39,6 +38,18 @@ public class Especialidad {
 
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
+    }
+
+    public ArrayList<Medico> getMedicos() {
+        return medicos;
+    }
+
+    public void setMedicos(ArrayList<Medico> medicos) {
+        this.medicos = medicos;
+    }
+    
+    public void agregarMedico(Medico medico){
+        this.medicos.add(medico);
     }
 
     @Override

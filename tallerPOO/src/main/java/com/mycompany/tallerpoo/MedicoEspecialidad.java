@@ -14,12 +14,19 @@ public class MedicoEspecialidad {
     
     private LocalDate fecha;
     private String Universidad; 
-    //public Medico medico;
-    //public Especialidad especialidad;    
-
+    private Medico medico;
+    private Especialidad especialidad;    
+    
     public MedicoEspecialidad(LocalDate fecha, String Universidad) {
         this.fecha = fecha;
         this.Universidad = Universidad;
+    }
+
+    public MedicoEspecialidad(LocalDate fecha, String Universidad, Medico medico, Especialidad especialidad) {
+        this.fecha = fecha;
+        this.Universidad = Universidad;
+        this.medico = medico;
+        this.especialidad = especialidad;
     }
     
     public MedicoEspecialidad(){
@@ -43,6 +50,22 @@ public class MedicoEspecialidad {
         this.Universidad = Universidad;
     }
 
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }
+    
     @Override
     public String toString() {
         return "MedicoEspecialidad{" + "fecha=" + fecha + ", Universidad=" + Universidad + '}';

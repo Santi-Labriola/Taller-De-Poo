@@ -36,13 +36,18 @@ public class TallerPOO {
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
         ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
+        ListaMedicos listamedi=new ListaMedicos();
+        ListaEspecialidades listaespe= new ListaEspecialidades();
+        ListaMedEsp listamedesp=new ListaMedEsp();
         
-     
         listapaci.leer("Archivos/Pacientes.txt");
         listaresu.leer("Archivos/ResEstudios.txt",listapaci);
         listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
+        listamedi.leer("Archivos/Medicos.txt");
+        listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
         
         System.out.println(listapaci);
+        System.out.println(listamedi);
         
         
         

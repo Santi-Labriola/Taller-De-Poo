@@ -10,6 +10,8 @@ import java.util.*;
  */
 public class Medico extends Persona{
     private int matricula;
+    private ArrayList<Especialidad> especialidad;
+ 
     public static ArrayList<Paciente> listaPacientes=new ArrayList<>(); //lista que almacenara pacientes no atendidos.
     
     public Medico(String nombre, LocalDate fechaNacimiento, String domicilio, 
@@ -18,6 +20,11 @@ public class Medico extends Persona{
         
         super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
         this.matricula=matricula;
+        this.especialidad=new ArrayList<Especialidad>();
+    }
+
+    public Medico() {
+        this.especialidad=new ArrayList<Especialidad>();
     }
 
     public int getMatricula() {
@@ -26,6 +33,10 @@ public class Medico extends Persona{
 
     public void setMatricula(int matricula) {
         this.matricula = matricula;
+    }
+    
+    public void agregarEspecialidad(Especialidad espe){
+        this.especialidad.add(espe);
     }
     
     //Atender paciente quita de la lista de pacientes para atender, asi los otros
@@ -40,4 +51,11 @@ public class Medico extends Persona{
     public void hacerAdmision(Paciente paciente){
         Medico.listaPacientes.add(paciente);
     }
+
+    @Override
+    public String toString() {
+        return "Medico{" + "matricula=" + matricula + ", especialidad=" + especialidad + '}';
+    }
+    
+    
 }
