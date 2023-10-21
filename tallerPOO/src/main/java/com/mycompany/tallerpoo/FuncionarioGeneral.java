@@ -1,31 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.tallerpoo;
+
+import java.time.LocalDate;
 
 /**
  *
  * @author 54345
  */
-public class FuncionarioGeneral {
-    
-    private String contraseña;
+public class FuncionarioGeneral extends Persona{
 
-    public FuncionarioGeneral(String contraseña) {
-        this.contraseña = contraseña;
-    }
-    
     public FuncionarioGeneral(){
-        contraseña = "";
+        super();
     }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    
+    public FuncionarioGeneral(String nombre, LocalDate fechaNacimiento, String domicilio,
+                              int documento, int telefoFijo, int telefonoCelular,
+                              String estadoCivil, String correoElectronico){
+        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
     }
     
     public void accederAlSistema(String contraseña/*, int dni*/){
