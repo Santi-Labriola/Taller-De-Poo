@@ -4,24 +4,30 @@
  */
 package com.mycompany.tallerpoo;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Santi
  */
 
 
-/*
-public class Enfermero /extends persona/ {
-    //public ArrayList<Triage> triage;    
+
+public class Enfermero extends Persona {
+    //public ArrayList<Triage> triage;  
+    
     public Enfermero (String nombre, LocalDate fechaNacimiento, String domicilio, 
-                      int documento, int telefoFijo, int telefonoCelular, 
-                      String estadoCivil, String correoElectronico) /super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);/{
+                  int documento, int telefoFijo, int telefonoCelular, 
+                  String estadoCivil, String correoElectronico) {
+        
+        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, 
+            telefonoCelular, estadoCivil, correoElectronico);
+                      
     }
     
-    public void hacerAdmision(/Paciente paciente/){
-        //Medico.listaPacientes.add(paciente);
+    public void hacerAdmision(Paciente paciente){
+        Medico.listaPacientes.add(paciente);
     }
 }
  
 
-*/
