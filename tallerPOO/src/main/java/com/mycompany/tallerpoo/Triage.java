@@ -289,7 +289,7 @@ public class Triage {
     
    
       
-     public static ArrayList<Integer> cantTriagePorFecha(String archivo,LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {
+     public static ArrayList<Integer> cantTriagePorFecha(LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {
     ArrayList<Integer> lista = new ArrayList<>();
     int rojo = 0;
     int naranja = 0;
@@ -327,7 +327,6 @@ public class Triage {
 
             linea = br.readLine();
         }
-
         // Agregar los valores de cada categoría a la lista una vez fuera del bucle
         lista.add(rojo);
         lista.add(naranja);
@@ -342,9 +341,48 @@ public class Triage {
 
     return lista;
 }   
-    
+     
+     
+     
+       public static ArrayList<String> obtenerTriageCambiadosPorFecha(LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {
+    ArrayList<String> lista = new ArrayList<>();
+   
+    Triage tri;
+    String color="";
+    try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Triage.txt"))) {
+        String linea = br.readLine();
 
-  
+        while (linea != null) {
+            String[] array = linea.split(",");
+            // Validar que haya al menos dos campos en la línea antes de procesarla
+            if (array.length >= 3) {
+                String[] splitFecha = array[0].split("-");
+                LocalDate date = LocalDate.of(Integer.parseInt(splitFecha[0]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[2]));
+                tri = new Triage();
+                tri.setColorSugerido(array[1]);
+                tri.setColorFinal(array[2]);
+                  
+                if (date.isAfter(fecha1) && date.isBefore(fecha2)) {
+                    color="Color sugerido: " +tri.getColorSugerido()+","+" Color final: "+ tri.getColorFinal();
+                    lista.add(color);
+                }
+            }
+
+            linea = br.readLine();
+        }
+        // Agregar los valores de cada categoría a la lista una vez fuera del bucle
+        
+      
+        return lista;
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+
+    return lista;
+}    
+    /* - Cantidad de triage que fueron cambiados por quien efectuó el traigado indicando
+    color propuesto por el sistema y el color asignado por el funcionario
+        */
 
     /*
     public String toString() {
