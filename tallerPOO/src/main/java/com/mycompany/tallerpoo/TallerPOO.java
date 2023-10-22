@@ -5,6 +5,7 @@ package com.mycompany.tallerpoo;
  * @author 54345
  */
 import static com.mycompany.tallerpoo.ManejoArchivos.*;
+import static com.mycompany.tallerpoo.Triage.cantTriagePorFecha;
 
 import java.time.*;
 import java.io.File;
@@ -18,19 +19,22 @@ public class TallerPOO {
        
         //Paciente paci=new Paciente("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com","Papa de lucas");
         
+        String barra= File.separator;
+        String archivo ="Archivos/Triage.txt";   
         
-        LocalDate fecha1 = LocalDate.of(2023, 1, 1);
-        LocalDate fecha2 = LocalDate.of(2023, 12, 31);
+        LocalDate fecha1 = LocalDate.of(2023, 07, 15);
+        LocalDate fecha2 = LocalDate.of(2023, 10, 10);
         Triage hola= new Triage();
-        ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
+        ArrayList<Integer> resultado = hola.cantTriagePorFecha(archivo,fecha1,fecha2);
+        
+                
         for (int i = 0; i < resultado.size(); i++) {
                 System.out.println("Recuento de categoría " + i + ": " + resultado.get(i));
             }
         
         
         
-        String barra= File.separator;
-        String archivo ="Archivos/Triage.txt";   
+        
         
         ListaTriage prueba = new ListaTriage();
         

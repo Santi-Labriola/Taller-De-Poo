@@ -289,57 +289,59 @@ public class Triage {
     
    
       
-     public  ArrayList<Integer> cantTriagePorFecha( LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {        
-        
-         ArrayList lista=new ArrayList();
-                         
-        int rojo = 0;
-        int naranja = 0;
-        int amarillo = 0;
-        int verde = 0;
-        int azul = 0;
-               
-        try {
-            BufferedReader br= new BufferedReader (new FileReader("Archivos/Triage.txt"));
-            String linea = br.readLine();
-            
-            while (linea != null) {
-                                
-                String [] array = linea.split(",");
-          // Validar que haya al menos dos campos en la línea antes de procesarla
+     public static ArrayList<Integer> cantTriagePorFecha(String archivo,LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {
+    ArrayList<Integer> lista = new ArrayList<>();
+    int rojo = 0;
+    int naranja = 0;
+    int amarillo = 0;
+    int verde = 0;
+    int azul = 0;
+    Triage tri;
+
+    try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Triage.txt"))) {
+        String linea = br.readLine();
+
+        while (linea != null) {
+            String[] array = linea.split(",");
+            // Validar que haya al menos dos campos en la línea antes de procesarla
             if (array.length >= 2) {
                 String[] splitFecha = array[0].split("-");
                 LocalDate date = LocalDate.of(Integer.parseInt(splitFecha[0]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[2]));
-            
+                tri = new Triage();
+                tri.setColorSugerido(array[1]);
+
                 if (date.isAfter(fecha1) && date.isBefore(fecha2)) {
-                    if (array[1].equals("Rojo")) {
+                    if (tri.getColorSugerido().equals("Rojo")) {
                         rojo++;
-                    } else if (array[1].equals("Naranja")) {
+                    } else if (tri.getColorSugerido().equals("Naranja")) {
                         naranja++;
-                    } else if (array[1].equals("Amarillo")) {
+                    } else if (tri.getColorSugerido().equals("Amarillo")) {
                         amarillo++;
-                    } else if (array[1].equals("Verde")) {
+                    } else if (tri.getColorSugerido().equals("Verde")) {
                         verde++;
-                    } else if (array[1].equals("Azul ")) {
+                    } else if (tri.getColorSugerido().trim().equals("Azul")) {
                         azul++;
                     }
                 }
-                linea = br.readLine();
             }
-            }
-            lista.add(rojo);
-            lista.add(naranja);
-            lista.add(amarillo);
-            lista.add(verde);
-            lista.add(azul);
 
-            br.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            linea = br.readLine();
         }
 
+        // Agregar los valores de cada categoría a la lista una vez fuera del bucle
+        lista.add(rojo);
+        lista.add(naranja);
+        lista.add(amarillo);
+        lista.add(verde);
+        lista.add(azul);
+
         return lista;
-    }   
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+
+    return lista;
+}   
     
 
   
