@@ -4,6 +4,7 @@ package com.mycompany.tallerpoo;
  *
  * @author 54345
  */
+import InterfazUsuario.*;
 import static com.mycompany.tallerpoo.ManejoArchivos.*;
 //import static com.mycompany.tallerpoo.Triage.cantTriagePorFecha;
 
@@ -57,10 +58,18 @@ public class TallerPOO {
         listamedi.leer("Archivos/Medicos.txt");
         listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
         
-        System.out.println(listapaci);
-        System.out.println(listamedi);
+        DatosTaller.setPacientes(listapaci);
+        DatosTaller.setMedicos(listamedi);
+        DatosTaller.setResultados(listaresu);
+        DatosTaller.setAdmisiones(listaAdmisiones);
+        DatosTaller.setEspecialidades(listaespe);
         
+        System.out.println(DatosTaller.getPacientes());
         
+
+        MenuGestorCentro abc=new MenuGestorCentro();
+        abc.setVisible(true);
+        abc.setLocationRelativeTo(null);
         
 //        ArrayList lista=ResultadoEstudios.obtenerResultadoEstudios(LocalDate.of(2023,5,10));
 //        
