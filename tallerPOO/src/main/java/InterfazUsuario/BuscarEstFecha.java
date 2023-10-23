@@ -1,14 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package InterfazUsuario;
 import java.time.*;
 import com.mycompany.tallerpoo.*;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.zip.DataFormatException;
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -21,8 +15,7 @@ public class BuscarEstFecha extends javax.swing.JFrame {
      */
     public BuscarEstFecha() {
         initComponents();
-        //ResultadoEstudios res=new ResultadoEstudios(LocalDate.of(2023,5,10),LocalTime.now(),"si","no");
-    
+
     }
 
     /**
@@ -182,6 +175,7 @@ public class BuscarEstFecha extends javax.swing.JFrame {
                                          Integer.parseInt(jMes.getText()),
                                      Integer.parseInt(jDia.getText()));
             System.out.println(jAnio.getText()+jMes.getText()+jDia.getText());
+            
             ArrayList <ResultadoEstudios> listaCoin=ResultadoEstudios.obtenerResultadoEstudios(fecha);
            
             Paciente paci;

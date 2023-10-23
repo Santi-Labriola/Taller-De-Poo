@@ -80,53 +80,10 @@ public class ResultadoEstudios {
     }
 
     public static ArrayList obtenerResultadoEstudios(LocalDate fecha){
-        //File archivo=new File("data/ResEstudios.txt");
-
-        ArrayList lista=new ArrayList();
-        try {
-            BufferedReader reader= new BufferedReader (new FileReader("Archivos/ResEstudios.txt"));
-            
-            String linea = reader.readLine();
-            String [] split=new String[7];
-            String [] stringA;
-            LocalDate fecha2;
-            
-            while (linea!=null){
-                split=linea.split(",");
-                
-                stringA=split[2].split("/");
-                fecha2=LocalDate.of(Integer.parseInt(stringA[2]),Integer.parseInt(stringA[1]),Integer.parseInt(stringA[0]));
-                
-                
-                if (fecha.equals(fecha2)){
-                    BufferedReader reader2= new BufferedReader (new FileReader("Archivos/Pacientes/"+split[1]+".txt"));
-                    linea=reader2.readLine();
-                    String[] splitUsr= linea.split(",");
-                    stringA=splitUsr[1].split("/");
-                    
-                    fecha2=LocalDate.of(Integer.parseInt(stringA[2]),Integer.parseInt(stringA[1]),Integer.parseInt(stringA[0]));
-                            
-                    Paciente pac= new Paciente(splitUsr[0],fecha2,splitUsr[2],
-                                       Integer.parseInt(split[1]),Integer.parseInt(splitUsr[3]),
-                                  Integer.parseInt(splitUsr[4]),splitUsr[5],splitUsr[6],splitUsr[7]);
-                    
-                    stringA= split[3].split(":");
-                    LocalTime hora=LocalTime.of(Integer.parseInt(stringA[2]),Integer.parseInt(stringA[1]),Integer.parseInt(stringA[0]));
-                    
-                    ResultadoEstudios resu= new ResultadoEstudios(fecha,hora,split[4],split[5],pac);
-                   
-                    lista.add(resu);
-                }
-                linea = reader.readLine();
-            }
-            reader.close();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        
+        ListaResEstudios resu=DatosTaller.getResultados();
+        ArrayList lista=resu.getListaPorFecha(fecha);
         return lista;
+
     }
 }
 /*try {

@@ -11,7 +11,9 @@ public abstract class DatosTaller {
     private static ListaResEstudios resultados;
     private static ListaAdmisiones admisiones;
     private static ListaEspecialidades especialidades;
-
+    
+    private static ListaPacientes pacientesSinTriage;
+    
     public static ListaPacientes getPacientes() {
         return pacientes;
     }
@@ -51,6 +53,25 @@ public abstract class DatosTaller {
     public static void setEspecialidades(ListaEspecialidades especialidades) {
         DatosTaller.especialidades = especialidades;
     }
+
+    public static ListaPacientes getPacientesSinTriage() {
+        return pacientesSinTriage;
+    }
+
+    public static void setPacientesSinTriage(ListaPacientes pacientesSinTriage) {
+        DatosTaller.pacientesSinTriage = pacientesSinTriage;
+    }
+    
+    
   
     
+    public static void agregarPacienteAdmision(Paciente paci){
+        pacientesSinTriage.agregar(paci);
+    }
+    
+    public static void eliminarPacienteAdmision(Paciente paci){
+        pacientesSinTriage.eliminar(paci);
+    }
+    
+
 }
