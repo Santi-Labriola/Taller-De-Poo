@@ -67,15 +67,16 @@ public class TallerPOO {
         System.out.println(DatosTaller.getPacientes());
         
 
-        MenuGestorCentro abc=new MenuGestorCentro();
-        abc.setVisible(true);
-        abc.setLocationRelativeTo(null);
-        
-//        ArrayList lista=ResultadoEstudios.obtenerResultadoEstudios(LocalDate.of(2023,5,10));
-//        
-//        System.out.println(lista);
-//        BuscarEstFecha abc=new BuscarEstFecha();
+//        MenuGestorCentro abc=new MenuGestorCentro();
 //        abc.setVisible(true);
 //        abc.setLocationRelativeTo(null);
+//        
+//        ArrayList lista=ResultadoEstudios.obtenerResultadoEstudios(LocalDate.of(2023,5,10));
+        
+//        System.out.println(lista);
+
+        BuscarEstFecha buscar=new BuscarEstFecha();
+        buscar.setVisible(true);
+        buscar.setLocationRelativeTo(null);
     }
 }

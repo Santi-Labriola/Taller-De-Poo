@@ -41,6 +41,16 @@ public class ListaResEstudios {
         resultados.remove(resu);
     }
     
+    public ArrayList getListaPorFecha(LocalDate fecha){
+        ArrayList<ResultadoEstudios> resultados=new ArrayList();
+        for (ResultadoEstudios resu : this.resultados){
+            if (resu.getFecha().isEqual(fecha)){
+                resultados.add(resu);
+            }
+        }
+        return resultados;
+    }
+    
     public void leer(String archivo){
         leerInterno(archivo,null);
     }
