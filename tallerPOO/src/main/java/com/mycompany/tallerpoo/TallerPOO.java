@@ -44,6 +44,8 @@ public class TallerPOO {
         /*ListaTriage prueba = new ListaTriage();
         prueba.leer(archivo);
         System.out.println(prueba);*/
+
+        ListaPVarias listavarias=new ListaPVarias();
         
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
