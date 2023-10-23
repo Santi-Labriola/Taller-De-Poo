@@ -51,6 +51,9 @@ public class TallerPOO {
         ListaMedicos listamedi=new ListaMedicos();
         ListaEspecialidades listaespe= new ListaEspecialidades();
         ListaMedEsp listamedesp=new ListaMedEsp();
+        ListaPacientes listaPaciSinTriage=new ListaPacientes();
+        //ListaPacientes listaPaciTriageados=new ListaPacientes();
+        
         
         listapaci.leer("Archivos/Pacientes.txt");
         listaresu.leer("Archivos/ResEstudios.txt",listapaci);
@@ -58,11 +61,17 @@ public class TallerPOO {
         listamedi.leer("Archivos/Medicos.txt");
         listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
         
+        listaPaciSinTriage.leer("Archivos/");
+        //listaPaciTriageados.leer("");
+        
+        
         DatosTaller.setPacientes(listapaci);
         DatosTaller.setMedicos(listamedi);
         DatosTaller.setResultados(listaresu);
         DatosTaller.setAdmisiones(listaAdmisiones);
         DatosTaller.setEspecialidades(listaespe);
+        
+        DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
         
         System.out.println(DatosTaller.getPacientes());
         
