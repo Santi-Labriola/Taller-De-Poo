@@ -4,12 +4,17 @@
  */
 package com.mycompany.tallerpoo;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  *
- * @author Santi
+ * @author Matias
  */
 
 public class RegistroMedico {
@@ -19,11 +24,10 @@ public class RegistroMedico {
     private String lugarAtendido;
     private String diagnostico;
     private String diagnosticoClinico;
-    
-    //public ArrayList<RegistroMedico> registroMedico;
-    //public AdmisionDeEmergencia admisionDeEmergencia;
-    //public ArrayList<Medico> medico;
-    //public Paciente paciente;
+    public ArrayList<RegistroMedico> registroMedico;
+    public AdmisionDeEmergencia admisionDeEmergencia;
+    public ArrayList<Medico> medico;
+    public Paciente paciente;
 
     public RegistroMedico(LocalDate fecha, LocalTime hora, String lugarAtendido, String diagnostico, String diagnosticoClinico) {
         this.fecha = fecha;
@@ -81,12 +85,9 @@ public class RegistroMedico {
         this.diagnosticoClinico = diagnosticoClinico;
     }
 
-    /*
-    public ResultadoEstudios obtenerResultadoEstudios(LocalDate fecha) {
-        Aca se hace algun tipo de recorrido por el archivo que tiene los resultados de Estudios del paciente
-        return (Retorna un resultado de Estudio que se hizo en esa fecha);
-    }
     
+    
+   /* 
     public int calcularNumPacDeMedPorFecha(Medico medico, LocalDate fecha1, LocalDate fecha2){
         
     }

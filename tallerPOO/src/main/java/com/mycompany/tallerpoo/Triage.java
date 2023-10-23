@@ -38,6 +38,7 @@ public class Triage {
     private String colorSugerido;
     private String motivoCambio;
     private String colorFinal;
+    private AdmisionDeEmergencia admision;
 
     public Triage (LocalDate Fecha, String colorSugerido) {
         this.Fecha = Fecha;
@@ -66,11 +67,12 @@ public class Triage {
         this.colorSugerido = "";
         this.motivoCambio = "";
         this.colorFinal = "";
+        this.admision=null;
     }
     
     
 
-    public Triage(LocalDate Fecha, String hora, int respiracion, int pulso, int estadoMental, int conciencia, int difilcutadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal) {
+    public Triage(LocalDate Fecha, String hora, int respiracion, int pulso, int estadoMental, int conciencia, int difilcutadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal, AdmisionDeEmergencia admision) {
         this.Fecha = Fecha;
         this.hora = hora;
         this.respiracion = respiracion;
@@ -89,6 +91,7 @@ public class Triage {
         this.colorSugerido = colorSugerido;
         this.motivoCambio = motivoCambio;
         this.colorFinal = colorFinal;
+        this.admision=admision;
     }
     
     
