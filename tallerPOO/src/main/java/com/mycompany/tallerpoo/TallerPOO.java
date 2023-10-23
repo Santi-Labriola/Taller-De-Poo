@@ -22,22 +22,27 @@ public class TallerPOO {
         String barra= File.separator;
         String archivo ="Archivos/Triage.txt";   
         
-        LocalDate fecha1 = LocalDate.of(2021, 07, 15);
-        LocalDate fecha2 = LocalDate.of(2023, 10, 10);
+        LocalDate fecha1 = LocalDate.of(2022, 7, 15);
+        LocalDate fecha2 = LocalDate.of(2023, 9, 10);
         Triage hola= new Triage();
-        ArrayList<Integer> resultado = hola.cantTriagePorFecha(archivo,fecha1,fecha2);
-        
-            String colour="";    
-        for (int i = 0; i < resultado.size(); i++) {
+        Triage opa= new Triage();
+        //ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
+        ArrayList<String> res=opa.obtenerTriageCambiadosPorFecha(fecha1,fecha2);
+        String colour="";    
+        /*for (int i = 0; i < resultado.size(); i++) {
                 if (i==0){colour="Rojo";}if (i==1){colour="Naranja";}
                 if (i==2){colour="Amarillo";}if (i==3){colour="Verde";}
                 if (i==4){colour="Azul";}
                 System.out.println
         ("Recuento de categoría " + colour + ": " + resultado.get(i));
-            }
-        ListaTriage prueba = new ListaTriage();
+            }*/
+       /* for( int i=0; i<res.size() ;i++){
+            System.out.println( res.get(i));}
+        */
+       
+        /*ListaTriage prueba = new ListaTriage();
         prueba.leer(archivo);
-        System.out.println(prueba);
+        System.out.println(prueba);*/
         
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
