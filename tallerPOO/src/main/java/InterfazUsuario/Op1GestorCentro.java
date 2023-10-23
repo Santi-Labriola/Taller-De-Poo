@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package igu;
+package InterfazUsuario;
 import java.time.LocalDate;
-import logica.RegistroMedico;
+import com.mycompany.tallerpoo.*;
 
 /**
  *
