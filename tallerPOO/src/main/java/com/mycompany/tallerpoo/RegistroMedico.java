@@ -94,7 +94,7 @@ public class RegistroMedico {
     String barra = File.separator;
     ArrayList<String> personasConMasConsultas = new ArrayList<>();
 
-    try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas"))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
         String linea = br.readLine();
         ArrayList<String> dnis = new ArrayList<>();
         ArrayList<LocalDate> fechas = new ArrayList<>();
@@ -152,7 +152,7 @@ public class RegistroMedico {
         String barra = File.separator;
         ArrayList<String> paciAtenMedi = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
             String linea = br.readLine();
 
             while (linea != null) {
@@ -188,7 +188,7 @@ public class RegistroMedico {
         String barra = File.separator;
         ArrayList<String> citas = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
             String linea = br.readLine();
 
             while (linea != null) {

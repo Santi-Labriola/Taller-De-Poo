@@ -51,9 +51,9 @@ public class TallerPOO {
        
        ///////////////////////////////////////////////////////////////////
        //METODOS DE REGISTRO MEDICO        
-         /*      
+         
         ListaPVarias listavarias=new ListaPVarias();
-        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas");// RUTA DEL ARCHIVO CON EL CUAL TRABAJA
+        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas.txt");// RUTA DEL ARCHIVO CON EL CUAL TRABAJA
         
         String dniMedico="31382929"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
        
@@ -67,7 +67,7 @@ public class TallerPOO {
             for (String dni : personasConMasConsultas) {
                  System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" - " +fecha2 + dni);
                                         }
-        */
+        
         //////////////////////////////////////////////////////////////////////////////////////    
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
