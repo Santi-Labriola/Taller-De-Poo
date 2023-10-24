@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -179,6 +180,63 @@ public class RegistroMedico {
 
         return paciAtenMedi.size();
     }
+
+    public static String calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2, String dniMedico) {
+        String barra = File.separator;
+        ArrayList<String> citas = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas"))) {
+            String linea = br.readLine();
+
+            while (linea != null) {
+                String[] array = linea.split(",");
+                if (array.length >= 11) {
+                    String dniPaciente = array[0];
+                    String fechaAtencionStr = array[9];
+                    String medicoAsignado = array[10];
+
+                    String[] splitFecha = fechaAtencionStr.split("/");
+                    LocalDate fechaAtencion = LocalDate.of(
+                            Integer.parseInt(splitFecha[2]),
+                            Integer.parseInt(splitFecha[1]),
+                            Integer.parseInt(splitFecha[0])
+                    );
+
+                    if (fechaAtencion.isAfter(fecha1) && fechaAtencion.isBefore(fecha2) && medicoAsignado.equals(dniMedico)) {
+                        citas.add(dniPaciente);
+                    }
+                }
+                linea = br.readLine();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        // Calcular al médico que atendió a la mayoría de pacientes
+        Map<String, Integer> contadorMedicos = new HashMap<>();
+        for (String dniPaciente : citas) {
+            contadorMedicos.put(dniPaciente, contadorMedicos.getOrDefault(dniPaciente, 0) + 1);
+        }
+
+        int maxPacientesAtendidos = 0;
+        String medicoConMasPacientes = null;
+
+        for (Map.Entry<String, Integer> entry : contadorMedicos.entrySet()) {
+            if (entry.getValue() > maxPacientesAtendidos) {
+                maxPacientesAtendidos = entry.getValue();
+                medicoConMasPacientes = entry.getKey();
+            }
+        }
+
+        return medicoConMasPacientes;
+    }
+
+
+
+
+
+
+
 
    /* public int CalcularPacPorEdadesyFechas(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2){
         

@@ -7,6 +7,7 @@ package com.mycompany.tallerpoo;
 import InterfazUsuario.*;
 import static com.mycompany.tallerpoo.ManejoArchivos.*;
 import static com.mycompany.tallerpoo.RegistroMedico.calcularMasConsPorFecha;
+import static com.mycompany.tallerpoo.RegistroMedico.calcularMedMasPacPorFecha;
 //import static com.mycompany.tallerpoo.Triage.cantTriagePorFecha;
 
 import java.time.*;
@@ -56,6 +57,9 @@ public class TallerPOO {
         String dniMedico="31382929";
         int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico);
         System.out.println("Número de pacientes atendidos por el médico en el rango de fechas: " + numPacientes);
+        String medicoConMasPacientes = calcularMedMasPacPorFecha(fecha1, fecha2, dniMedico);
+        System.out.println("El DNI del médico que atendió a la mayoría de pacientes entre las fechas: "+ fecha1+" - "+fecha2+" es: " + medicoConMasPacientes);
+        
         /*    ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);
             for (String dni : personasConMasConsultas) {
                  System.out.println("DNI: " + dni);*/
