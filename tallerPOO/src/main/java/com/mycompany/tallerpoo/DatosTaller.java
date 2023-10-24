@@ -63,9 +63,19 @@ public abstract class DatosTaller {
     public static void setPacientesSinTriage(ListaPacientes pacientesSinTriage) {
         DatosTaller.pacientesSinTriage = pacientesSinTriage;
     }
+
+    public static ListaPacientes getPacientesTriageados() {
+        return pacientesTriageados;
+    }
+
+    public static void setPacientesTriageados(ListaPacientes pacientesTriageados) {
+        DatosTaller.pacientesTriageados = pacientesTriageados;
+    }
     
     
-  
+    public static void agregarPaciente(Paciente paci){
+        pacientes.agregar(paci);
+    }
     
     public static void agregarPacienteAdmision(Paciente paci){
         pacientesSinTriage.agregar(paci);

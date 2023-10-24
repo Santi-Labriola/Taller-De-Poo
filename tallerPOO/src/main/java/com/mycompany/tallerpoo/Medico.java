@@ -64,7 +64,9 @@ public class Medico extends Persona{
     
     
     /**
-     * Se crea un triage y se calcula el color del mismo en base a los datos que se pasen por parametro.
+     * Se crea un triage y se calcula el color del mismo en base a los datos que
+     * se pasen por parametro. Tambien añade al paciente a la lista de pacientes
+     * triageados sin atender.
      * @param respiracion
      * @param pulso
      * @param estadoMental
@@ -79,7 +81,7 @@ public class Medico extends Persona{
      * @param lesionesLeves
      * @param sangrado
      * @param admision
-     * @return triage con los datos pasados por parametro
+     * @return Objeto tipo Triage con los datos pasados por parametro, y con el color ya calculado.
      */
     public Triage hacerTriage(int respiracion, int pulso, int estadoMental, int conciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, AdmisionDeEmergencia admision){
         Triage triage=new Triage();
@@ -99,11 +101,14 @@ public class Medico extends Persona{
         triage.setSignosShock(signosShock);
         triage.setLesionesLeves(lesionesLeves);
         triage.setSangrado(sangrado);
+        triage.setAdmision(admision);
         
         String color=triage.obtenerColorSugerido(respiracion, pulso, estadoMental, conciencia, dificultadRespiracion, lesionesGraves, edad, fiebre, vomitos, dolorAbdominal, signosShock, lesionesLeves, sangrado);
         
         triage.setColorSugerido(color);
         triage.setColorFinal(color);
+        
+        admision.setTriage(triage);
         
         Paciente paci=admision.getPaciente();
         DatosTaller.eliminarPacienteAdmision(paci);
