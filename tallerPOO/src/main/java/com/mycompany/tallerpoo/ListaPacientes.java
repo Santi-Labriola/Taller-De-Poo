@@ -83,7 +83,6 @@ public class ListaPacientes {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        System.out.println(pacientes.size());
     }
 
     @Override

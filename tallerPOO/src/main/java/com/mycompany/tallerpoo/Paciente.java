@@ -4,8 +4,9 @@ import java.time.*;
 import java.util.ArrayList;
 
 /**
- *
- * @author Lucas
+ * Esta clase representa un objeto de tipo paciente, y es donde se almacena
+ * toda la informacion con respecto a el.
+ * @author Usuario
  */
 public class Paciente extends Persona{ //extender de persona
     private String personaContacto;
@@ -13,6 +14,7 @@ public class Paciente extends Persona{ //extender de persona
     private ArrayList<AdmisionDeEmergencia> admisiones;
     
     public Paciente(){
+        super();
         this.personaContacto="";
         this.estudios=new ArrayList<ResultadoEstudios>();
         this.admisiones=new ArrayList<AdmisionDeEmergencia>();
@@ -25,17 +27,9 @@ public class Paciente extends Persona{ //extender de persona
         
         super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
         this.personaContacto=personaContacto;
-    }
-
-    public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
-                    int documento, int telefoFijo, int telefonoCelular, 
-                    String estadoCivil, String correoElectronico,
-                    String personaContacto, ResultadoEstudios estudio, AdmisionDeEmergencia admision) {
+        this.estudios=new ArrayList<ResultadoEstudios>();
+        this.admisiones=new ArrayList<AdmisionDeEmergencia>();
         
-        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
-        this.personaContacto=personaContacto;
-        this.estudios.add(estudio);
-        this.admisiones.add(admision);
     }
     
     public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,

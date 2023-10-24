@@ -33,7 +33,7 @@ public class TallerPOO {
         
         Triage hola= new Triage();
         Triage opa= new Triage();
-        //ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
+ //     ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
         ArrayList<String> res=opa.obtenerTriageCambiadosPorFecha(fecha1,fecha2);
         String colour="";    
         for (int i = 0; i < res.size(); i++) {
@@ -62,10 +62,10 @@ public class TallerPOO {
         
         /*    ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);
             for (String dni : personasConMasConsultas) {
-                 System.out.println("DNI: " + dni);*/
-                                        }
+                 System.out.println("DNI: " + dni);
+                                        }*/
         
-            /*
+            
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
         ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
@@ -81,10 +81,9 @@ public class TallerPOO {
         listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
         listamedi.leer("Archivos/Medicos.txt");
         listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
-        
-//        listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
-//        listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
-        
+        listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
+        listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
+            
         
         DatosTaller.setPacientes(listapaci);
         DatosTaller.setMedicos(listamedi);
@@ -93,10 +92,10 @@ public class TallerPOO {
         DatosTaller.setEspecialidades(listaespe);
         
         DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
+        DatosTaller.setPacientesTriageados(listaPaciTriageados);
         
-        System.out.println(DatosTaller.getPacientes());
         
-
+/*
 //        MenuGestorCentro abc=new MenuGestorCentro();
 //        abc.setVisible(true);
 //        abc.setLocationRelativeTo(null);
@@ -107,8 +106,10 @@ public class TallerPOO {
 
         BuscarEstFecha buscar=new BuscarEstFecha();
         buscar.setVisible(true);
-        buscar.setLocationRelativeTo(null);*/
+        buscar.setLocationRelativeTo(null);
     }
      
 
-
+*/
+    }
+}   

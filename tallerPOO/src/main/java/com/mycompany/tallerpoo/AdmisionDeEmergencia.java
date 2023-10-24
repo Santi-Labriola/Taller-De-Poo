@@ -11,17 +11,22 @@ public class AdmisionDeEmergencia {
     private LocalTime hora;
     private String motivoDeConsulta;
     private Paciente paciente;
+    private Triage triage;
     
     public AdmisionDeEmergencia(){
         this.fecha=LocalDate.of(1,1,1);
         this.hora=LocalTime.of(0, 0,0);
         this.motivoDeConsulta="";
+        this.paciente=new Paciente();
+        this.triage=new Triage();
     }
 
     public AdmisionDeEmergencia(LocalDate fecha, LocalTime hora, String motivoDeConsulta) {
         this.fecha = fecha;
         this.hora = hora;
         this.motivoDeConsulta = motivoDeConsulta;
+        this.paciente=new Paciente();
+        this.triage=new Triage();
     }
     
     public AdmisionDeEmergencia(LocalDate fecha, LocalTime hora, String motivoDeConsulta,Paciente paciente) {
@@ -29,6 +34,15 @@ public class AdmisionDeEmergencia {
         this.hora = hora;
         this.motivoDeConsulta = motivoDeConsulta;
         this.paciente=paciente;
+        this.triage=new Triage();
+    }
+
+    public AdmisionDeEmergencia(LocalDate fecha, LocalTime hora, String motivoDeConsulta, Paciente paciente, Triage triage) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.motivoDeConsulta = motivoDeConsulta;
+        this.paciente = paciente;
+        this.triage = triage;
     }
     
     public LocalDate getFecha() {
@@ -62,11 +76,15 @@ public class AdmisionDeEmergencia {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-    
-//    public void registrarPaciente(Paciente paciente){//falta programar
-//        
-//    }
-    
+
+    public Triage getTriage() {
+        return triage;
+    }
+
+    public void setTriage(Triage triage) {
+        this.triage = triage;
+    }
+     
     public String calcularMasConsPorFecha(LocalDate fecha1,LocalTime fecha2){ //falta programar
         return "ver";
     }

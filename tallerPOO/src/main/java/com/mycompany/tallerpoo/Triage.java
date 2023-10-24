@@ -264,8 +264,16 @@ public class Triage {
     public void setColorFinal(String colorFinal) {
         this.colorFinal = colorFinal;
     }
+
+    public AdmisionDeEmergencia getAdmision() {
+        return admision;
+    }
+
+    public void setAdmision(AdmisionDeEmergencia admision) {
+        this.admision = admision;
+    }
     
-  
+      
     public  String  obtenerColorSugerido  (int respiracion, int pulso 
         ,int estadoMental,int conciencia, int dificultadRespiracion,
         int lesionesGraves, int edad, int fiebre, int vomito, 
