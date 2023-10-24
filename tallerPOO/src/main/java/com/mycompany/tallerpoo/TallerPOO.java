@@ -6,6 +6,7 @@ package com.mycompany.tallerpoo;
  */
 import InterfazUsuario.*;
 import static com.mycompany.tallerpoo.ManejoArchivos.*;
+import static com.mycompany.tallerpoo.RegistroMedico.calcularMasConsPorFecha;
 //import static com.mycompany.tallerpoo.Triage.cantTriagePorFecha;
 
 import java.time.*;
@@ -19,34 +20,43 @@ public class TallerPOO {
     public static void main(String[] args) throws IOException {        
        
         //Paciente paci=new Paciente("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com","Papa de lucas");
-        
-        String barra= File.separator;
-        String archivo ="Archivos/Triage.txt";   
-        
         LocalDate fecha1 = LocalDate.of(2022, 7, 15);
         LocalDate fecha2 = LocalDate.of(2023, 9, 10);
+       
+        String barra= File.separator;
+       /*
+        String archivo ="Archivos/Triage.txt";   
+        
+        
         Triage hola= new Triage();
         Triage opa= new Triage();
         //ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
         ArrayList<String> res=opa.obtenerTriageCambiadosPorFecha(fecha1,fecha2);
         String colour="";    
-        /*for (int i = 0; i < resultado.size(); i++) {
+        for (int i = 0; i < res.size(); i++) {
                 if (i==0){colour="Rojo";}if (i==1){colour="Naranja";}
                 if (i==2){colour="Amarillo";}if (i==3){colour="Verde";}
                 if (i==4){colour="Azul";}
                 System.out.println
-        ("Recuento de categoría " + colour + ": " + resultado.get(i));
-            }*/
-       /* for( int i=0; i<res.size() ;i++){
+        ("Recuento de categoría " + colour + ": " + res.get(i));
+            }
+        for( int i=0; i<res.size() ;i++){
             System.out.println( res.get(i));}
-        */
-       
-        /*ListaTriage prueba = new ListaTriage();
-        prueba.leer(archivo);
-        System.out.println(prueba);*/
-
-        ListaPVarias listavarias=new ListaPVarias();
         
+        
+       
+        ListaTriage prueba = new ListaTriage();
+        prueba.leer(archivo);
+        System.out.println(prueba);
+        */
+        ListaPVarias listavarias=new ListaPVarias();
+        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas");
+            ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);
+            for (String dni : personasConMasConsultas) {
+                 System.out.println("DNI: " + dni);
+                                        }
+        
+            /*
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
         ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
@@ -90,4 +100,7 @@ public class TallerPOO {
         buscar.setVisible(true);
         buscar.setLocationRelativeTo(null);
     }
+     */
+}
+
 }

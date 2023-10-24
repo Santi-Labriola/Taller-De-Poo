@@ -19,7 +19,7 @@ public class ListaPVarias {
     ArrayList<String> varias;
 
     public ListaPVarias() {
-    this.varias =null;   
+    this.varias =new ArrayList<String>();   
     }
        
     public ListaPVarias(ArrayList<String> lista) {
@@ -48,10 +48,10 @@ public class ListaPVarias {
             while (null!=linea) {
                 String [] campos = linea.split(",");
                 if(  campos.length<=11){
-                algo=campos[0]+campos[1]+campos[11];
+                algo=campos[0]+campos[1]+campos[9];
                 
                 this.agregar(algo);
-                
+                linea = br.readLine();
                 }else {
                 System.err.println("Línea incorrecta: " + linea);
                 }

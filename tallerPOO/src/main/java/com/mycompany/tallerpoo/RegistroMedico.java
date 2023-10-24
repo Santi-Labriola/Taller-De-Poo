@@ -5,12 +5,14 @@
 package com.mycompany.tallerpoo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -87,6 +89,64 @@ public class RegistroMedico {
 
     
     
+    public static ArrayList<String> calcularMasConsPorFecha(LocalDate fecha1, LocalDate fecha2) {
+    String barra = File.separator;
+    ArrayList<String> personasConMasConsultas = new ArrayList<>();
+
+    try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas"))) {
+        String linea = br.readLine();
+        ArrayList<String> dnis = new ArrayList<>();
+        ArrayList<LocalDate> fechas = new ArrayList<>();
+
+        while (linea != null) {
+            String[] array = linea.split(",");
+            if(array.length>=10){
+            
+            String[] splitFecha = array[9].split("/");
+            LocalDate fechaConsulta = LocalDate.of(Integer.parseInt(splitFecha[2]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[0]));
+            
+            dnis.add(array[0]);
+            fechas.add(fechaConsulta);
+            }
+            linea = br.readLine();
+        }
+
+        // Crear un HashMap para realizar un seguimiento de las consultas por persona
+        HashMap<String, Integer> consultasPorPersona = new HashMap<>();
+
+        // Iterar sobre los DNIs y fechas
+        for (int i = 0; i < dnis.size(); i++) {
+            String dni = dnis.get(i);
+            LocalDate fechaConsulta = fechas.get(i);
+            
+            // Verificar si la fecha de consulta está dentro del rango
+            if (fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+                consultasPorPersona.put(dni, consultasPorPersona.getOrDefault(dni, 0) + 1);
+            }
+        }
+
+        int maxConsultas = 0;
+
+        // Encontrar el número máximo de consultas en el rango
+        for (String dni : consultasPorPersona.keySet()) {
+            int consultas = consultasPorPersona.get(dni);
+            if (consultas > maxConsultas) {
+                maxConsultas = consultas;
+                personasConMasConsultas.clear();
+                personasConMasConsultas.add(dni);
+            } else if (consultas == maxConsultas) {
+                personasConMasConsultas.add(dni);
+            }
+        }
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+
+    return personasConMasConsultas;
+    }
+
+    
+    
    /* 
     public int calcularNumPacDeMedPorFecha(Medico medico, LocalDate fecha1, LocalDate fecha2){
         
@@ -96,9 +156,6 @@ public class RegistroMedico {
         
     }
     
-    public list<String> calcularMasConsPorFecha(LocalDate fecha1, LocalDate fecha2){
-    
-    }
     
     public list<String> calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2)
     
