@@ -108,7 +108,7 @@ public class Paciente extends Persona{ //extender de persona
         }
         return edad;
     }
-
+    
     @Override
     public String toString() {
         return "Paciente{" + "Nombre=" + this.getNombre() + ", Documento=" + this.getDocumento() + ", Resultados=" + this.estudios + ", Admisiones=" + this.admisiones +'}';

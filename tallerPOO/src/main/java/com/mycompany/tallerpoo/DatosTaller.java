@@ -13,6 +13,8 @@ public abstract class DatosTaller {
     private static ListaEspecialidades especialidades;
     
     private static ListaPacientes pacientesSinTriage;
+    private static ListaPacientes pacientesTriageados;
+    
     
     public static ListaPacientes getPacientes() {
         return pacientes;
@@ -73,5 +75,13 @@ public abstract class DatosTaller {
         pacientesSinTriage.eliminar(paci);
     }
     
+    
+    public static void agregarPacienteTriage(Paciente paci){
+        pacientesTriageados.agregar(paci);
+    }
+    
+    public static void eliminarPacienteTriage(Paciente paci){
+        pacientesTriageados.eliminar(paci);
+    }
 
 }
