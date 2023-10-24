@@ -89,7 +89,7 @@ public class RegistroMedico {
     }
 
     
-    
+    //calcula  los pacientes que mas consultaron en un rango de fechas
     public static ArrayList<String> calcularMasConsPorFecha(LocalDate fecha1, LocalDate fecha2) {
     String barra = File.separator;
     ArrayList<String> personasConMasConsultas = new ArrayList<>();
@@ -146,6 +146,8 @@ public class RegistroMedico {
     return personasConMasConsultas;
     }
         
+
+    //calcula el numero pacientes de que un medico ,ingresado por dni, atendio
     public static int calcularNumPacDeMedPorFecha(LocalDate fecha1, LocalDate fecha2, String dniMedico) {
         String barra = File.separator;
         ArrayList<String> paciAtenMedi = new ArrayList<>();
@@ -181,6 +183,7 @@ public class RegistroMedico {
         return paciAtenMedi.size();
     }
 
+    //////// medico que tuvo mas pacientes por fecha
     public static String calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2, String dniMedico) {
         String barra = File.separator;
         ArrayList<String> citas = new ArrayList<>();

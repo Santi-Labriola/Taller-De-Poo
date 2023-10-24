@@ -26,14 +26,12 @@ public class TallerPOO {
        
         String barra= File.separator;
         
-        
-       /*
-        String archivo ="Archivos/Triage.txt";   
-        
-        
+        /////////////////////////////////////////////////////////
+       /* METODOS TRIAGE
+        String archivo ="Archivos/Triage.txt";           
         Triage hola= new Triage();
         Triage opa= new Triage();
- //     ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
+        ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
         ArrayList<String> res=opa.obtenerTriageCambiadosPorFecha(fecha1,fecha2);
         String colour="";    
         for (int i = 0; i < res.size(); i++) {
@@ -44,28 +42,33 @@ public class TallerPOO {
         ("Recuento de categoría " + colour + ": " + res.get(i));
             }
         for( int i=0; i<res.size() ;i++){
-            System.out.println( res.get(i));}
-        
-        
-       
+            System.out.println( res.get(i));}                
         ListaTriage prueba = new ListaTriage();
         prueba.leer(archivo);
         System.out.println(prueba);
         */
+       ////////////////////////////////////////////////////////////////////
+       
+       ///////////////////////////////////////////////////////////////////
+       //METODOS DE REGISTRO MEDICO        
+         /*      
         ListaPVarias listavarias=new ListaPVarias();
-        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas");
-        String dniMedico="31382929";
-        int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico);
+        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas");// RUTA DEL ARCHIVO CON EL CUAL TRABAJA
+        
+        String dniMedico="31382929"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
+       
+       int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico); //MUESTRA CUANTOS PACIENTES ATENDIO ESE MEDICO PASADO POR PARAMETROS
         System.out.println("Número de pacientes atendidos por el médico en el rango de fechas: " + numPacientes);
-        String medicoConMasPacientes = calcularMedMasPacPorFecha(fecha1, fecha2, dniMedico);
-        System.out.println("El DNI del médico que atendió a la mayoría de pacientes entre las fechas: "+ fecha1+" - "+fecha2+" es: " + medicoConMasPacientes);
         
-        /*    ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);
+        String medicoConMasPacientes = calcularMedMasPacPorFecha(fecha1, fecha2, dniMedico);// MUESTRA QUE MEDICO ATENCOP MAS PACIENTES EN UN RANGO DE FECHAS
+        System.out.println("El DNI del médico que atendió a la mayoría de pacientes entre las fechas: "+ fecha1+" - "+fecha2+" es: " + medicoConMasPacientes);        
+       
+        ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);//MUESTRA DNI DE  PERSONAS QUE MAS CONSULTARON EN UN RANGO DE FECHAS
             for (String dni : personasConMasConsultas) {
-                 System.out.println("DNI: " + dni);
-                                        }*/
-        
-            
+                 System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" - " +fecha2 + dni);
+                                        }
+        */
+        //////////////////////////////////////////////////////////////////////////////////////    
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
         ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
