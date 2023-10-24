@@ -20,10 +20,12 @@ public class TallerPOO {
     public static void main(String[] args) throws IOException {        
        
         //Paciente paci=new Paciente("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com","Papa de lucas");
-        LocalDate fecha1 = LocalDate.of(2022, 7, 15);
-        LocalDate fecha2 = LocalDate.of(2023, 9, 10);
+        LocalDate fecha1 = LocalDate.of(2021, 7, 15);
+        LocalDate fecha2 = LocalDate.of(2023, 10, 24);
        
         String barra= File.separator;
+        
+        
        /*
         String archivo ="Archivos/Triage.txt";   
         
@@ -51,9 +53,12 @@ public class TallerPOO {
         */
         ListaPVarias listavarias=new ListaPVarias();
         listavarias.leer("Archivos"+barra+"PacientesVariasConsultas");
-            ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);
+        String dniMedico="31382929";
+        int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico);
+        System.out.println("Número de pacientes atendidos por el médico en el rango de fechas: " + numPacientes);
+        /*    ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);
             for (String dni : personasConMasConsultas) {
-                 System.out.println("DNI: " + dni);
+                 System.out.println("DNI: " + dni);*/
                                         }
         
             /*
@@ -98,9 +103,8 @@ public class TallerPOO {
 
         BuscarEstFecha buscar=new BuscarEstFecha();
         buscar.setVisible(true);
-        buscar.setLocationRelativeTo(null);
+        buscar.setLocationRelativeTo(null);*/
     }
-     */
-}
+     
 
-}
+

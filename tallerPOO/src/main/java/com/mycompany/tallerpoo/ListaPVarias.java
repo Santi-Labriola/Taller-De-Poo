@@ -63,7 +63,7 @@ public class ListaPVarias {
                 } catch (IOException ex) {
                 ex.printStackTrace();
                 }
-                System.out.println(varias.size());
+                
                 }
 
     @Override

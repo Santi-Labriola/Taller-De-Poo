@@ -144,22 +144,50 @@ public class RegistroMedico {
 
     return personasConMasConsultas;
     }
-
-    
-    
-   /* 
-    public int calcularNumPacDeMedPorFecha(Medico medico, LocalDate fecha1, LocalDate fecha2){
         
+    public static int calcularNumPacDeMedPorFecha(LocalDate fecha1, LocalDate fecha2, String dniMedico) {
+        String barra = File.separator;
+        ArrayList<String> paciAtenMedi = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas"))) {
+            String linea = br.readLine();
+
+            while (linea != null) {
+                String[] array = linea.split(",");
+                if (array.length >= 11) { // Asegúrate de que haya suficientes campos en la línea
+                    String dniPaciente = array[0];
+                    String fechaAtencionStr = array[9];
+                    String medicoAsignado = array[10];
+
+                    String[] splitFecha = fechaAtencionStr.split("/");
+                    LocalDate fechaAtencion = LocalDate.of(
+                            Integer.parseInt(splitFecha[2]),
+                            Integer.parseInt(splitFecha[1]),
+                            Integer.parseInt(splitFecha[0])
+                    );
+
+                    if (medicoAsignado.equals(dniMedico) && fechaAtencion.isAfter(fecha1) && fechaAtencion.isBefore(fecha2)) {
+                        paciAtenMedi.add(dniPaciente);
+                    }
+                    
+                }
+                linea = br.readLine();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return paciAtenMedi.size();
     }
-    
-    public int CalcularPacPorEdadesyFechas(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2){
+
+   /* public int CalcularPacPorEdadesyFechas(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2){
         
     }
     
     
     public list<String> calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2)
     
-    */
+   */
     
     @Override
     public String toString() {
