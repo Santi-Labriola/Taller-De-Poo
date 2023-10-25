@@ -233,6 +233,101 @@ public class RegistroMedico {
 
         return medicoConMasPacientes;
     }
+    ///////////////////////////////// CALCULA PACI
+    
+    public static String CalcularPacPorEdadesyFechas(LocalDate fecha1, LocalDate fecha2, String dniMedico) {
+            String barra = File.separator;
+            ArrayList<String> citas = new ArrayList<>();
+
+            try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
+                String linea = br.readLine();
+
+                while (linea != null) {
+                    String[] array = linea.split(",");
+                    if (array.length >= 11) {
+                        String dniPaciente = array[0];
+                        String fechaAtencionStr = array[9];
+                        String medicoAsignado = array[10];
+
+                        String[] splitFecha = fechaAtencionStr.split("/");
+                        LocalDate fechaAtencion = LocalDate.of(
+                                Integer.parseInt(splitFecha[2]),
+                                Integer.parseInt(splitFecha[1]),
+                                Integer.parseInt(splitFecha[0])
+                        );
+
+                        if (fechaAtencion.isAfter(fecha1) && fechaAtencion.isBefore(fecha2) && medicoAsignado.equals(dniMedico)) {
+                            citas.add(dniPaciente);
+                        }
+                    }
+                    linea = br.readLine();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+            // Calcular al médico que atendió a la mayoría de pacientes
+            Map<String, Integer> contadorMedicos = new HashMap<>();
+            for (String dniPaciente : citas) {
+                contadorMedicos.put(dniPaciente, contadorMedicos.getOrDefault(dniPaciente, 0) + 1);
+            }
+
+            int maxPacientesAtendidos = 0;
+            String medicoConMasPacientes = null;
+
+            for (Map.Entry<String, Integer> entry : contadorMedicos.entrySet()) {
+                if (entry.getValue() > maxPacientesAtendidos) {
+                    maxPacientesAtendidos = entry.getValue();
+                    medicoConMasPacientes = entry.getKey();
+                }
+            }
+
+            return medicoConMasPacientes;
+        }
+/////////////////////////////////////////////////////////////////
+    public static int CalcularPacPorEdadesyFechas(LocalDate fecha1, LocalDate fecha2, String edad1, String edad2) {
+    String barra = File.separator;
+    int edad1Int = Integer.parseInt(edad1);
+    int edad2Int = Integer.parseInt(edad2);
+    int cont = 0;
+
+    try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
+        String linea = br.readLine();
+        LocalDate fechaActual = LocalDate.now();
+        while (linea != null) {
+            String[] array = linea.split(",");
+            if (array.length >= 10) {
+                String[] splitFecha = array[9].split("/");
+                LocalDate fechaConsulta = LocalDate.of(Integer.parseInt(splitFecha[2]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[0]));                
+                String[] splitNac = array[2].split("/");
+                LocalDate fechaNac = LocalDate.of(Integer.parseInt(splitNac[2]), Integer.parseInt(splitNac[1]), Integer.parseInt(splitNac[0]));
+
+                if (fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
+                    if (fechaNac.isBefore(fechaActual)) {
+                        int edad = fechaNac.until(fechaActual).getYears();
+                        if (fechaNac.getMonthValue() == fechaActual.getMonthValue() && fechaNac.getDayOfMonth() > fechaActual.getDayOfMonth()) {
+                            edad=-1;
+                        }
+                        if (edad >= edad1Int && edad <= edad2Int) {
+                            cont++;
+                        }
+                    }
+                }
+            }
+            linea = br.readLine();
+        }
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+
+    return cont;
+}
+
+
+
+
+
+
 
 
 
@@ -246,7 +341,7 @@ public class RegistroMedico {
     }
     
     
-    public list<String> calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2)
+    
     
    */
     

@@ -6,6 +6,7 @@ package com.mycompany.tallerpoo;
  */
 import InterfazUsuario.*;
 import static com.mycompany.tallerpoo.ManejoArchivos.*;
+import static com.mycompany.tallerpoo.RegistroMedico.CalcularPacPorEdadesyFechas;
 import static com.mycompany.tallerpoo.RegistroMedico.calcularMasConsPorFecha;
 import static com.mycompany.tallerpoo.RegistroMedico.calcularMedMasPacPorFecha;
 //import static com.mycompany.tallerpoo.Triage.cantTriagePorFecha;
@@ -65,9 +66,18 @@ public class TallerPOO {
        
         ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);//MUESTRA DNI DE  PERSONAS QUE MAS CONSULTARON EN UN RANGO DE FECHAS
             for (String dni : personasConMasConsultas) {
-                 System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" - " +fecha2 + dni);
+                 System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" y " +fecha2 + dni);
                                         }
         
+        String edad1 = "18"; // Edad mínima
+        String edad2 = "60"; // Edad máxima
+
+        // Llama al método CalcularPacPorEdadesyFechas y almacena el resultado en una variable
+        int resultado = CalcularPacPorEdadesyFechas(fecha1, fecha2, edad1, edad2);
+        
+        System.out.println("Número de pacientes en el rango de edades entre: "+edad1 + "  y   "+ edad2 +" en las fechas: "+ fecha1+"-"+fecha2+" es de: " +resultado);
+    }                                       
+            
         //////////////////////////////////////////////////////////////////////////////////////    
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
@@ -78,7 +88,7 @@ public class TallerPOO {
         ListaPacientes listaPaciSinTriage=new ListaPacientes();
         ListaPacientes listaPaciTriageados=new ListaPacientes();
         
-        
+        /*
         listapaci.leer("Archivos/Pacientes.txt");
         listaresu.leer("Archivos/ResEstudios.txt",listapaci);
         listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
@@ -98,7 +108,7 @@ public class TallerPOO {
         DatosTaller.setPacientesTriageados(listaPaciTriageados);
         
         
-/*
+
 //        MenuGestorCentro abc=new MenuGestorCentro();
 //        abc.setVisible(true);
 //        abc.setLocationRelativeTo(null);
@@ -109,10 +119,10 @@ public class TallerPOO {
 
         BuscarEstFecha buscar=new BuscarEstFecha();
         buscar.setVisible(true);
-        buscar.setLocationRelativeTo(null);
+        buscar.setLocationRelativeTo(null); */
     }
      
 
-*/
-    }
-}   
+
+    
+  
