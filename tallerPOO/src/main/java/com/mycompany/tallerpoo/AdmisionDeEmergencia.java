@@ -12,6 +12,7 @@ public class AdmisionDeEmergencia {
     private String motivoDeConsulta;
     private Paciente paciente;
     private Triage triage;
+    private Box box;
     
     public AdmisionDeEmergencia(){
         this.fecha=LocalDate.of(1,1,1);
@@ -19,6 +20,7 @@ public class AdmisionDeEmergencia {
         this.motivoDeConsulta="";
         this.paciente=new Paciente();
         this.triage=new Triage();
+        this.box=new Box();
     }
 
     public AdmisionDeEmergencia(LocalDate fecha, LocalTime hora, String motivoDeConsulta) {
@@ -84,11 +86,19 @@ public class AdmisionDeEmergencia {
     public void setTriage(Triage triage) {
         this.triage = triage;
     }
-     
+
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
+    }
+    
     public String calcularMasConsPorFecha(LocalDate fecha1,LocalTime fecha2){ //falta programar
         return "ver";
     }
-
+    
     @Override
     public String toString() {
         return "AdmisionDeEmergencia{" + "fecha=" + fecha + ", hora=" + hora + ", motivoDeConsulta=" + motivoDeConsulta + ", paciente=" + '}';

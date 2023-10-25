@@ -10,6 +10,10 @@ public class Box {
     private int numero;
     private boolean ocupado;
 
+    public Box() {
+        
+    }
+
     public Box(int numero, boolean ocupado) {
         this.numero = numero;
         this.ocupado = ocupado;
