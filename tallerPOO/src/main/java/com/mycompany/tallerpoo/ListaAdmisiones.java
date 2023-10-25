@@ -2,12 +2,18 @@
 package com.mycompany.tallerpoo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,6 +54,22 @@ public class ListaAdmisiones {
     public void leer(String archivo, ListaPacientes listapaci){
         leerInterno(archivo,listapaci);
     }
+    
+    public void agregarAlArchivo(String archivoNombre, AdmisionDeEmergencia admi){
+        PrintWriter salida= null;
+        try {
+            File archivo= new File(archivoNombre);
+            
+            salida = new PrintWriter(new FileWriter(archivo, true ));
+            
+            salida.println(admi.getPaciente().getDocumento()+","+admi.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+","+admi.getHora()+","+admi.getMotivoDeConsulta());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ListaMedicos.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            salida.close();
+        }
+    }
         
     private void leerInterno(String archivo, ListaPacientes listapaci){
         
@@ -55,7 +77,7 @@ public class ListaAdmisiones {
             BufferedReader reader= new BufferedReader (new FileReader(archivo));
             String linea = reader.readLine();
             
-            while (linea!=null){
+            while (linea!=null && !linea.isBlank()){
                 String[] split=linea.split(",");//splitea la linea
                 String[] splitFecha=split[1].split("/");//splitea la fecha 
                 String[] splitHora=split[2].split(":");//splitea la hora

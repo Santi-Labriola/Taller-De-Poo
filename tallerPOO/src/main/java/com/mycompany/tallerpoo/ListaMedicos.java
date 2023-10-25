@@ -9,7 +9,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,8 +50,12 @@ public class ListaMedicos {
         PrintWriter salida= null;
         try {
             File archivo= new File(archivoNombre);
-            salida = new PrintWriter(new FileWriter(archivo, true ));
-            salida.println(med.getDocumento()+","+med.getNombre()+","+med.getFechaNacimiento()+","
+            BufferedReader reader= new BufferedReader (new FileReader(archivoNombre));
+            String linea = reader.readLine();
+            
+            salida = new PrintWriter(new FileWriter(archivo, true ));            
+                       
+            salida.println(med.getDocumento()+","+med.getNombre()+","+med.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+","
                     +med.getDomicilio()+","+med.getTelefoFijo()+","+med.getTelefonoCelular()+","
                     +med.getEstadoCivil()+","+med.getCorreoElectronico()+","+med.getMatricula());
             
@@ -57,9 +63,7 @@ public class ListaMedicos {
             Logger.getLogger(ListaMedicos.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             salida.close();
-        }
-        
-        
+        } 
     }
     
     public Medico getPorDni(int dni){
@@ -77,7 +81,7 @@ public class ListaMedicos {
             BufferedReader reader= new BufferedReader (new FileReader(archivo));
             String linea = reader.readLine();
             
-            while (linea!=null){
+            while (linea!=null && !linea.isBlank()){
                 String[] split=linea.split(",");//splitea la linea
                 String[] splitFecha=split[2].split("/");//splitea la fecha 
                 
