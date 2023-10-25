@@ -56,6 +56,16 @@ public class Enfermero extends Persona {
         
         return triage;
     }
+    
+    public boolean asignarBox(AdmisionDeEmergencia admi, Box box){
+        if (box.isOcupado()){
+            return false;
+        }
+        admi.setBox(box);
+        box.setOcupado(true);
+        
+        return true;
+    }
 }
  
 

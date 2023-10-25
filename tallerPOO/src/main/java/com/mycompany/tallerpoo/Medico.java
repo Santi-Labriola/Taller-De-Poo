@@ -42,26 +42,7 @@ public class Medico extends Persona{
     public void atenderPaciente(Paciente paciente){
         DatosTaller.eliminarPacienteTriage(paciente); 
     }
-    
-    
-    
-    
-    //hacer admision de pacientes que llegan al hospital, se los almacena en una
-    //lista la cual contiene todos los pacientes en espera.
-    //los medico pueden ver esta lista y atender (eliminar de lista) a pacientes.
-    
-    //ESTO NO VA EN MEDICO
-//    public void hacerAdmision(Paciente paci){
-//        
-//        
-//        
-//        DatosTaller.agregarPacienteAdmision(paci);
-//    }
-    
-    
-    
-    
-    
+ 
     
     /**
      * Se crea un triage y se calcula el color del mismo en base a los datos que
@@ -132,5 +113,42 @@ public class Medico extends Persona{
         return "Medico{" + "matricula=" + matricula + ", especialidad=" + especialidad + '}';
     }
     
+    /**
+     * Intenta asignar un box a una admision. Este metodo deberia ser llamado al
+     * atender a un paciente para asignarle un box.
+     * @param admi admision a la que se le desea asignar un box.
+     * @param box box que desea asignarse.
+     * @return devuelve true si pudo asignarse correctamente, devuelve false si el
+     * box está ocupado.
+     */
+    public boolean asignarBox(AdmisionDeEmergencia admi, Box box){
+        if (box.isOcupado()){
+            return false;
+        }
+        admi.setBox(box);
+        box.setOcupado(true);
+        
+        return true;
+    }
     
+    /**
+     * Intenta asignar un box a una admision. Este metodo deberia ser llamado al
+     * atender a un paciente para asignarle un box.
+     * @param admi admision a la que se le desea asignar un box.
+     * @param numero numero de box que desea asignarse.
+     * @return devuelve true si pudo asignarse correctamente, devuelve false si el
+     * box está ocupado o si no existe.
+     */
+    public boolean asignarBox(AdmisionDeEmergencia admi, int numero){
+        
+        Box box=DatosTaller.getBoxes().getPorNumero(numero);
+        
+        if (box==null || box.isOcupado()){
+            return false;
+        }
+        admi.setBox(box);
+        box.setOcupado(true);
+        
+        return true;
+    }
 }
