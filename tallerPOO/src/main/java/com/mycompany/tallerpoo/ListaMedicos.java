@@ -2,11 +2,16 @@
 package com.mycompany.tallerpoo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -37,6 +42,24 @@ public class ListaMedicos {
     
     public void eliminar(Medico medi){
         medicos.remove(medi);
+    }
+    
+    public void agregarAlArchivo(String archivoNombre, Medico med){
+        PrintWriter salida= null;
+        try {
+            File archivo= new File(archivoNombre);
+            salida = new PrintWriter(new FileWriter(archivo, true ));
+            salida.println(med.getDocumento()+","+med.getNombre()+","+med.getFechaNacimiento()+","
+                    +med.getDomicilio()+","+med.getTelefoFijo()+","+med.getTelefonoCelular()+","
+                    +med.getEstadoCivil()+","+med.getCorreoElectronico()+","+med.getMatricula());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ListaMedicos.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            salida.close();
+        }
+        
+        
     }
     
     public Medico getPorDni(int dni){
