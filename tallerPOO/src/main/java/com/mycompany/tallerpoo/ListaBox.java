@@ -15,16 +15,24 @@ import java.util.ArrayList;
 public class ListaBox {
    private ArrayList<Box> boxes; 
 
+    public ListaBox(ArrayList<Box> boxes) {
+        this.boxes = boxes;
+    }
+
+    public ListaBox() {
+        this.boxes=new ArrayList<Box>();
+    }
+   
     public ArrayList<Box> getBoxes() {
         return boxes;
     }
 
     public void setBoxes(ArrayList<Box> boxes) {
-        this.boxes = boxes;
+        boxes = boxes;
     }
     
     public void agregarBox(Box box){
-        this.boxes.add(box);
+        boxes.add(box);
     }
     
     public Box getPorNumero(int numero){
@@ -37,7 +45,7 @@ public class ListaBox {
     }
     
     public void eliminarBox(Box box){
-        this.boxes.remove(box);
+        boxes.remove(box);
     }
     
     public void leer(String archivo){
