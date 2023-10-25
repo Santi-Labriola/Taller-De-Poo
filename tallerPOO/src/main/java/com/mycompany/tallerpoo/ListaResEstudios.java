@@ -2,13 +2,18 @@
 package com.mycompany.tallerpoo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,6 +46,28 @@ public class ListaResEstudios {
         resultados.remove(resu);
     }
     
+//    public void agregarAlArchivo(String archivoNombre, ResultadoEstudios res){
+//        PrintWriter salida= null;
+//        try {
+//            File archivo= new File(archivoNombre);
+//            BufferedReader reader= new BufferedReader (new FileReader(archivoNombre));
+//            String linea = reader.readLine();
+//            
+//            salida = new PrintWriter(new FileWriter(archivo, true ));
+//            
+//            if (linea!=null){
+//                salida.println("");
+//            }
+//            salida.println(res.getDocumento()+","+res.getNombre()+","+res.getFechaNacimiento()+","
+//                    +res.getDomicilio()+","+res.getTelefoFijo()+","+res.getTelefonoCelular()+","
+//                    +res.getEstadoCivil()+","+res.getCorreoElectronico()+","+res.getMatricula());
+//            
+//        } catch (IOException ex) {
+//            Logger.getLogger(ListaMedicos.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            salida.close();
+//        } 
+//    }
     public ArrayList getListaPorFecha(LocalDate fecha){
         ArrayList<ResultadoEstudios> resultados=new ArrayList();
         for (ResultadoEstudios resu : this.resultados){
@@ -65,7 +92,7 @@ public class ListaResEstudios {
             BufferedReader reader= new BufferedReader (new FileReader(archivo));
             String linea = reader.readLine();
             
-            while (linea!=null){
+            while (linea!=null && !linea.isBlank()){
                 String[] split=linea.split(",");//splitea la linea
                 String[] splitFecha=split[1].split("/");//splitea la fecha 
                 String[] splitHora=split[2].split(":");//splitea la hora

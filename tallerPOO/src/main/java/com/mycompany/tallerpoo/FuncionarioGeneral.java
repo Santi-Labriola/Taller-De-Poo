@@ -7,8 +7,10 @@ import java.time.LocalDate;
  *
  * @author 54345
  */
-public class FuncionarioGeneral extends Persona{
-
+public abstract class FuncionarioGeneral extends Persona{
+    
+    
+    
     public FuncionarioGeneral(){
         super();
     }
@@ -17,10 +19,6 @@ public class FuncionarioGeneral extends Persona{
                               int documento, int telefoFijo, int telefonoCelular,
                               String estadoCivil, String correoElectronico){
         super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
-    }
-    
-    public void accederAlSistema(String contraseña/*, int dni*/){
-        
     }
     
 }

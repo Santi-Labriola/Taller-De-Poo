@@ -45,7 +45,7 @@ public class ListaPVarias {
         try {         
             BufferedReader br= new BufferedReader (new FileReader(archivo));
             String linea = br.readLine();
-            while (null!=linea) {
+            while (null!=linea && !linea.isBlank()) {
                 String [] campos = linea.split(",");
                 if(  campos.length<=11){
                 algo=campos[0]+campos[1]+campos[9];
