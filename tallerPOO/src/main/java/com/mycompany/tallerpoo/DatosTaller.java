@@ -11,7 +11,7 @@ public abstract class DatosTaller {
     private static ListaResEstudios resultados;
     private static ListaAdmisiones admisiones;
     private static ListaEspecialidades especialidades;
-    
+    private static ListaBox boxes;
     private static ListaPacientes pacientesSinTriage;
     private static ListaPacientes pacientesTriageados;
     
@@ -56,6 +56,14 @@ public abstract class DatosTaller {
         DatosTaller.especialidades = especialidades;
     }
 
+    public static ListaBox getBoxes() {
+        return boxes;
+    }
+
+    public static void setBoxes(ListaBox boxes) {
+        DatosTaller.boxes = boxes;
+    }
+    
     public static ListaPacientes getPacientesSinTriage() {
         return pacientesSinTriage;
     }
