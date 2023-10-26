@@ -15,7 +15,7 @@ public class Otros extends javax.swing.JFrame {
      * Creates new form Otros
      */
     
-    InfoAdministrativa atras = new InfoAdministrativa();
+    InfoAdministrativaEliminar atras = new InfoAdministrativaEliminar();
     
     
     public Otros() {
@@ -86,7 +86,7 @@ public class Otros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        InfoAdministrativa atras = new InfoAdministrativa();
+        InfoAdministrativaEliminar atras = new InfoAdministrativaEliminar();
         atras.setVisible(true);
         atras.setLocationRelativeTo(null);
         dispose();

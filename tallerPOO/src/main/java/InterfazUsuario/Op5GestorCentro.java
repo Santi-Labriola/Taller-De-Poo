@@ -219,7 +219,7 @@ public class Op5GestorCentro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        MenuGestorCentro atras = new MenuGestorCentro();
+        MenuGestorCentroEliminar atras = new MenuGestorCentroEliminar();
         atras.setVisible(true);
         atras.setLocationRelativeTo(null);
         dispose();

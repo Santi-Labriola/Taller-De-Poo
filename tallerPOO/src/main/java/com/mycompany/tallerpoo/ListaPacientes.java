@@ -63,7 +63,7 @@ public class ListaPacientes {
         } 
     }
     
-    public void leer(String archivo){
+    public ArrayList<Paciente> leer(String archivo){
         
         try {
             BufferedReader reader= new BufferedReader (new FileReader(archivo));
@@ -98,6 +98,7 @@ public class ListaPacientes {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        return pacientes;
     }
 
     @Override

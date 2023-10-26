@@ -1,19 +1,20 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package InterfazUsuario;
 
 /**
  *
- * @author Matías
+ * @author 54345
  */
-public class MenuAdminSistemas extends javax.swing.JFrame {
+public class MenuAdminSistemasEliminar extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuAdminSistemas
      */
-    public MenuAdminSistemas() {
+    public MenuAdminSistemasEliminar() {
         initComponents();
     }
 
@@ -27,19 +28,19 @@ public class MenuAdminSistemas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButtonRegistarUsuario = new javax.swing.JButton();
+        jButtonRegistrarUsuario = new javax.swing.JButton();
         jButtonInfoAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonRegistarUsuario.setText("Registrar usuario");
-        jButtonRegistarUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistrarUsuario.setText("Registrar nuevo usuario");
+        jButtonRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistarUsuarioActionPerformed(evt);
+                jButtonRegistrarUsuarioActionPerformed(evt);
             }
         });
 
-        jButtonInfoAdmin.setText("Informaciión administrativa");
+        jButtonInfoAdmin.setText("Informacion adminstrativa");
         jButtonInfoAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInfoAdminActionPerformed(evt);
@@ -51,20 +52,20 @@ public class MenuAdminSistemas extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonInfoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonRegistarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButtonRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonInfoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addComponent(jButtonRegistarUsuario)
-                .addGap(49, 49, 49)
-                .addComponent(jButtonInfoAdmin)
-                .addGap(65, 65, 65))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonInfoAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,27 +83,27 @@ public class MenuAdminSistemas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInfoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoAdminActionPerformed
-        InfoAdministrativa opcion2 = new InfoAdministrativa();
+        InfoAdministrativaEliminar opcion2 = new InfoAdministrativaEliminar();
         opcion2.setVisible(true);
         opcion2.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_jButtonInfoAdminActionPerformed
 
-    private void jButtonRegistarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistarUsuarioActionPerformed
+    private void jButtonRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarUsuarioActionPerformed
         RegistroDeUsuario opcion1 = new RegistroDeUsuario();
         opcion1.setVisible(true);
         opcion1.setLocationRelativeTo(null);
         dispose();
-    }//GEN-LAST:event_jButtonRegistarUsuarioActionPerformed
+    }//GEN-LAST:event_jButtonRegistrarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonInfoAdmin;
-    private javax.swing.JButton jButtonRegistarUsuario;
+    private javax.swing.JButton jButtonRegistrarUsuario;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
