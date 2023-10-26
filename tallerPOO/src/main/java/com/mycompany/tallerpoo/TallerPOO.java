@@ -114,7 +114,7 @@ public class TallerPOO {
        
         ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);//MUESTRA DNI DE  PERSONAS QUE MAS CONSULTARON EN UN RANGO DE FECHAS
             for (String dni : personasConMasConsultas) {
-                 System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" y " +fecha2 + dni);
+                 System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" y " +fecha2 +" "+ dni);
                                         }
         
         String edad1 = "18"; // Edad mínima
