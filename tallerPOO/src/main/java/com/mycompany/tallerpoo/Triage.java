@@ -35,7 +35,11 @@ public class Triage {
     private String colorSugerido;
     private String motivoCambio;
     private String colorFinal;
+    
     private AdmisionDeEmergencia admision;
+    
+    //public ArrayList<Enfermero> enfermero; 
+     
 
     public Triage (LocalDate Fecha, String colorSugerido) {
         this.Fecha = Fecha;
@@ -201,7 +205,7 @@ public class Triage {
     public int getDolorAbdominal() {
         return dolorAbdominal;
     }
-///////////////////////////////////////////////////////////////////////
+
     public void setDolorAbdominal(int dolorAbdominal) {
         if(dolorAbdominal>=0 && dolorAbdominal<=2 ){
             this.dolorAbdominal = dolorAbdominal;}
@@ -268,6 +272,24 @@ public class Triage {
     public void setAdmision(AdmisionDeEmergencia admision) {
         this.admision = admision;
     }
+    //////////////////////////////////////////////////////////////////////
+    public String obtenerDNI() {
+        if (admision != null && admision.getPaciente() != null) {
+            return String.valueOf(admision.getPaciente().getDocumento());
+        } else {
+            return "Documento no disponible";
+        } 
+    }
+     public LocalDate obtenerFechaAdmision() {
+        if (admision != null) {
+            return admision.getFecha();
+        } else {
+            return LocalDate.of(1, 1, 1); // Fecha predeterminada si la admisión es nula
+        }
+    }
+    
+    
+    
     
       
     public  String  obtenerColorSugerido  (int respiracion, int pulso 
@@ -388,14 +410,7 @@ public class Triage {
 
     return lista;
 }    
-    /* - Cantidad de triage que fueron cambiados por quien efectuó el traigado indicando
-    color propuesto por el sistema y el color asignado por el funcionario
-        */
-
-    /*
-    public String toString() {
-        return "Triage{" + "Fecha=" + Fecha + ", hora=" + hora + ", respiracion=" + respiracion + ", pulso=" + pulso + ", estadoMental=" + estadoMental + ", consciencia=" + consciencia + ", dificultadRespiracion=" + dificultadRespiracion + ", lesionesGraves=" + lesionesGraves + ", edad=" + edad + ", fiebre=" + fiebre + ", vomitos=" + vomitos + ", dolorAbdominal=" + dolorAbdominal + ", signosShock=" + signosShock + ", lesionesLeves=" + lesionesLeves + ", sangrado=" + sangrado + ", colorSugerido=" + colorSugerido + ", motivoCambio=" + motivoCambio + ", colorFinal=" + colorFinal + '}';
-    } */
+    
      public String toString() {
         return "Triage{" + "Fecha=" + Fecha + ", colorSugerido=" + colorSugerido + '}';
     } 

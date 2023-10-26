@@ -117,6 +117,10 @@ public class ListaMedicos {
     public String toString() {
         return "ListaMedicos{" + "medicos=" + medicos + '}';
     }
+
+    Medico get(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 

@@ -15,11 +15,35 @@ public abstract class DatosTaller {
     private static ListaPacientes pacientesSinTriage;
     private static ListaPacientes pacientesTriageados;
     
+    private static ListaPVarias listavarias;
+    private static ListaTriage triages;
+
+    public static ListaTriage getTriages() {
+        return triages;
+    }
+
+    public static void setTriages(ListaTriage triages) {
+        DatosTaller.triages = triages;
+    }
+    
+    
+    
+    
+    public static ListaPVarias getListavarias() {
+        return listavarias;
+    }
+
+    public static void setListavarias(ListaPVarias listavarias) {
+        DatosTaller.listavarias = listavarias;
+    }
+    
     
     public static ListaPacientes getPacientes() {
         return pacientes;
     }
 
+    
+    
     public static void setPacientes(ListaPacientes pacientes) {
         DatosTaller.pacientes = pacientes;
     }

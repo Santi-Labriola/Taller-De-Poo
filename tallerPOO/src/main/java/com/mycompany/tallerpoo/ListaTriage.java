@@ -5,12 +5,17 @@
 package com.mycompany.tallerpoo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,6 +32,8 @@ public class ListaTriage {
     public ListaTriage() {
         this.triages= new ArrayList<Triage>();        
     }
+    
+    
     
     public void agregar (Triage tri) {
         triages.add(tri);
@@ -76,6 +83,22 @@ public class ListaTriage {
                 }
                 System.out.println(triages.size());
                 }
+    
+    public void agregarAlArchivo(String archivoNombre, AdmisionDeEmergencia admi){
+        PrintWriter salida= null;
+        try {
+            File archivo= new File(archivoNombre);
+            
+            salida = new PrintWriter(new FileWriter(archivo, true ));
+            
+            salida.println(admi.getPaciente().getDocumento()+","+admi.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+","+admi.getHora()+","+admi.getMotivoDeConsulta());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ListaMedicos.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            salida.close();
+        }
+    }
 
     @Override
     public String toString() {

@@ -26,37 +26,83 @@ public class TallerPOO {
         LocalDate fecha2 = LocalDate.of(2023, 10, 24);
        
         String barra= File.separator;
+                ListaPacientes listapaci=new ListaPacientes();
+        ListaResEstudios listaresu=new ListaResEstudios();
+        ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
+        ListaMedicos listamedi=new ListaMedicos();
+        ListaEspecialidades listaespe= new ListaEspecialidades();
+        ListaMedEsp listamedesp=new ListaMedEsp();
+        ListaPacientes listaPaciSinTriage=new ListaPacientes();
+        ListaPacientes listaPaciTriageados=new ListaPacientes();
+        ListaBox listaBox=new ListaBox();
+        ////////////////////////////////////////////////
+        ListaPVarias listavarias=new ListaPVarias();
+        ListaTriage prueba = new ListaTriage();
+        
+        listapaci.leer("Archivos/Pacientes.txt");
+        listaresu.leer("Archivos/ResEstudios.txt",listapaci);
+        listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
+        listamedi.leer("Archivos/Medicos.txt");
+        listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
+        listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
+        listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
+        listaBox.leer("Archivos/Boxes.txt");
+        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas.txt");
+        prueba.leer("Archivos/Triage.txt");
+        
+        
+        DatosTaller.setPacientes(listapaci);
+        DatosTaller.setMedicos(listamedi);
+        DatosTaller.setResultados(listaresu);
+        DatosTaller.setAdmisiones(listaAdmisiones);
+        DatosTaller.setEspecialidades(listaespe);
+        DatosTaller.setBoxes(listaBox);
+        
+        DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
+        DatosTaller.setPacientesTriageados(listaPaciTriageados);
+        /////////////////////////////////////////////////////////////////////
+        DatosTaller.setListavarias(listavarias);
+        DatosTaller.setTriages(prueba);
+        
+        
+        
+        ListaAdmisiones pacientes = DatosTaller.getAdmisiones();        
+
+        System.out.println("Lista de pacientes:");
+        for (AdmisionDeEmergencia paciente : pacientes.getAdmisiones()) {
+            System.out.println("Fecha de admision: " + paciente.getFecha() );
+        }
+        
+        
         
         /////////////////////////////////////////////////////////
-       /* METODOS TRIAGE
-        String archivo ="Archivos/Triage.txt";           
+       //METODOS TRIAGE
+        /*
         Triage hola= new Triage();
         Triage opa= new Triage();
         ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
         ArrayList<String> res=opa.obtenerTriageCambiadosPorFecha(fecha1,fecha2);
         String colour="";    
-        for (int i = 0; i < res.size(); i++) {
+        for (int i = 0; i < resultado.size(); i++) {
                 if (i==0){colour="Rojo";}if (i==1){colour="Naranja";}
                 if (i==2){colour="Amarillo";}if (i==3){colour="Verde";}
                 if (i==4){colour="Azul";}
                 System.out.println
-        ("Recuento de categoría " + colour + ": " + res.get(i));
-            }
+        ("Recuento de categoría " + colour + ": " + resultado.get(i));}
+        
         for( int i=0; i<res.size() ;i++){
             System.out.println( res.get(i));}                
-        ListaTriage prueba = new ListaTriage();
-        prueba.leer(archivo);
-        System.out.println(prueba);
         */
+       
        ////////////////////////////////////////////////////////////////////
        
        ///////////////////////////////////////////////////////////////////
        //METODOS DE REGISTRO MEDICO        
          
-        ListaPVarias listavarias=new ListaPVarias();
-        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas.txt");// RUTA DEL ARCHIVO CON EL CUAL TRABAJA
+        //ListaPVarias listavarias=new ListaPVarias();
+        //listavarias.leer("Archivos"+barra+"PacientesVariasConsultas.txt");// RUTA DEL ARCHIVO CON EL CUAL TRABAJA
         
-        String dniMedico="31382929"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
+      /*  String dniMedico="31382929"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
        
        int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico); //MUESTRA CUANTOS PACIENTES ATENDIO ESE MEDICO PASADO POR PARAMETROS
         System.out.println("Número de pacientes atendidos por el médico en el rango de fechas: " + numPacientes);
@@ -76,41 +122,9 @@ public class TallerPOO {
         int resultado = CalcularPacPorEdadesyFechas(fecha1, fecha2, edad1, edad2);
         
         System.out.println("Número de pacientes en el rango de edades entre: "+edad1 + "  y   "+ edad2 +" en las fechas: "+ fecha1+"-"+fecha2+" es de: " +resultado);
-    }                                       
+        */                                   
             
-        //////////////////////////////////////////////////////////////////////////////////////    
-        ListaPacientes listapaci=new ListaPacientes();
-        ListaResEstudios listaresu=new ListaResEstudios();
-        ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
-        ListaMedicos listamedi=new ListaMedicos();
-        ListaEspecialidades listaespe= new ListaEspecialidades();
-        ListaMedEsp listamedesp=new ListaMedEsp();
-        ListaPacientes listaPaciSinTriage=new ListaPacientes();
-        ListaPacientes listaPaciTriageados=new ListaPacientes();
-        ListaBox listaBox=new ListaBox();
-        
-        /*
-        listapaci.leer("Archivos/Pacientes.txt");
-        listaresu.leer("Archivos/ResEstudios.txt",listapaci);
-        listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
-        listamedi.leer("Archivos/Medicos.txt");
-        listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
-        listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
-        listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
-        listaBox.leer("Archivos/Boxes.txt");
-        
-        DatosTaller.setPacientes(listapaci);
-        DatosTaller.setMedicos(listamedi);
-        DatosTaller.setResultados(listaresu);
-        DatosTaller.setAdmisiones(listaAdmisiones);
-        DatosTaller.setEspecialidades(listaespe);
-        DatosTaller.setBoxes(listaBox);
-        
-        DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
-        DatosTaller.setPacientesTriageados(listaPaciTriageados);
-        
-        
-
+        //////////////////////////////////////////////////////////////////////////////////////           
 //        MenuGestorCentro abc=new MenuGestorCentro();
 //        abc.setVisible(true);
 //        abc.setLocationRelativeTo(null);
@@ -121,10 +135,6 @@ public class TallerPOO {
 
         BuscarEstFecha buscar=new BuscarEstFecha();
         buscar.setVisible(true);
-        buscar.setLocationRelativeTo(null); */
+        buscar.setLocationRelativeTo(null); 
     }
-     
-
-
-    
-  
+}
