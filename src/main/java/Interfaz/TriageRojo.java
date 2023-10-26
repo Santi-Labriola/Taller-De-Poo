@@ -5,57 +5,76 @@
  */
 package Interfaz;
 
+import com.mycompany.taller.ListaPacientes;
+import com.mycompany.taller.Paciente;
+import interfas.MotivoDeConsulta;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-/**
- *
- * @author Alumno
- */
 public class TriageRojo extends javax.swing.JPanel {
+    
+    public static String paciente_update = "";
     String barra = File.separator;
     DefaultTableModel tabla = new DefaultTableModel();
-    String Ubicacion = System.getProperty("user.dir") + barra + "Registro"+barra+"Pacientes"+barra;
+    String Ubicacion = System.getProperty("user.dir") + barra + "BaseDatos" + barra + "Pacientes" + barra;
+
     public TriageRojo() {
         initComponents();
-        String [] titulo= new String[]{"Nombre","Apellido","Sexo","Color"};
-        tabla.setColumnIdentifiers(titulo);
+        String[] titulo = new String[]{"Nombre", "DNI", "Motivo"};
+       tabla.setColumnIdentifiers(titulo);
         Tabla.setModel(tabla);
-    }
-    private void agregar(){
-        try{
-         File direccion = new File(Ubicacion + "PacientesRojo.txt" );
-        
-        if(direccion.exists()){
-            
-               tabla.setRowCount(0);
+        Tabla.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila = Tabla.rowAtPoint(e.getPoint());
+                int columna = 2;
 
-                BufferedReader reader = new BufferedReader(new FileReader(direccion));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    // Suponiendo que cada línea está en formato: Nombre Apellido Sexo Color
-                    String[] datos = line.split(" "); // Separar los datos por espacio
-                    if (datos.length == 4) {
-                        tabla.addRow(datos); // Agregar los datos a la tabla
-                    } else {
-                        // Manejar líneas con un formato incorrecto
-                        //System.err.println("Formato incorrecto en la línea: " + line);
-                    }
+                if (fila > -1) {
+                    paciente_update = (String) Tabla.getValueAt(fila, columna);
+                    MotivoDeConsulta informacion_paciente = new MotivoDeConsulta();
+                    informacion_paciente.setVisible(true);
                 }
-                reader.close();
-            } else {
-                JOptionPane.showMessageDialog(this,"no se encontraron datos");
             }
-        } catch (IOException e) {
-          
-            
+        });
+    }
+
+    public void agregar(Paciente a) {
+        if (a != null) {
+            Object[] fila = {a.getNombre(),a.getDomicilio(),a.getDocumento()};
+            tabla.addRow(fila);
         }
     }
-    
+
+    private void llamar() {
+       String barra = File.separator;
+        String Ubicacion = System.getProperty("user.dir") + barra + "BaseDatos"+barra+"Aca"+barra +"Pacientes.txt";
+      
+       ListaPacientes pac = new ListaPacientes();
+       try{
+         ArrayList <Paciente> pacientes = pac.leer(Ubicacion);
+           //System.out.println(pacientes);
+    for (Paciente paciente : pacientes) { // Cambia el nombre de la variable en el bucle
+        agregar(paciente);
+       
+       
+    }
+       }catch(Exception e){
+           System.out.println("Error al obtener los datos " + e.getMessage());
+       }
+    }
+
+
 
     
     /**
@@ -78,20 +97,19 @@ public class TriageRojo extends javax.swing.JPanel {
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -143,7 +161,7 @@ public class TriageRojo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        agregar();
+        llamar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -158,4 +176,5 @@ public class TriageRojo extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
+
 

@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -59,7 +60,7 @@ public class SeleccionarUnPaciente extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Narajan");
+        jButton2.setText("Naranja");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

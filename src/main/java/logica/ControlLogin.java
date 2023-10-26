@@ -11,7 +11,7 @@ public class ControlLogin {
     String Ubicacion = System.getProperty("user.dir") + barra + "BaseDatos"+barra+"Roles"+barra+"Medico"+barra;
     private Component rootPane;
     public void rol(String usuario){
-        System.out.println("entro x2");
+        
         //obtengo el nombre del usuario dentro del archivo
         File direccion = new File(Ubicacion + usuario+ ".txt" );
             if(direccion.exists()){

@@ -1,9 +1,10 @@
 
 package Interfaz;
 
+
+import interfas.SeleccionPacienteConsulta;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import javax.swing.JFrame;
 
 
 public class OpcionesDoc extends javax.swing.JFrame {
@@ -174,13 +175,12 @@ public class OpcionesDoc extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRealziarTriageActionPerformed
 
     private void btnIngresarInfoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarInfoPacienteActionPerformed
-       IngresoInfoPaciente panel = new IngresoInfoPaciente();
-       mostrar(panel);
+      
     }//GEN-LAST:event_btnIngresarInfoPacienteActionPerformed
 
     private void btnSelecPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecPacienteActionPerformed
         dispose();
-        SeleccionarUnPaciente panel = new SeleccionarUnPaciente();
+        SeleccionPacienteConsulta panel = new SeleccionPacienteConsulta();
         panel.setVisible(true);
         panel.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnSelecPacienteActionPerformed

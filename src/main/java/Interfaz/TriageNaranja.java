@@ -16,10 +16,10 @@ public class TriageNaranja extends javax.swing.JPanel {
 
     String barra = File.separator;
     DefaultTableModel tabla = new DefaultTableModel();
-    String Ubicacion = System.getProperty("user.dir") + barra + "Registro"+barra+"Pacientes"+barra;
+    String Ubicacion = System.getProperty("user.dir") + barra + "BaseDatos"+barra+"Pacientes"+barra;
     public TriageNaranja() {
         initComponents();
-        String [] titulo= new String[]{"Nombre","Apellido","Sexo","Color"};
+        String [] titulo= new String[]{"Nombre","Apellido","DNI","Motivo"};
         tabla.setColumnIdentifiers(titulo);
         Tabla.setModel(tabla);
      
@@ -36,8 +36,9 @@ public class TriageNaranja extends javax.swing.JPanel {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     // Suponiendo que cada línea está en formato: Nombre Apellido Sexo Color
-                    String[] datos = line.split(" "); // Separar los datos por espacio
+                    String[] datos = line.split(";"); // Separar los datos por espacio
                     if (datos.length == 4) {
+                        System.out.println(datos);
                         tabla.addRow(datos); // Agregar los datos a la tabla
                     } else {
                         // Manejar líneas con un formato incorrecto
