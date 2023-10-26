@@ -6,17 +6,18 @@ package com.mycompany.tallerpoo;
  * @author Usuario
  */
 public abstract class DatosTaller {
-    private static ListaPacientes pacientes;
-    private static ListaMedicos medicos;
-    private static ListaResEstudios resultados;
-    private static ListaAdmisiones admisiones;
-    private static ListaEspecialidades especialidades;
-    private static ListaBox boxes;
-    private static ListaPacientes pacientesSinTriage;
-    private static ListaPacientes pacientesTriageados;
+    private static ListaPacientes pacientes=new ListaPacientes();
+    private static ListaMedicos medicos=new ListaMedicos();
+    private static ListaResEstudios resultados=new ListaResEstudios();
+    private static ListaAdmisiones admisiones=new ListaAdmisiones();
+    private static ListaEspecialidades especialidades=new ListaEspecialidades();
+    private static ListaBox boxes=new ListaBox();
+    private static ListaPacientes pacientesSinTriage=new ListaPacientes();
+    private static ListaPacientes pacientesTriageados=new ListaPacientes();
+    private static ListaAsignacionBox asignaciones=new ListaAsignacionBox();
     
-    private static ListaPVarias listavarias;
-    private static ListaTriage triages;
+    private static ListaPVarias listavarias=new ListaPVarias();
+    private static ListaTriage triages=new ListaTriage();
 
     public static ListaTriage getTriages() {
         return triages;
@@ -25,10 +26,7 @@ public abstract class DatosTaller {
     public static void setTriages(ListaTriage triages) {
         DatosTaller.triages = triages;
     }
-    
-    
-    
-    
+
     public static ListaPVarias getListavarias() {
         return listavarias;
     }
@@ -103,8 +101,15 @@ public abstract class DatosTaller {
     public static void setPacientesTriageados(ListaPacientes pacientesTriageados) {
         DatosTaller.pacientesTriageados = pacientesTriageados;
     }
-    
-    
+
+    public static ListaAsignacionBox getAsignaciones() {
+        return asignaciones;
+    }
+
+    public static void setAsignaciones(ListaAsignacionBox asignaciones) {
+        DatosTaller.asignaciones = asignaciones;
+    }
+       
     public static void agregarPaciente(Paciente paci){
         pacientes.agregar(paci);
     }

@@ -105,4 +105,9 @@ public class ListaEspecialidades {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "ListaEspecialidades{" + "especialidades=" + especialidades + '}';
+    }
 }
