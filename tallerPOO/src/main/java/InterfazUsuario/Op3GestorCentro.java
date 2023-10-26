@@ -46,7 +46,7 @@ public class Op3GestorCentro extends javax.swing.JFrame {
                 int columna = 2; 
                 if (fila > -1){
                     pacienteUpdate = (String) jTableListaPacientes.getValueAt(fila,columna);
-                    ListaPacientes registroMedico = new ListaPacientes();
+                    ListaPacientesEliminar registroMedico = new ListaPacientesEliminar();
                     registroMedico.setVisible(true);
                 }
             }
@@ -195,7 +195,7 @@ public class Op3GestorCentro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1AnteriorActionPerformed
-        MenuGestorCentro atras = new MenuGestorCentro();
+        MenuGestorCentroEliminar atras = new MenuGestorCentroEliminar();
         atras.setVisible(true);
         atras.setLocationRelativeTo(null);
         dispose();

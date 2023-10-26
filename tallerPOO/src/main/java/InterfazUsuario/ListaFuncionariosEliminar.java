@@ -9,12 +9,12 @@ package InterfazUsuario;
  *
  * @author 54345
  */
-public class ListaFuncionarios extends javax.swing.JFrame {
+public class ListaFuncionariosEliminar extends javax.swing.JFrame {
 
     /**
      * Creates new form ListaFuncionarios
      */
-    public ListaFuncionarios() {
+    public ListaFuncionariosEliminar() {
         initComponents();
     }
 
@@ -117,7 +117,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        InfoAdministrativa atras = new InfoAdministrativa();
+        InfoAdministrativaEliminar atras = new InfoAdministrativaEliminar();
         atras.setVisible(true);
         atras.setLocationRelativeTo(null);
         dispose();

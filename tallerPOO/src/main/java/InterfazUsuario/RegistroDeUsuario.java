@@ -233,14 +233,14 @@ public class RegistroDeUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        MenuAdminSistemas atras = new MenuAdminSistemas();
+        MenuAdminSistemasEliminar atras = new MenuAdminSistemasEliminar();
         atras.setVisible(true);
         atras.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonHechoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHechoActionPerformed
-        MenuAdminSistemas atras = new MenuAdminSistemas();
+        MenuAdminSistemasEliminar atras = new MenuAdminSistemasEliminar();
         atras.setVisible(true);
         atras.setLocationRelativeTo(null);
         dispose();
