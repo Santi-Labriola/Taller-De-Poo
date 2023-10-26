@@ -96,9 +96,20 @@ public class ListaAdmisiones {
                 adm.setFecha(fecha);
                 adm.setHora(hora);
                 adm.setMotivoDeConsulta(split[3]);
- //               adm.setBox(DatosTaller.getBoxes().getPorNumero(Integer.parseInt(split[4])));
                 
-//                AsignacionBox asig=new AsignacionBox(LocalDate.parse(split[5]), date.);
+                Box box=DatosTaller.getBoxes().getPorNumero(Integer.parseInt(split[4]));
+                adm.setBox(box);
+                
+                splitFecha=split[5].split("/");//splitea la fecha de asignacionBox
+                splitHora=split[6].split(":");//splitea la hora de asignacionBox
+                
+                fecha= LocalDate.of(Integer.parseInt(splitFecha[2]),
+                                   Integer.parseInt(splitFecha[1]),
+                               Integer.parseInt(splitFecha[0]));
+                
+                hora= LocalTime.of(Integer.parseInt(splitHora[0]),
+                                 Integer.parseInt(splitHora[1]),
+                                 Integer.parseInt(splitHora[2]));
                 
                 /*si se paso la lista de pacientes por parametro, se busca por dni al paciente
                 y hace un setPaciente.
@@ -112,6 +123,9 @@ public class ListaAdmisiones {
                             paci.agregarAdmision(adm);
                     }
                 }
+                
+                AsignacionBox asig=new AsignacionBox(fecha,hora,box,adm);
+                DatosTaller.getAsignaciones().agregar(asig);
                 this.agregar(adm);
                 linea = reader.readLine();
             }
