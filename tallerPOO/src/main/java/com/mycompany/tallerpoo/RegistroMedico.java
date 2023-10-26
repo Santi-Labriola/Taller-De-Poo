@@ -183,8 +183,8 @@ public class RegistroMedico {
         return paciAtenMedi.size();
     }
 
-    //////// medico que tuvo mas pacientes por fecha
-    public static String calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2, String dniMedico) {
+    //////// medico que tuvo mas pacientes por fecha/////ACAAAAAAA
+    public static String calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2) {
         String barra = File.separator;
         ArrayList<String> citas = new ArrayList<>();
 
@@ -205,8 +205,8 @@ public class RegistroMedico {
                             Integer.parseInt(splitFecha[0])
                     );
 
-                    if (fechaAtencion.isAfter(fecha1) && fechaAtencion.isBefore(fecha2) && medicoAsignado.equals(dniMedico)) {
-                        citas.add(dniPaciente);
+                    if (fechaAtencion.isAfter(fecha1) && fechaAtencion.isBefore(fecha2) ) {
+                        citas.add(medicoAsignado);
                     }
                 }
                 linea = br.readLine();
@@ -217,8 +217,8 @@ public class RegistroMedico {
 
         // Calcular al médico que atendió a la mayoría de pacientes
         Map<String, Integer> contadorMedicos = new HashMap<>();
-        for (String dniPaciente : citas) {
-            contadorMedicos.put(dniPaciente, contadorMedicos.getOrDefault(dniPaciente, 0) + 1);
+        for (String medicoAsignado : citas) {
+            contadorMedicos.put(medicoAsignado, contadorMedicos.getOrDefault(medicoAsignado, 0) + 1);
         }
 
         int maxPacientesAtendidos = 0;
