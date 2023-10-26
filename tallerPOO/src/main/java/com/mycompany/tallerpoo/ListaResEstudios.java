@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -46,28 +47,21 @@ public class ListaResEstudios {
         resultados.remove(resu);
     }
     
-//    public void agregarAlArchivo(String archivoNombre, ResultadoEstudios res){
-//        PrintWriter salida= null;
-//        try {
-//            File archivo= new File(archivoNombre);
-//            BufferedReader reader= new BufferedReader (new FileReader(archivoNombre));
-//            String linea = reader.readLine();
-//            
-//            salida = new PrintWriter(new FileWriter(archivo, true ));
-//            
-//            if (linea!=null){
-//                salida.println("");
-//            }
-//            salida.println(res.getDocumento()+","+res.getNombre()+","+res.getFechaNacimiento()+","
-//                    +res.getDomicilio()+","+res.getTelefoFijo()+","+res.getTelefonoCelular()+","
-//                    +res.getEstadoCivil()+","+res.getCorreoElectronico()+","+res.getMatricula());
-//            
-//        } catch (IOException ex) {
-//            Logger.getLogger(ListaMedicos.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            salida.close();
-//        } 
-//    }
+    public void agregarAlArchivo(String archivoNombre, ResultadoEstudios res){
+        PrintWriter salida= null;
+        try {
+            File archivo= new File(archivoNombre);
+            salida = new PrintWriter(new FileWriter(archivo, true ));
+            
+            salida.println(res.getPaciente().getDocumento()+","+res.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                           +","+res.getHora()+","+res.getTipoDeEstudio()+","+res.getInformeDeEstudio());
+            
+        } catch (IOException ex) {
+
+        } finally {
+            salida.close();
+        } 
+    }
     public ArrayList getListaPorFecha(LocalDate fecha){
         ArrayList<ResultadoEstudios> resultados=new ArrayList();
         for (ResultadoEstudios resu : this.resultados){
@@ -77,17 +71,10 @@ public class ListaResEstudios {
         }
         return resultados;
     }
-    
+        
     public void leer(String archivo){
-        leerInterno(archivo,null);
-    }
-    
-    public void leer(String archivo, ListaPacientes listapaci){
-        leerInterno(archivo,listapaci);
-    }
         
-    private void leerInterno(String archivo, ListaPacientes listapaci){
-        
+        ListaPacientes listapaci=DatosTaller.getPacientes();
         try {
             BufferedReader reader= new BufferedReader (new FileReader(archivo));
             String linea = reader.readLine();
