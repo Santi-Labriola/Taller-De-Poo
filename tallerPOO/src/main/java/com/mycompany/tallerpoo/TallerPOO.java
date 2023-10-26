@@ -104,7 +104,7 @@ public class TallerPOO {
        //METODOS DE REGISTRO MEDICO        
          
         
-        String dniMedico="22348901"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
+        String dniMedico="42218299"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
        
        int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico); //MUESTRA CUANTOS PACIENTES ATENDIO ESE MEDICO PASADO POR PARAMETROS
         System.out.println("Número de pacientes atendidos por el médico en el rango de fechas: " + numPacientes);
@@ -127,10 +127,10 @@ public class TallerPOO {
        
         
         //////////////////////////////////////////////////////////////////////////////////////           
-//        MenuGestorCentro abc=new MenuGestorCentro();
-//        abc.setVisible(true);
-//        abc.setLocationRelativeTo(null);
-//        
+        MenuGestorCentro abc=new MenuGestorCentro();
+        abc.setVisible(true);
+        abc.setLocationRelativeTo(null);
+        
 //        ArrayList lista=ResultadoEstudios.obtenerResultadoEstudios(LocalDate.of(2023,5,10));
         
 //        System.out.println(lista);

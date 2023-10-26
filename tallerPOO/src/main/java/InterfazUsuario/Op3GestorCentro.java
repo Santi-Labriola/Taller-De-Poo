@@ -222,7 +222,8 @@ public class Op3GestorCentro extends javax.swing.JFrame {
             ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(
             fechaUno, fechaDos);
             for (String dni : personasConMasConsultas) {
-                System.out.println("DNI: " + dni);
+                //System.out.println("DNI: " + dni);
+                tabla.addRow(new Object[]{dni});
             } 
     }//GEN-LAST:event_jButtonBuscarActionPerformed
     String barra = File.separator;

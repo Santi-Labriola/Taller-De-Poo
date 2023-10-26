@@ -179,8 +179,9 @@ public class RegistroMedico {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        return paciAtenMedi.size();
+        int cont=paciAtenMedi.size();
+        return cont;
+       // return 10;
     }
 
     //////// medico que tuvo mas pacientes por fecha/////ACAAAAAAA

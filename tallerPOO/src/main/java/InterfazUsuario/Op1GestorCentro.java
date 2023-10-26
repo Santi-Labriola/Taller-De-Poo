@@ -7,6 +7,9 @@ package InterfazUsuario;
 import java.time.LocalDate;
 import com.mycompany.tallerpoo.RegistroMedico;
 import java.time.format.DateTimeFormatter;
+import static com.mycompany.tallerpoo.RegistroMedico.CalcularPacPorEdadesyFechas;
+import static com.mycompany.tallerpoo.RegistroMedico.calcularMasConsPorFecha;
+import static com.mycompany.tallerpoo.RegistroMedico.calcularMedMasPacPorFecha;
 /**
  *
  * @author 54345
@@ -208,13 +211,15 @@ public class Op1GestorCentro extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         RegistroMedico registroMedico = new RegistroMedico();
-        int dni = Integer.parseInt(txtMedico.getText());
+        //int dni = Integer.parseInt(txtMedico.getText());
+        String dni = txtMedico.getText();
         String fecha1 = txtFecha1.getText();
         String fecha2 = txtFecha2.getText();
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaUno = LocalDate.parse(fecha1, formatter1);
-        LocalDate fechaDos = LocalDate.parse(fecha1, formatter1);
-        
+        LocalDate fechaDos = LocalDate.parse(fecha2, formatter1);//estaba antes en facha1
+        int resultado = RegistroMedico.calcularNumPacDeMedPorFecha(fechaUno, fechaDos, dni);
+        txtResultado.setText(String.valueOf(resultado));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtFecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFecha1ActionPerformed

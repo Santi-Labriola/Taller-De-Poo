@@ -5,6 +5,7 @@
  */
 package InterfazUsuario;
 
+import com.mycompany.tallerpoo.RegistroMedico;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -179,6 +180,7 @@ public class Op4GestorCentro extends javax.swing.JFrame {
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaUno = LocalDate.parse(fecha1, formatter1);
         LocalDate fechaDos = LocalDate.parse(fecha1, formatter1);
+        RegistroMedico.calcularMedMasPacPorFecha(fechaDos, fechaDos);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     /**

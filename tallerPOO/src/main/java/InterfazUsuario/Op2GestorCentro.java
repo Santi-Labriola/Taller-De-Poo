@@ -5,6 +5,7 @@
  */
 package InterfazUsuario;
 
+import com.mycompany.tallerpoo.RegistroMedico;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -163,6 +164,11 @@ public class Op2GestorCentro extends javax.swing.JFrame {
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaUno = LocalDate.parse(fecha1, formatter1);
         LocalDate fechaDos = LocalDate.parse(fecha1, formatter1);
+        String edadUno = txtEdadMin1.getText();
+        String edadDos = txtEdadMin2.getText();
+        RegistroMedico registro = new RegistroMedico();
+        int resultado = RegistroMedico.CalcularPacPorEdadesyFechas(fechaUno, fechaDos, edadUno,edadDos);
+        txtResultado.setText(String.valueOf(resultado));
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     /**

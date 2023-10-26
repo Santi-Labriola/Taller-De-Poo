@@ -131,36 +131,42 @@ public class MenuGestorCentro extends javax.swing.JFrame {
     private void jButtonOpcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcion1ActionPerformed
         Op1GestorCentro opcion = new Op1GestorCentro();
         opcion.setVisible(true);
+        opcion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButtonOpcion1ActionPerformed
 
     private void jButtonOpcion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcion2ActionPerformed
         Op2GestorCentro opcion = new Op2GestorCentro();
         opcion.setVisible(true);
+        opcion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButtonOpcion2ActionPerformed
 
     private void jButtonOpcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcion3ActionPerformed
         Op3GestorCentro opcion = new Op3GestorCentro();
         opcion.setVisible(true);
+        opcion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButtonOpcion3ActionPerformed
 
     private void jButtonOpcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcion4ActionPerformed
         Op4GestorCentro opcion = new Op4GestorCentro();
         opcion.setVisible(true);
+        opcion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButtonOpcion4ActionPerformed
 
     private void jButtonOpcion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcion5ActionPerformed
         Op5GestorCentro opcion = new Op5GestorCentro();
         opcion.setVisible(true);
+        opcion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButtonOpcion5ActionPerformed
 
     private void jButtonOpcion6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcion6ActionPerformed
         Op6GestorCentro opcion = new Op6GestorCentro();
         opcion.setVisible(true);
+        opcion.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButtonOpcion6ActionPerformed
 
