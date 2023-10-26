@@ -46,7 +46,20 @@ public class ListaTriage {
         }
         return false;
     }
-    
+    public void agregarArchivo(String archivoNombre, Triage triage){
+        PrintWriter salida= null;
+        try {
+            File archivo= new File(archivoNombre);
+            salida = new PrintWriter(new FileWriter(archivo, true ));            
+                       
+            salida.println(triage.getFecha()+","+triage.getColorSugerido()+","+triage.getColorFinal());
+                    
+        } catch (IOException ex) {
+            
+        } finally {
+            salida.close();
+        } 
+    }
        
     public void leer (String archivo) throws IOException {
         

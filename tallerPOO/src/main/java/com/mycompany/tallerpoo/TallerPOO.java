@@ -21,7 +21,7 @@ public class TallerPOO {
 
     public static void main(String[] args) throws IOException {        
        
-        //Paciente paci=new Paciente("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com","Papa de lucas");
+        Medico medi=new Medico("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com",7827);
         LocalDate fecha1 = LocalDate.of(2021, 7, 15);
         LocalDate fecha2 = LocalDate.of(2023, 10, 24);
        
@@ -52,6 +52,7 @@ public class TallerPOO {
         prueba.leer("Archivos/Triage.txt");
         
         
+        
         DatosTaller.setPacientes(listapaci);
         DatosTaller.setMedicos(listamedi);
         DatosTaller.setResultados(listaresu);
@@ -70,7 +71,11 @@ public class TallerPOO {
             LocalTime.of(15, 30,30),
             "Dolor en el pecho", Paciente,Triage);
         
-        listaAdmisiones.agregar(primera);
+        LocalTime hora=LocalTime.of(1, 2,3);
+        AdmisionDeEmergencia admi=new AdmisionDeEmergencia(fecha1, hora, "ahsdsa");
+        
+        medi.hacerTriage(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,admi);
+        //listaAdmisiones.agregar(primera);
         //listaAdmisiones.agregarAlArchivo("Archivos/Admisiones.txt", primera);
         ListaAdmisiones adm = DatosTaller.getAdmisiones();        
         

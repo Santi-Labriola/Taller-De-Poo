@@ -95,6 +95,8 @@ public class Medico extends Persona{
         DatosTaller.eliminarPacienteAdmision(paci);
         DatosTaller.agregarPacienteTriage(paci);
         
+        DatosTaller.getTriages().agregarArchivo("Archivos/Triage.txt",triage);
+        
         return triage;
     }
     /**
