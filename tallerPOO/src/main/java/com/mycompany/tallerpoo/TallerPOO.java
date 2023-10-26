@@ -41,7 +41,7 @@ public class TallerPOO {
         ListaTriage prueba = new ListaTriage();
         listaBox.leer("Archivos/Boxes.txt");
         listapaci.leer("Archivos/Pacientes.txt");
-        listaresu.leer("Archivos/ResEstudios.txt",listapaci);
+        listaresu.leer("Archivos/ResEstudios.txt");
         listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
         listamedi.leer("Archivos/Medicos.txt");
         listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
