@@ -96,7 +96,7 @@ public class ListaAdmisiones {
                 adm.setFecha(fecha);
                 adm.setHora(hora);
                 adm.setMotivoDeConsulta(split[3]);
-                adm.setBox(DatosTaller.getBoxes().getPorNumero(Integer.parseInt(split[4])));
+ //               adm.setBox(DatosTaller.getBoxes().getPorNumero(Integer.parseInt(split[4])));
                 
 //                AsignacionBox asig=new AsignacionBox(LocalDate.parse(split[5]), date.);
                 

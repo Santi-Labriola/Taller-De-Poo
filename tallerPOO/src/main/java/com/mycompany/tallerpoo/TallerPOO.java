@@ -26,6 +26,7 @@ public class TallerPOO {
         LocalDate fecha2 = LocalDate.of(2023, 10, 24);
        
         String barra= File.separator;
+        ListaBox listaBox=new ListaBox();
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
         ListaAdmisiones listaAdmisiones=new ListaAdmisiones();
@@ -34,11 +35,11 @@ public class TallerPOO {
         ListaMedEsp listamedesp=new ListaMedEsp();
         ListaPacientes listaPaciSinTriage=new ListaPacientes();
         ListaPacientes listaPaciTriageados=new ListaPacientes();
-        ListaBox listaBox=new ListaBox();
+        //ListaBox listaBox=new ListaBox();
         ////////////////////////////////////////////////
         ListaPVarias listavarias=new ListaPVarias();
         ListaTriage prueba = new ListaTriage();
-        
+        listaBox.leer("Archivos/Boxes.txt");
         listapaci.leer("Archivos/Pacientes.txt");
         listaresu.leer("Archivos/ResEstudios.txt",listapaci);
         listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
@@ -46,7 +47,7 @@ public class TallerPOO {
         listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
         listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
         listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
-        listaBox.leer("Archivos/Boxes.txt");
+        //listaBox.leer("Archivos/Boxes.txt");
         listavarias.leer("Archivos"+barra+"PacientesVariasConsultas.txt");
         prueba.leer("Archivos/Triage.txt");
         
@@ -64,20 +65,17 @@ public class TallerPOO {
         DatosTaller.setListavarias(listavarias);
         DatosTaller.setTriages(prueba);
         
-        /*AdmisionDeEmergencia primera =new AdmisionDeEmergencia(LocalDate.of(2023, 10, 9),
-            LocalTime.of(15, 30,09),"Dolor en el pecho");
-        */
-        /*
-        listaAdmisiones.agregar(primera);
-        listaAdmisiones.agregarAlArchivo("Archivos/Admisiones.txt", primera);
+        
+        //listaAdmisiones.agregar(primera);
+        //listaAdmisiones.agregarAlArchivo("Archivos/Admisiones.txt", primera);
         ListaAdmisiones pacientes = DatosTaller.getAdmisiones();        
         
         
         for (AdmisionDeEmergencia paciente : pacientes.getAdmisiones()) {
-            System.out.println("Fecha de admision: " + paciente.getFecha() );
+            System.out.println("Fecha de admision: " + paciente.getFecha()+"hora:  "+paciente.getHora() );
         }
         
-        */
+        
         
         /////////////////////////////////////////////////////////
        //METODOS TRIAGE
@@ -103,7 +101,6 @@ public class TallerPOO {
        ///////////////////////////////////////////////////////////////////
        //METODOS DE REGISTRO MEDICO        
          
-        
         String dniMedico="42218299"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
        
        int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico); //MUESTRA CUANTOS PACIENTES ATENDIO ESE MEDICO PASADO POR PARAMETROS
@@ -114,7 +111,7 @@ public class TallerPOO {
        
         ArrayList<String> personasConMasConsultas = calcularMasConsPorFecha(fecha1, fecha2);//MUESTRA DNI DE  PERSONAS QUE MAS CONSULTARON EN UN RANGO DE FECHAS
             for (String dni : personasConMasConsultas) {
-                 System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" y " +fecha2 +" "+ dni);
+                 System.out.println("DNI/s de personas que mas consultaron en las fechas: "+fecha1+" y " +fecha2 +": "+ dni);
                                         }
         
         String edad1 = "18"; // Edad mínima
