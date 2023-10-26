@@ -2,9 +2,12 @@
 package com.mycompany.tallerpoo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -46,6 +49,21 @@ public class ListaBox{
     
     public void eliminarBox(Box box){
         boxes.remove(box);
+    }
+    
+        public void agregarAlArchivo(String archivoNombre, Box box){
+        PrintWriter salida= null;
+        try {
+            File archivo= new File(archivoNombre);
+            salida = new PrintWriter(new FileWriter(archivo, true ));            
+                       
+            salida.println(box.getNumero()+","+(box.isOcupado() ? 1 : 0));
+            
+        } catch (IOException ex) {
+            
+        } finally {
+            salida.close();
+        } 
     }
     
     public void leer(String archivo){

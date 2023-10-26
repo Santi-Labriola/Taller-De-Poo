@@ -11,10 +11,6 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Lucas
@@ -50,9 +46,6 @@ public class ListaMedicos {
         PrintWriter salida= null;
         try {
             File archivo= new File(archivoNombre);
-            BufferedReader reader= new BufferedReader (new FileReader(archivoNombre));
-            String linea = reader.readLine();
-            
             salida = new PrintWriter(new FileWriter(archivo, true ));            
                        
             salida.println(med.getDocumento()+","+med.getNombre()+","+med.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+","
@@ -60,7 +53,7 @@ public class ListaMedicos {
                     +med.getEstadoCivil()+","+med.getCorreoElectronico()+","+med.getMatricula());
             
         } catch (IOException ex) {
-            Logger.getLogger(ListaMedicos.class.getName()).log(Level.SEVERE, null, ex);
+            
         } finally {
             salida.close();
         } 
