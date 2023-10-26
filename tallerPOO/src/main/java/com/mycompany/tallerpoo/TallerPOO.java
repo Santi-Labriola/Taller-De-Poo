@@ -62,19 +62,23 @@ public class TallerPOO {
         DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
         DatosTaller.setPacientesTriageados(listaPaciTriageados);
         /////////////////////////////////////////////////////////////////////
+        /*
         DatosTaller.setListavarias(listavarias);
         DatosTaller.setTriages(prueba);
+                AdmisionDeEmergencia admision2 = new AdmisionDeEmergencia(
+            LocalDate.of(2023, 10, 26),
+            LocalTime.of(15, 30,30),
+            "Dolor en el pecho", Paciente,Triage);
         
-        
-        //listaAdmisiones.agregar(primera);
+        listaAdmisiones.agregar(primera);
         //listaAdmisiones.agregarAlArchivo("Archivos/Admisiones.txt", primera);
-        ListaAdmisiones pacientes = DatosTaller.getAdmisiones();        
+        ListaAdmisiones adm = DatosTaller.getAdmisiones();        
         
         
-        for (AdmisionDeEmergencia paciente : pacientes.getAdmisiones()) {
-            System.out.println("Fecha de admision: " + paciente.getFecha()+"hora:  "+paciente.getHora() );
+        for (AdmisionDeEmergencia paciente : adm.getAdmisiones()) {
+            System.out.println("Fecha de admision: " + paciente.getFecha());
         }
-        
+        */
         
         
         /////////////////////////////////////////////////////////
@@ -118,8 +122,7 @@ public class TallerPOO {
         String edad2 = "60"; // Edad máxima
 
         // Llama al método CalcularPacPorEdadesyFechas y almacena el resultado en una variable
-        int resultado = CalcularPacPorEdadesyFechas(fecha1, fecha2, edad1, edad2);
-        
+        int resultado = CalcularPacPorEdadesyFechas(fecha1, fecha2, edad1, edad2);        
         System.out.println("Número de pacientes en el rango de edades entre: "+edad1 + "  y   "+ edad2 +" en las fechas: "+ fecha1+"-"+fecha2+" es de: " +resultado);
        
         
