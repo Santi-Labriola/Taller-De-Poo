@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public class ListaBox {
+public class ListaBox{
    private ArrayList<Box> boxes; 
 
     public ListaBox(ArrayList<Box> boxes) {
