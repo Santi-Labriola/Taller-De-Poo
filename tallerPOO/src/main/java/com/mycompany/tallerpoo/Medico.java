@@ -91,9 +91,12 @@ public class Medico extends Persona{
         
         admision.setTriage(triage);
         
+        
         Paciente paci=admision.getPaciente();
         DatosTaller.eliminarPacienteAdmision(paci);
         DatosTaller.agregarPacienteTriage(paci);
+        
+        
         
         DatosTaller.getTriages().agregarArchivo("Archivos/Triage.txt",triage);
         

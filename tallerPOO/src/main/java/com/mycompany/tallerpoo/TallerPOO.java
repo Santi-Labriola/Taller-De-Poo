@@ -62,6 +62,11 @@ public class TallerPOO {
         
         DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
         DatosTaller.setPacientesTriageados(listaPaciTriageados);
+        
+        LocalTime hora=LocalTime.of(1, 2,3);
+        AdmisionDeEmergencia admi=new AdmisionDeEmergencia(fecha1, hora, "ahsdsa");
+        
+        medi.hacerTriage(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,admi);
         /////////////////////////////////////////////////////////////////////
         /*
         DatosTaller.setListavarias(listavarias);
@@ -71,10 +76,7 @@ public class TallerPOO {
             LocalTime.of(15, 30,30),
             "Dolor en el pecho", Paciente,Triage);
         
-        LocalTime hora=LocalTime.of(1, 2,3);
-        AdmisionDeEmergencia admi=new AdmisionDeEmergencia(fecha1, hora, "ahsdsa");
         
-        medi.hacerTriage(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,admi);
         //listaAdmisiones.agregar(primera);
         //listaAdmisiones.agregarAlArchivo("Archivos/Admisiones.txt", primera);
         ListaAdmisiones adm = DatosTaller.getAdmisiones();        

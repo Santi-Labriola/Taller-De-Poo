@@ -35,6 +35,7 @@ public class Triage {
     private String colorSugerido;
     private String motivoCambio;
     private String colorFinal;
+    private Medico medico;
     
     private AdmisionDeEmergencia admision;
     
@@ -68,7 +69,8 @@ public class Triage {
         this.colorSugerido = "";
         this.motivoCambio = "";
         this.colorFinal = "";
-        this.admision=null;
+        this.admision=new AdmisionDeEmergencia();
+        this.medico=new Medico();
     }
     
     
@@ -93,6 +95,30 @@ public class Triage {
         this.motivoCambio = motivoCambio;
         this.colorFinal = colorFinal;
         this.admision=admision;
+        this.medico=new Medico();
+    }
+
+    public Triage(LocalDate Fecha, LocalTime hora, int respiracion, int pulso, int estadoMental, int consciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal, Medico medico, AdmisionDeEmergencia admision) {
+        this.Fecha = Fecha;
+        this.hora = hora;
+        this.respiracion = respiracion;
+        this.pulso = pulso;
+        this.estadoMental = estadoMental;
+        this.consciencia = consciencia;
+        this.dificultadRespiracion = dificultadRespiracion;
+        this.lesionesGraves = lesionesGraves;
+        this.edad = edad;
+        this.fiebre = fiebre;
+        this.vomitos = vomitos;
+        this.dolorAbdominal = dolorAbdominal;
+        this.signosShock = signosShock;
+        this.lesionesLeves = lesionesLeves;
+        this.sangrado = sangrado;
+        this.colorSugerido = colorSugerido;
+        this.motivoCambio = motivoCambio;
+        this.colorFinal = colorFinal;
+        this.medico = medico;
+        this.admision = admision;
     }
     
     
@@ -269,6 +295,14 @@ public class Triage {
         return admision;
     }
 
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+    
     public void setAdmision(AdmisionDeEmergencia admision) {
         this.admision = admision;
     }

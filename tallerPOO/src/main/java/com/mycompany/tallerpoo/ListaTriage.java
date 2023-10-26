@@ -51,8 +51,10 @@ public class ListaTriage {
         try {
             File archivo= new File(archivoNombre);
             salida = new PrintWriter(new FileWriter(archivo, true ));            
-                       
-            salida.println(triage.getFecha()+","+triage.getColorSugerido()+","+triage.getColorFinal());
+            
+            AdmisionDeEmergencia admi=triage.getAdmision();
+            Medico med=triage.getMedico();
+            salida.println(triage.getFecha()+","+triage.getColorSugerido()+","+triage.getColorFinal()+","+admi.getPaciente().getDocumento()+","+med.getDocumento());
                     
         } catch (IOException ex) {
             
