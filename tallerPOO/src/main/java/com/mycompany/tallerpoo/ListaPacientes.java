@@ -1,12 +1,10 @@
 
 package com.mycompany.tallerpoo;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
+
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -46,6 +44,23 @@ public class ListaPacientes {
             }        
         }
         return null;
+    }
+    
+    public void agregarAlArchivo(String archivoNombre, Paciente paciente){
+        PrintWriter salida= null;
+        try {
+            File archivo= new File(archivoNombre);
+            salida = new PrintWriter(new FileWriter(archivo, true ));            
+                       
+            salida.println(paciente.getDocumento()+","+paciente.getNombre()+","+paciente.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+","
+                    +paciente.getDomicilio()+","+paciente.getTelefoFijo()+","+paciente.getTelefonoCelular()+","
+                    +paciente.getEstadoCivil()+","+paciente.getCorreoElectronico()+","+paciente.getPersonaContacto());
+            
+        } catch (IOException ex) {
+            
+        } finally {
+            salida.close();
+        } 
     }
     
     public void leer(String archivo){
