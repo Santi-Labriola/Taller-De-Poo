@@ -6,14 +6,8 @@
 package InterfazUsuario;
 
 import com.mycompany.tallerpoo.RegistroMedico;
-import com.mycompany.tallerpoo.RegistroMedico;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
  *
