@@ -4,8 +4,6 @@
  */
 package InterfazUsuario;
 
-import static InterfazUsuario.Op1GestorCentro.tabla;
-import com.mycompany.tallerpoo.Paciente;
 import com.mycompany.tallerpoo.RegistroMedico;
 import static com.mycompany.tallerpoo.RegistroMedico.calcularMasConsPorFecha;
 import java.awt.event.MouseAdapter;
@@ -15,7 +13,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +27,8 @@ public class Op3GestorCentro extends javax.swing.JFrame {
     /**
      * Creates new form Op3GestorCentro
      */
-    String ubicacion = System.getProperty("user.dir") + barra + "Archivos" + barra + "Pacientes.txt";
+    String ubicacion = System.getProperty("user.dir") + barra + "Archivos" +
+                                          barra + "Pacientes.txt";
     public static String pacienteUpdate;
     DefaultTableModel tabla = new DefaultTableModel();
 
@@ -45,7 +43,8 @@ public class Op3GestorCentro extends javax.swing.JFrame {
                 int fila = jTableListaPacientes.rowAtPoint(e.getPoint());
                 int columna = 2;
                 if (fila > -1) {
-                    pacienteUpdate = (String) jTableListaPacientes.getValueAt(fila, columna);
+                    pacienteUpdate = (String) jTableListaPacientes.getValueAt(
+                                  fila, columna);
                     ListaPacientes registroMedico = new ListaPacientes();
                     registroMedico.setVisible(true);
                 }
@@ -209,7 +208,9 @@ public class Op3GestorCentro extends javax.swing.JFrame {
         try {
             llamar(primeraFecha, segundaFecha);
         } catch (IOException ex) {
-            Logger.getLogger(Op3GestorCentro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Op3GestorCentro.class.getName()).log(
+                                                                Level.SEVERE,
+                                                                null, ex);
         }
     }//GEN-LAST:event_buscarActionPerformed
 
