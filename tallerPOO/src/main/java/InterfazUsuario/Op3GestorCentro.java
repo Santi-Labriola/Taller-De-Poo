@@ -11,7 +11,7 @@ import static com.mycompany.tallerpoo.Triage.cantTriagePorFecha;
 
 
 import com.mycompany.tallerpoo.RegistroMedico;
-import com.mycompany.tallerpoo.ListaPVarias;
+//import com.mycompany.tallerpoo.ListaPVarias;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.*;
@@ -35,7 +35,7 @@ public class Op3GestorCentro extends javax.swing.JFrame {
      */
     public static String pacienteUpdate;
     DefaultTableModel tabla = new DefaultTableModel();
-   
+/*   
     public Op3GestorCentro() {
         initComponents();
         jTableListaPacientes.setModel(tabla);
@@ -54,7 +54,7 @@ public class Op3GestorCentro extends javax.swing.JFrame {
         );
       
     }
-
+*/
     /*
     String barra = File.separator;
     ListaPVarias listavarias=new ListaPVarias();
@@ -75,7 +75,7 @@ public class Op3GestorCentro extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    /*private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -201,7 +201,7 @@ public class Op3GestorCentro extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1AnteriorActionPerformed
 
-    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+    /*private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         String fecha1 = txtFecha1.getText();
         String fecha2 = txtFecha2.getText();
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -228,7 +228,7 @@ public class Op3GestorCentro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
     String barra = File.separator;
     String ubicacion = System.getProperty("user.dir") + barra + "Archivos"+barra+"PacientesVariasConsultas.txt";
-
+*/
     /**
      * @param args the command line arguments
      */

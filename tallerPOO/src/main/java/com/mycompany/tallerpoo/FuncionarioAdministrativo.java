@@ -8,7 +8,7 @@ package com.mycompany.tallerpoo;
  *
  * @author Matias
  */
-import com.mycompany.tallerpoo.Sector;
+import com.mycompany.tallerpoo;
 
 public class FuncionarioAdministrativo  {
 
