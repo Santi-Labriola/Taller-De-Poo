@@ -9,10 +9,25 @@ import java.time.LocalTime;
  * @author Lucas
  */
 public class SectorAdmision extends FuncionarioGeneral{
-
+    
+    /**
+     * Constructor por defecto de la clase.
+     */
     public SectorAdmision() {
+        super();
     }
 
+    /**
+     * Constructor parametrizado de la clase.
+     * @param nombre nombre
+     * @param fechaNacimiento fecha de nacimiento
+     * @param domicilio domicilio
+     * @param documento documento/dni
+     * @param telefoFijo telefono fijo
+     * @param telefonoCelular telefono celular
+     * @param estadoCivil estado civil
+     * @param correoElectronico correo electronico
+     */
     public SectorAdmision(String nombre, LocalDate fechaNacimiento, String domicilio, int documento, int telefoFijo, int telefonoCelular, String estadoCivil, String correoElectronico) {
         super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
     }

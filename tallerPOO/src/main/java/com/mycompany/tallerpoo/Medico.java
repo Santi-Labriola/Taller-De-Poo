@@ -56,21 +56,41 @@ public class Medico extends Persona{
         this.especialidad=new ArrayList<Especialidad>();
     }
 
-    public int getMatricula() {
-        return matricula;
-    }
+    /**
+    * Obtiene la matrícula del médico.
+    *
+    * @return {@link int} - matricula
+    */
+   public int getMatricula() {
+       return matricula;
+   }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
+   /**
+    * Establece la matrícula del médico.
+    *
+    * @param matricula La matrícula del médico a establecer.
+    */
+   public void setMatricula(int matricula) {
+       this.matricula = matricula;
+   }
 
-    public ArrayList<Especialidad> getEspecialidad() {
-        return especialidad;
-    }
+   /**
+    * Obtiene la lista de especialidades del médico.
+    *
+    * @return {@link ArrayList} - lista de especialidades del medico.
+    */
+   public ArrayList<Especialidad> getEspecialidad() {
+       return especialidad;
+   }
 
-    public void setEspecialidad(ArrayList<Especialidad> especialidad) {
-        this.especialidad = especialidad;
-    }
+   /**
+    * Establece la lista de especialidades del médico.
+    *
+    * @param especialidad La lista de especialidades a establecer.
+    */
+   public void setEspecialidad(ArrayList<Especialidad> especialidad) {
+       this.especialidad = especialidad;
+   }
     
     /**
      * Agrega una especialidad a la lista de especialidades del medico
@@ -88,6 +108,7 @@ public class Medico extends Persona{
      * Metodo que se utiliza por un medico a la hora de atender un paciente, lo
      * cual implica que se lo quita de la lista de los pacientes en espera.
      * @param paciente paciente a atender
+     * @see SectorAdmision#hacerAdmision(com.mycompany.tallerpoo.Paciente, java.lang.String) 
      */
     public void atenderPaciente(Paciente paciente){
         DatosTaller.eliminarPacienteTriage(paciente); 
@@ -167,6 +188,10 @@ public class Medico extends Persona{
         triage.setMotivoCambio(motivo);
     }
     
+    /**
+     * Concatena toda la informacion de el medico y la retorna como un string.
+     * @return {@link String} con toda la informacion concatenada.
+     */
     @Override
     public String toString() {
         return "Medico{" + "matricula=" + matricula + ", especialidad=" + especialidad + '}';
