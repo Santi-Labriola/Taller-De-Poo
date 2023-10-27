@@ -62,44 +62,93 @@ public class ResultadoEstudios {
         this.paciente=paciente;
     }
     
+    /**
+     * Obtiene la fecha del estudio.
+     *
+     * @return {@link LocalDate} - La fecha del estudio.
+     */
     public LocalDate getFecha() {
         return fecha;
     }
 
+    /**
+     * Establece la fecha del estudio.
+     *
+     * @param fecha La fecha a establecer.
+     */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     * Obtiene la hora del estudio.
+     *
+     * @return {@link LocalTime} - La hora del estudio.
+     */
     public LocalTime getHora() {
         return hora;
     }
 
+    /**
+     * Establece la hora del estudio.
+     *
+     * @param hora La hora a establecer.
+     */
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
-    
+
+    /**
+     * Obtiene el tipo de estudio.
+     *
+     * @return {@link String} tipo de estudio.
+     */
     public String getTipoDeEstudio() {
         return tipoDeEstudio;
     }
 
+    /**
+     * Establece el tipo de estudio.
+     *
+     * @param tipoDeEstudio tipo de estudio a establecer.
+     */
     public void setTipoDeEstudio(String tipoDeEstudio) {
         this.tipoDeEstudio = tipoDeEstudio;
     }
 
+    /**
+     * Obtiene el informe del estudio.
+     *
+     * @return {@link String} Informe del estudio médico.
+     */
     public String getInformeDeEstudio() {
         return informeDeEstudio;
     }
 
+    /**
+     * Establece el informe del estudio
+     *
+     * @param informeDeEstudio Informe del estudio a establecer.
+     */
     public void setInformeDeEstudio(String informeDeEstudio) {
         this.informeDeEstudio = informeDeEstudio;
     }
-    
+
+    /**
+     * Obtiene el paciente asociado al estudio.
+     *
+     * @return {@link Paciente} asociado al estudio.
+     */
     public Paciente getPaciente() {
         return paciente;
     }
 
+    /**
+     * Establece el paciente asociado al estudio.
+     *
+     * @param paciente El paciente asociado al estudio.
+     */
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-    
 }
