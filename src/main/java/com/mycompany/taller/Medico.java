@@ -8,15 +8,15 @@ import java.util.*;
  *
  * @author Lucas
  */
-public class Medico extends Persona{
+public class Medico extends FuncionarioGeneral{
     private int matricula;
     private ArrayList<Especialidad> especialidad;
   
     public Medico(String nombre, LocalDate fechaNacimiento, String domicilio, 
                   int documento, int telefoFijo, int telefonoCelular, 
-                  String estadoCivil, String correoElectronico, int matricula) {
+                  String estadoCivil, String correoElectronico, int matricula, String sector ,String rol, String personaDeContacto, String contrasenia) {
         
-        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
+        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico,sector ,rol,personaDeContacto,contrasenia);
         this.matricula=matricula;
         this.especialidad=new ArrayList<Especialidad>();
     }

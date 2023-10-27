@@ -16,7 +16,7 @@ public class Main {
     public static void main(String [] args){  
         ArrayList <Paciente>pacientes;
         
-    PantallaLogin login = new PantallaLogin();
+    PantallaAdminSist login = new PantallaAdminSist();
     login.setVisible(true);
     login.setLocationRelativeTo(null);
     

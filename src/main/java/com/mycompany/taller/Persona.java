@@ -9,6 +9,7 @@ import java.time.*;
 public abstract class Persona {
     
     private String nombre;
+    private String apellido;
     private LocalDate fechaNacimiento;
     private String domicilio;
     private int documento;
@@ -16,12 +17,16 @@ public abstract class Persona {
     private int telefonoCelular;
     private String  estadoCivil;
     private String correoElectronico;
+    private String personaDeContacto;
 
     public Persona() {
     }
     
-    public Persona(String nombre, LocalDate fechaNacimiento, String domicilio, int documento, int telefoFijo, int telefonoCelular, String estadoCivil, String correoElectronico) {
+    public Persona(String nombre,String apellido, LocalDate fechaNacimiento, String domicilio,
+            int documento, int telefoFijo, int telefonoCelular,
+            String estadoCivil, String correoElectronico,String personaDeContacto) {
         this.nombre = nombre;
+        this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.domicilio = domicilio;
         this.documento = documento;
@@ -29,6 +34,7 @@ public abstract class Persona {
         this.telefonoCelular = telefonoCelular;
         this.estadoCivil = estadoCivil;
         this.correoElectronico = correoElectronico;
+        this.personaDeContacto=personaDeContacto;
     }
 
     public String getNombre() {
@@ -38,6 +44,15 @@ public abstract class Persona {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
 
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
@@ -95,10 +110,21 @@ public abstract class Persona {
         this.correoElectronico = correoElectronico;
     }
 
+    public String getPersonaDeContacto() {
+        return personaDeContacto;
+    }
+
+    public void setPersonaDeContacto(String personaDeContacto) {
+        this.personaDeContacto = personaDeContacto;
+    }
+
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", domicilio=" + domicilio + ", documento=" + documento + ", telefoFijo=" + telefoFijo + ", telefonoCelular=" + telefonoCelular + ", estadoCivil=" + estadoCivil + ", correoElectronico=" + correoElectronico + '}';
+        return "Persona{" + "nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", domicilio=" + domicilio + ", documento=" + documento + ", telefoFijo=" + telefoFijo + ", telefonoCelular=" + telefonoCelular + ", estadoCivil=" + estadoCivil + ", correoElectronico=" + correoElectronico + ", personaDeContacto=" + personaDeContacto + '}';
     }
+    
+    
+   
     
     
 }

@@ -5,7 +5,8 @@
  */
 package Interfaz;
 
-import interfas.IngresoInfofuncionario;
+import interfas.IngresoInfoFuncionario;
+import interfas.ListaFuncionarios;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -16,7 +17,7 @@ import javax.swing.JPanel;
 public class PantallaAdminSist extends javax.swing.JFrame {
 
      private void mostrar (JPanel p){
-            p.setSize(936, 300);
+            p.setSize(700, 300);
             p.setLocation(0,0);
         
             content.removeAll();
@@ -146,14 +147,14 @@ public class PantallaAdminSist extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerInfoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerInfoAdminActionPerformed
-        /*dispose();
-        //SeleccionPacienteConsulta panel = new SeleccionPacienteConsulta();
-        panel.setVisible(true);
-        panel.setLocationRelativeTo(null);*/
+        dispose();
+        ListaFuncionarios pantalla= new  ListaFuncionarios();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVerInfoAdminActionPerformed
 
     private void btnIngresoInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoInfoActionPerformed
-        IngresoInfofuncionario panel = new IngresoInfofuncionario();
+        IngresoInfoFuncionario panel = new IngresoInfoFuncionario();
         mostrar(panel);
     }//GEN-LAST:event_btnIngresoInfoActionPerformed
 
