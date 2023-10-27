@@ -25,11 +25,11 @@ public class Op1GestorCentro extends javax.swing.JFrame {
     DefaultTableModel tabla = new DefaultTableModel();
     
                                                                                                                                                                                                                                                                 
-    String ubicacion = "C:/Users/Matías/Documents/NetBeansProjects/Taller-De-Poo/tallerPOO/Archivos/Medicos.txt";
+    String ubicacion = System.getProperty("user.dir") + "/" + "Archivos" + "/" + "Pacientes.txt";
     
     public Op1GestorCentro() {
         initComponents();
-        String [] titulo=new String[]{"DNI", "Nombre","´Apellido"};
+        String [] titulo=new String[]{"DNI", "Nombre","Apellido"};
         tabla.setColumnIdentifiers(titulo);
         tablaMedicos.setModel(tabla);
       

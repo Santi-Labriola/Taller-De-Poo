@@ -128,7 +128,7 @@ public class InfoAdministrativa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFuncionariosActionPerformed
 
     private void jButtonOtrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOtrosActionPerformed
-        Otros opcion3 = new Otros();
+        OtrosEliminar opcion3 = new OtrosEliminar();
         opcion3.setVisible(true);
         opcion3.setLocationRelativeTo(null);
         dispose();

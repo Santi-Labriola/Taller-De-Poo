@@ -6,10 +6,14 @@
 package InterfazUsuario;
 
 import com.mycompany.tallerpoo.RegistroMedico;
+import com.mycompany.tallerpoo.RegistroMedico;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -26,23 +30,12 @@ public class Op4GestorCentro extends javax.swing.JFrame {
     
     public Op4GestorCentro() {
         initComponents();
-        /*jTableListaMedicos.setModel(tabla);
-        jTableListaMedicos.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-                int fila = jTableListaMedicos.rowAtPoint(e.getPoint());
-                int columna = 2; 
-                if (fila > -1){
-                    medicoUpdate = (String) jTableListaMedicos.getValueAt(fila,columna);
-                    //Interfaz donde apararece la informacion del medico como usuario
-                    //RegistroMedico registroMedico = new RegistroMedico();
-                    //registroMedico.setVisible(true);
-                }
-            }
-        }
-        )*/
+
     }
 
+   
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,61 +46,51 @@ public class Op4GestorCentro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        buscar = new javax.swing.JButton();
+        fecha1 = new javax.swing.JTextField();
+        fecha2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtFecha1 = new javax.swing.JTextField();
-        txtFecha2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButtonAnterior = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableListaMedicos = new javax.swing.JTable();
-        jButtonBuscar = new javax.swing.JButton();
+        anterior = new javax.swing.JButton();
+        mostrar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ingrese la primer fecha");
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
 
-        txtFecha1.setText("dd/mm/aaaa");
+        fecha1.setText("dd/mm/aaaa");
+        fecha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha1ActionPerformed(evt);
+            }
+        });
 
-        txtFecha2.setText("dd/mm/aaaa");
+        fecha2.setText("dd/mm/aaaa");
+        fecha2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Ingrese la priemera fecha");
 
         jLabel2.setText("Ingrese la segunda fecha");
 
-        jButtonAnterior.setText("<< Atrás");
-        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+        anterior.setText("<< Atrás");
+        anterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorActionPerformed(evt);
+                anteriorActionPerformed(evt);
             }
         });
 
-        jTableListaMedicos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Lista de médicos con mayor atención entre las fechas dadas"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTableListaMedicos);
-
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+        mostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
+                mostrarActionPerformed(evt);
             }
         });
 
@@ -119,38 +102,41 @@ public class Op4GestorCentro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(anterior)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(buscar)))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFecha1))
-                        .addGap(29, 29, 29)
+                            .addComponent(fecha1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFecha2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                        .addComponent(jButtonBuscar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonAnterior)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonAnterior)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBuscar))))
-                .addGap(7, 7, 7)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                .addComponent(anterior)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar))
+                .addGap(268, 268, 268))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,27 +147,51 @@ public class Op4GestorCentro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-       MenuGestorCentroEliminar atras = new MenuGestorCentroEliminar();
+       MenuGestorCentro atras = new MenuGestorCentro();
         atras.setVisible(true);
         atras.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        String fecha1 = txtFecha1.getText();
-        String fecha2 = txtFecha2.getText();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaUno = LocalDate.parse(fecha1, formatter1);
-        LocalDate fechaDos = LocalDate.parse(fecha1, formatter1);
-        RegistroMedico.calcularMedMasPacPorFecha(fechaDos, fechaDos);
+       
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarActionPerformed
+
+    private void anteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorActionPerformed
+        MenuGestorCentro menu = new MenuGestorCentro();
+        menu.setVisible(true);
+        menu.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_anteriorActionPerformed
+
+    private void fecha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha2ActionPerformed
+
+    private void fecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha1ActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        String fechaUno = fecha1.getText();
+        String fechaDos = fecha2.getText();
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate primeraFecha = LocalDate.parse(fechaUno, formatter1);
+        LocalDate segundaFecha = LocalDate.parse(fechaDos, formatter1);
+        String resultado = RegistroMedico.calcularMedMasPacPorFecha(primeraFecha, segundaFecha);
+        mostrar.setText(resultado);
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,14 +199,13 @@ public class Op4GestorCentro extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAnterior;
-    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton anterior;
+    private javax.swing.JButton buscar;
+    private javax.swing.JTextField fecha1;
+    private javax.swing.JTextField fecha2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableListaMedicos;
-    private javax.swing.JTextField txtFecha1;
-    private javax.swing.JTextField txtFecha2;
+    private javax.swing.JTextField mostrar;
     // End of variables declaration//GEN-END:variables
 }
