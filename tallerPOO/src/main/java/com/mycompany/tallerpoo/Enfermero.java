@@ -8,12 +8,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- *
+ * Esta clase representa un enfermero.
+ * @see Medico
+ * @see ListaEnfermeros
  * @author Santi
  */
-
-
-
 public class Enfermero extends Persona {
     //public ArrayList<Triage> triage;  
     
@@ -28,6 +27,28 @@ public class Enfermero extends Persona {
                 telefonoCelular, estadoCivil, correoElectronico);
     }
     
+        /**
+     * Se crea un triage y se calcula el color del mismo en base a los datos que
+     * se pasen por parametro. Tambien añade al paciente a la lista de pacientes
+     * triageados sin atender.
+     * @param respiracion
+     * @param pulso
+     * @param estadoMental
+     * @param conciencia
+     * @param dificultadRespiracion
+     * @param lesionesGraves
+     * @param edad
+     * @param fiebre
+     * @param vomitos
+     * @param dolorAbdominal
+     * @param signosShock
+     * @param lesionesLeves
+     * @param sangrado
+     * @param admision
+     * @return Objeto tipo Triage con los datos pasados por parametro, y con el color ya calculado.
+     * @see #modificarTriage(com.mycompany.tallerpoo.Triage, java.lang.String, java.lang.String) 
+     * @see ListaTriage
+     */
     public Triage hacerTriage(LocalDate Fecha, LocalTime hora, int respiracion, int pulso, int estadoMental, int conciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, AdmisionDeEmergencia admision){
         Triage triage=new Triage();
         
@@ -58,6 +79,19 @@ public class Enfermero extends Persona {
         
         return triage;
     }
+    
+    /**
+    * Modifica el color de un triage.
+    * @param triage triage a modificar
+    * @param color color a seleccionar, debe ser uno de los siguientes: Rojo, Naranja, Amarillo, Verde, Azul
+    * @param motivo motivo por el cual se realizo el cambio.
+    * @see #hacerTriage(int, int, int, int, int, int, int, int, int, int, int, int, int, com.mycompany.tallerpoo.AdmisionDeEmergencia) 
+    */
+    public void modificarTriage(Triage triage, String color, String motivo){
+        triage.setColorFinal(color);
+        triage.setMotivoCambio(motivo);
+    }
+    
     
     public boolean asignarBox(AdmisionDeEmergencia admi, Box box){
         if (box.isOcupado()){

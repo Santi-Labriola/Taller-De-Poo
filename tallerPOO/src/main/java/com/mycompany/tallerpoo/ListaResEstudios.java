@@ -17,16 +17,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase que almacena una lista de resultados de estudio, e implementa sus propios metodos.
  * @author Lucas
  */
 public class ListaResEstudios {
     protected ArrayList <ResultadoEstudios> resultados;
 
+    /**
+     * Constructor parametrizado de a clase.
+     * @param resultados 
+     */
     public ListaResEstudios(ArrayList<ResultadoEstudios> resultados) {
         this.resultados = resultados;
     }
-
+    /**
+     * Constructor por defecto de a clase.
+     */
     public ListaResEstudios() {
         this.resultados=new ArrayList <ResultadoEstudios>();
     }
@@ -39,14 +45,35 @@ public class ListaResEstudios {
         this.resultados = resultados;
     }
     
+    /**
+     * Agrega un objeto tipo {@code ResultadoEstudio} a la lista.
+     * @param resu Resultado a agregar
+     * @see #getResultados()
+     * @see ResultadoEstudios
+     * @see #eliminar(com.mycompany.tallerpoo.ResultadoEstudios) 
+     */
     public void agregar(ResultadoEstudios resu){
         resultados.add(resu);
     }
     
+    /**
+     * Elimina de la lista el primer resultado que coincida con el pasado por parametro.
+     * @param resu Resultado a agregar
+     * @see #getResultados()
+     * @see ResultadoEstudios
+     * @see #agregar(com.mycompany.tallerpoo.ResultadoEstudios) 
+     */
     public void eliminar(ResultadoEstudios resu){
         resultados.remove(resu);
     }
     
+    /**
+     * Escribe un resultado de estudio a un archivo en especifico.
+     * @param archivoNombre Ruta del archivo
+     * @param res Objeto tipo {@code ResultadoEstudio} a escribir en el archivo.
+     * @see ResultadoEstudios
+     * @see #leer(java.lang.String) 
+     */
     public void agregarAlArchivo(String archivoNombre, ResultadoEstudios res){
         PrintWriter salida= null;
         try {
@@ -62,6 +89,12 @@ public class ListaResEstudios {
             salida.close();
         } 
     }
+     /**
+     * Metodo que busca los resultados de estudio que se realizaron
+     * en una fecha determinada.
+     * @param fecha
+     * @return ArrayList con una lista de estudios realizados en la fecha indicada.
+     */
     public ArrayList getListaPorFecha(LocalDate fecha){
         ArrayList<ResultadoEstudios> resultados=new ArrayList();
         for (ResultadoEstudios resu : this.resultados){
@@ -71,7 +104,14 @@ public class ListaResEstudios {
         }
         return resultados;
     }
-        
+    
+    /**
+     * Metodo que lee un archivo que contenga datos de resultados de estudios
+     * representados correctamente y los almacena en esta lista.Si la lista de
+     * pacientes esta cargada, los vincula con el respctivo paciente.
+     * @param archivo Ruta del archivo a leer
+     * @see #agregarAlArchivo(java.lang.String, com.mycompany.tallerpoo.ResultadoEstudios) 
+     */
     public void leer(String archivo){
         
         ListaPacientes listapaci=DatosTaller.getPacientes();

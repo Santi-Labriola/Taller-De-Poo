@@ -13,15 +13,30 @@ public class ResultadoEstudios {
     private LocalTime hora;
     private String tipoDeEstudio;
     private String informeDeEstudio;
+    /**
+     * Paciente al cual le pertenece el resultado de estudio.
+     * @see #setPaciente(com.mycompany.tallerpoo.Paciente) 
+     * @see #getPaciente() 
+     *
+     */
     private Paciente paciente;
     
+    /**
+     * Constructor por defecto de la clase
+     */
     public ResultadoEstudios(){
         this.fecha=LocalDate.of(1, 1, 1);
         this.hora=LocalTime.of(0, 0,0);
         this.informeDeEstudio="";
         this.paciente=null;
     }
-
+    /**
+     * Constructor parametrizado de la clase.
+     * @param fecha
+     * @param hora
+     * @param tipoDeEstudio
+     * @param informeDeEstudio 
+     */
     public ResultadoEstudios(LocalDate fecha, LocalTime hora, String tipoDeEstudio, String informeDeEstudio) {
  
         this.fecha = fecha;
@@ -31,6 +46,14 @@ public class ResultadoEstudios {
         this.paciente=null;
     }
     
+    /**
+     * Constructor parametrizado de la clase, con el paciente incluido.
+     * @param fecha
+     * @param hora
+     * @param tipoDeEstudio
+     * @param informeDeEstudio
+     * @param paciente 
+     */
     public ResultadoEstudios(LocalDate fecha, LocalTime hora, String tipoDeEstudio, String informeDeEstudio, Paciente paciente) {
         this.fecha = fecha;
         this.hora = hora;
@@ -54,7 +77,7 @@ public class ResultadoEstudios {
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
-
+    
     public String getTipoDeEstudio() {
         return tipoDeEstudio;
     }
@@ -78,18 +101,5 @@ public class ResultadoEstudios {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-
-    public static ArrayList obtenerResultadoEstudios(LocalDate fecha){
-        ListaResEstudios resu=DatosTaller.getResultados();
-        ArrayList lista=resu.getListaPorFecha(fecha);
-        return lista;
-
-    }
+    
 }
-/*try {
-            PrintWriter writter= new PrintWriter(new FileWriter(archivo,true));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }*/
-
-//para escribir 
