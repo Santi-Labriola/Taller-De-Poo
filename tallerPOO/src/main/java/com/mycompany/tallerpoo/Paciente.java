@@ -13,13 +13,27 @@ public class Paciente extends Persona{ //extender de persona
     private ArrayList<ResultadoEstudios> estudios;
     private ArrayList<AdmisionDeEmergencia> admisiones;
     
+    /**
+     * Constructor por defecto de la clase.
+     */
     public Paciente(){
         super();
         this.personaContacto="";
         this.estudios=new ArrayList<ResultadoEstudios>();
         this.admisiones=new ArrayList<AdmisionDeEmergencia>();
     }
-    
+    /**
+     * Constructor parametrizado de la clase
+     * @param nombre nombre
+     * @param fechaNacimiento fecha de nacimiento
+     * @param domicilio domicilio
+     * @param documento documento/dni
+     * @param telefoFijo telefono fijo
+     * @param telefonoCelular telefono celular
+     * @param estadoCivil estado civil
+     * @param correoElectronico correo electronico
+     * @param personaContacto nombre persona de contacto
+     */
     public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
                     int documento, int telefoFijo, int telefonoCelular, 
                     String estadoCivil, String correoElectronico,
@@ -31,7 +45,20 @@ public class Paciente extends Persona{ //extender de persona
         this.admisiones=new ArrayList<AdmisionDeEmergencia>();
         
     }
-    
+    /**
+     * Constructor parametrizado de la clase.
+     * @param nombre nombre
+     * @param fechaNacimiento fecha de nacimiento
+     * @param domicilio domicilio
+     * @param documento documento/dni
+     * @param telefoFijo telefono fijo
+     * @param telefonoCelular telefono celular
+     * @param estadoCivil estado civil
+     * @param correoElectronico correo electronico
+     * @param personaContacto nombre persona de contacto
+     * @param estudios Lista de estudios
+     * @param admisiones Lista de admisiones
+     */
     public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
                     int documento, int telefoFijo, int telefonoCelular, 
                     String estadoCivil, String correoElectronico,
@@ -44,32 +71,62 @@ public class Paciente extends Persona{ //extender de persona
         this.admisiones=admisiones;
     }
     
+     /**
+     * Obtiene el nombre de la persona de contacto.
+     *
+     * @return El nombre de la persona de contacto.
+     */
     public String getPersonaContacto() {
         return personaContacto;
     }
 
+    /**
+     * Establece el nombre de la persona de contacto.
+     *
+     * @param personaContacto El nombre de la persona de contacto a establecer.
+     */
     public void setPersonaContacto(String personaContacto) {
         this.personaContacto = personaContacto;
     }
-    
+
+    /**
+     * Obtiene una lista de resultados de estudios
+     *
+     * @return {@link ArrayList<ResultadoEstudios>} Una lista de resultados de estudios.
+     */
     public ArrayList<ResultadoEstudios> getEstudios() {
         return estudios;
     }
 
+    /**
+     * Establece una lista de resultados de estudios al paciente.
+     *
+     * @param estudios La lista de resultados de estudios a establecer.
+     */
     public void setEstudios(ArrayList<ResultadoEstudios> estudios) {
         this.estudios = estudios;
     }
 
+    /**
+     * Obtiene la lista de admisiones del paciente.
+     *
+     * @return {@link ArrayList<AdmisionDeEmergencia>} lista de admisiones.
+     */
     public ArrayList<AdmisionDeEmergencia> getAdmisiones() {
         return admisiones;
     }
 
+    /**
+     * Establece una lista de admisiones al paciente.
+     *
+     * @param admisiones La lista de admisiones de emergencia a establecer.
+     */
     public void setAdmisiones(ArrayList<AdmisionDeEmergencia> admisiones) {
         this.admisiones = admisiones;
     }
     /**
      * Metodo que agrega un estudio a la lista de estudios del paciente
-     * @param resu tipo {@code ResultadoEstudios}
+     * @param resu tipo {@link ResultadoEstudios}
      * @see #agregarAdmision(com.mycompany.tallerpoo.AdmisionDeEmergencia) 
      */
     public void agregarEstudio(ResultadoEstudios resu){
@@ -78,7 +135,7 @@ public class Paciente extends Persona{ //extender de persona
     
     /**
      * Metodo que agrega una admision a la lista de admisiones del paciente
-     * @param adm tipo {@code AdmisionDeEmergencia}
+     * @param adm tipo {@link AdmisionDeEmergencia}
      */
     public void agregarAdmision(AdmisionDeEmergencia adm){
         this.admisiones.add(adm);
@@ -86,7 +143,7 @@ public class Paciente extends Persona{ //extender de persona
     
     /**
      * Metodo para calcular la edad del paciente en base a su fecha de nacimiento.
-     * @return {@code int} -  edad del paciente
+     * @return {@link int} -  edad del paciente
      */
     public int obtenerEdad(){
         
@@ -115,6 +172,10 @@ public class Paciente extends Persona{ //extender de persona
         return edad;
     }
     
+    /**
+     * Concatena toda la informacion del paciente en un string.
+     * @return {@link String} con toda la informacion del paciente
+     */
     @Override
     public String toString() {
         return "Paciente{" + "Nombre=" + this.getNombre() + ", Documento=" + this.getDocumento() + ", Resultados=" + this.estudios + ", Admisiones=" + this.admisiones +'}';
