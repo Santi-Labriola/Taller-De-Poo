@@ -1,14 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.tallerpoo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * Esta clase representa un enfermero.
+ * Esta clase representa a un enfermero.
  * @see Medico
  * @see ListaEnfermeros
  * @author Santi
@@ -16,12 +13,24 @@ import java.time.LocalTime;
 public class Enfermero extends Persona {
     //public ArrayList<Triage> triage;  
     
-    
-    
+    /**
+     * Constructor por defecto de la clase.
+     */
     public Enfermero () {
         super();
     }
-
+    
+    /**
+     * Constructor parametrizado de la clase.
+     * @param nombre nombre
+     * @param fechaNacimiento fecha de nacimiento
+     * @param domicilio domicilio
+     * @param documento documento/dni
+     * @param telefoFijo telefono fijo
+     * @param telefonoCelular telefono celular
+     * @param estadoCivil estado civil
+     * @param correoElectronico correo electronico
+     */
     public Enfermero(String nombre, LocalDate fechaNacimiento, String domicilio, int documento, int telefoFijo, int telefonoCelular, String estadoCivil, String correoElectronico) {
         super(nombre, fechaNacimiento, domicilio, documento, telefoFijo,
                 telefonoCelular, estadoCivil, correoElectronico);
@@ -92,7 +101,17 @@ public class Enfermero extends Persona {
         triage.setMotivoCambio(motivo);
     }
     
-    
+    /**
+     * Intenta asignar un box a una admision. Este metodo deberia ser llamado al
+     * atender a un paciente para asignarle un box.
+     * @param admi admision a la que se le desea asignar un box.
+     * @param box box que desea asignarse.
+     * @return devuelve true si pudo asignarse correctamente, devuelve false si el
+     * box está ocupado.
+     * @see Box
+     * @see AdmisionDeEmergencia
+     * @see ListaBox
+     */
     public boolean asignarBox(AdmisionDeEmergencia admi, Box box){
         if (box.isOcupado()){
             return false;
