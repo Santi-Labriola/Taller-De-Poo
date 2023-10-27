@@ -38,13 +38,30 @@ public class ListaAsignacionBox {
         this.asignaciones = asignaciones;
     }
 
+    /**
+     * Obtiene la lista de asignaciones de box.
+     *
+     * @return La lista de asignaciones .
+     */   
     public ArrayList<AsignacionBox> getAsignaciones() {
         return asignaciones;
     }
 
+    /**
+     * Establece la lista de asignaciones de box con una nueva lista.
+     *
+     * @param asignaciones La nueva lista de asignaciones de box a establecer.
+     */
+    
     public void setAsignaciones(ArrayList<AsignacionBox> asignaciones) {
         this.asignaciones = asignaciones;
     }
+    
+    /**
+     * Agrega una instancia de AsignacionBox a la lista de asignaciones.
+     *
+     * @param asig La instancia de AsignacionBox que se agregará a la lista.
+     */
     
     public void agregar(AsignacionBox asig){
         asignaciones.add(asig);
