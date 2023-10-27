@@ -13,32 +13,62 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
- *
+ * La clase ListaEnfermeros es una colección que almacena instancias de la clase Enfermero.
+ * Permite agregar enfermeros a la lista, así como leer y escribir datos de enfermeros desde/hacia un archivo.
  * @author Lucas
  */
-public class ListaEnfermeros {
-    private ArrayList<Enfermero> enfermeros;
 
+public class ListaEnfermeros {
+    /**
+     * Una lista que almacena instancias de la clase Enfermero.
+     */
+    private ArrayList<Enfermero> enfermeros;
+    
+    /**
+     * Una lista que almacena instancias de la clase Enfermero.
+     */
+    
     public ListaEnfermeros(ArrayList<Enfermero> enfermeros) {
         this.enfermeros = enfermeros;
     }
 
+    /**
+     * Constructor de la clase ListaEnfermeros que crea una lista vacía de enfermeros.
+     */    
     public ListaEnfermeros() {
         this.enfermeros=new ArrayList<Enfermero>();
     }
-
+    /**
+     * Obtiene la lista de enfermeros.
+     *
+     * @return La lista de enfermeros almacenada en esta instancia.
+     */    
     public ArrayList<Enfermero> getEnfermeros() {
         return enfermeros;
     }
+/**
+     * Establece la lista de enfermeros con una nueva lista.
+     *
+     * @param enfermeros La nueva lista de enfermeros a establecer.
+     */
 
     public void setEnfermeros(ArrayList<Enfermero> enfermeros) {
         this.enfermeros = enfermeros;
     }
     
+    /**
+     * Agrega una instancia de Enfermero a la lista de enfermeros.
+     *
+     * @param enfermero La instancia de Enfermero que se agregará a la lista.
+     */    
     public void agregar(Enfermero enfermero){
         this.enfermeros.add(enfermero);
     }
-    
+    /**
+     * Agrega una instancia de Enfermero a la lista de enfermeros.
+     *
+     * @param enfermero La instancia de Enfermero que se agregará a la lista.
+     */    
     public void agregarArchivo(String archivoNombre, Enfermero enfermero){
         PrintWriter salida= null;
         try {
@@ -56,6 +86,12 @@ public class ListaEnfermeros {
         } 
     }
     
+    /**
+     * Lee información de enfermeros desde un archivo especificado y agrega los enfermeros a la lista.
+     *
+     * @param archivoNombre El nombre del archivo del cual se leerá la información de los enfermeros.
+     * @return Una lista de enfermeros creada a partir de los datos leídos.
+     */    
     public ArrayList<Enfermero> leer(String archivoNombre){
         try {
             BufferedReader reader= new BufferedReader (new FileReader(archivoNombre));
