@@ -36,7 +36,7 @@ public class Triage {
     private String motivoCambio;
     private String colorFinal;
     private Medico medico;
-    
+    private Enfermero enfermero;
     private AdmisionDeEmergencia admision;
     
     //public ArrayList<Enfermero> enfermero; 

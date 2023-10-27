@@ -15,8 +15,7 @@ public abstract class DatosTaller {
     private static ListaPacientes pacientesSinTriage=new ListaPacientes();
     private static ListaPacientes pacientesTriageados=new ListaPacientes();
     private static ListaAsignacionBox asignaciones=new ListaAsignacionBox();
-    
-    private static ListaPVarias listavarias=new ListaPVarias();
+    private static ListaEnfermeros enfermeros=new ListaEnfermeros();
     private static ListaTriage triages=new ListaTriage();
 
     public static ListaTriage getTriages() {
@@ -27,15 +26,6 @@ public abstract class DatosTaller {
         DatosTaller.triages = triages;
     }
 
-    public static ListaPVarias getListavarias() {
-        return listavarias;
-    }
-
-    public static void setListavarias(ListaPVarias listavarias) {
-        DatosTaller.listavarias = listavarias;
-    }
-    
-    
     public static ListaPacientes getPacientes() {
         return pacientes;
     }
@@ -106,6 +96,14 @@ public abstract class DatosTaller {
         return asignaciones;
     }
 
+    public static ListaEnfermeros getEnfermeros() {
+        return enfermeros;
+    }
+
+    public static void setEnfermeros(ListaEnfermeros enfermeros) {
+        DatosTaller.enfermeros = enfermeros;
+    }
+    
     public static void setAsignaciones(ListaAsignacionBox asignaciones) {
         DatosTaller.asignaciones = asignaciones;
     }
