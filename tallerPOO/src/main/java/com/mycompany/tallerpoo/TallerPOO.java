@@ -41,17 +41,18 @@ public class TallerPOO {
         ////////////////////////////////////////////////
 //        ListaPVarias listavarias=new ListaPVarias();
         
+        String userDir=System.getProperty("user.dir");
         
-        listaBox.leer("Archivos/Boxes.txt");
-        listapaci.leer("Archivos/Pacientes.txt");
-        listaresu.leer("Archivos/ResEstudios.txt");
-        listaAdmisiones.leer("Archivos/Admisiones.txt",listapaci);
-        listamedi.leer("Archivos/Medicos.txt");
-        listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
-        listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
-        listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
-        listaenfermeros.leer("Archivos/Enfermeros.txt");
-        prueba.leer("Archivos/Triage.txt");
+        listaBox.leer(userDir+"\\Archivos\\Boxes.txt");
+        listapaci.leer(userDir+"\\Archivos\\Pacientes.txt");
+        listaresu.leer(userDir+"\\Archivos\\ResEstudios.txt");
+        listaAdmisiones.leer(userDir+"\\Archivos\\Admisiones.txt",listapaci);
+        listamedi.leer(userDir+"\\Archivos\\Medicos.txt");
+        listaespe.leer(userDir+"\\Archivos\\Especialidades.txt",listamedi,listamedesp);
+        listaPaciSinTriage.leer(userDir+"\\Archivos\\EnEsperaAlTriage.txt");
+        listaPaciTriageados.leer(userDir+"\\Archivos\\EnEsperaPorAtender.txt");
+        listaenfermeros.leer(userDir+"\\Archivos\\Enfermeros.txt");
+        prueba.leer(userDir+"\\Archivos\\Triage.txt");
         
         DatosTaller.setPacientes(listapaci);
         DatosTaller.setMedicos(listamedi);

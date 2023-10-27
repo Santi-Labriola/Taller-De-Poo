@@ -8,18 +8,17 @@ package com.mycompany.tallerpoo;
  *
  * @author Matias
  */
-import com.mycompany.tallerpoo;
 
 public class FuncionarioAdministrativo  {
 
-    private Sector nombre;
-    
-     public String getNombre() {
-         String nombre = null;
-        return nombre;
-    }
-
-    public void setNombre(Sector nombre) {
-        this.nombre = nombre;
-    }
+//    private Sector nombre;
+//    
+//     public String getNombre() {
+//         String nombre = null;
+//        return nombre;
+//    }
+//
+//    public void setNombre(Sector nombre) {
+//        this.nombre = nombre;
+//    }
 }
