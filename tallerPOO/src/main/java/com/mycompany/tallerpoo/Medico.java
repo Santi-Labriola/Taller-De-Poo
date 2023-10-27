@@ -88,9 +88,10 @@ public class Medico extends Persona{
         
         triage.setColorSugerido(color);
         triage.setColorFinal(color);
+        triage.setMedico(this);
         
         admision.setTriage(triage);
-        
+        triage.setAdmision(admision);
         
         Paciente paci=admision.getPaciente();
         DatosTaller.eliminarPacienteAdmision(paci);
