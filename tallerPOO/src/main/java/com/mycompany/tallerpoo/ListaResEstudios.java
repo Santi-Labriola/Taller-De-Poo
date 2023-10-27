@@ -95,7 +95,7 @@ public class ListaResEstudios {
      * @param fecha
      * @return ArrayList con una lista de estudios realizados en la fecha indicada.
      */
-    public ArrayList getListaPorFecha(LocalDate fecha){
+    public ArrayList<ResultadoEstudios> getListaPorFecha(LocalDate fecha){
         ArrayList<ResultadoEstudios> resultados=new ArrayList();
         for (ResultadoEstudios resu : this.resultados){
             if (resu.getFecha().isEqual(fecha)){
@@ -104,17 +104,39 @@ public class ListaResEstudios {
         }
         return resultados;
     }
-    
     /**
      * Metodo que lee un archivo que contenga datos de resultados de estudios
-     * representados correctamente y los almacena en esta lista.Si la lista de
-     * pacientes esta cargada, los vincula con el respctivo paciente.
+     * representados correctamente y los almacena en esta lista.En este metodo
+     * no se pasa la lista de pacientes, por lo que no se los relaciona.
      * @param archivo Ruta del archivo a leer
      * @see #agregarAlArchivo(java.lang.String, com.mycompany.tallerpoo.ResultadoEstudios) 
      */
     public void leer(String archivo){
+        leerInterno(archivo,null);
+    }
+    /**
+     * Metodo que lee un archivo que contenga datos de resultados de estudios
+     * representados correctamente y los almacena en esta lista.En este metodo se 
+     * pasa la lista de pacintes por parametro, y se vincula el estudio con su
+     * respectivo {@code Paciente} de la lista
+     * @param archivo Ruta del archivo a leer
+     * @param listapaci lista de pacientes en la que se busca y se vincula su resultado de estudio
+     * @see #agregarAlArchivo(java.lang.String, com.mycompany.tallerpoo.ResultadoEstudios) 
+     */
+    public void leer(String archivo, ListaPacientes listapaci){
+        leerInterno(archivo,listapaci);
+    }
+    
+    /**
+     * Metodo interno que realiza la lectura y almacena en esta lista los resultado de estudios
+     * y dependiendo de si se pasa una lista de pacientes nula o no, se vinculan los
+     * resultados de estudio con su respectivo paciente.
+     * @param archivo Ruta del archivo a leer
+     * @param listapaci lista de pacientes a vincular
+     * @see #agregarAlArchivo(java.lang.String, com.mycompany.tallerpoo.ResultadoEstudios) 
+     */
+    private void leerInterno(String archivo,ListaPacientes listapaci){
         
-        ListaPacientes listapaci=DatosTaller.getPacientes();
         try {
             BufferedReader reader= new BufferedReader (new FileReader(archivo));
             String linea = reader.readLine();

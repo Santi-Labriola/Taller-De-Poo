@@ -67,15 +67,27 @@ public class Paciente extends Persona{ //extender de persona
     public void setAdmisiones(ArrayList<AdmisionDeEmergencia> admisiones) {
         this.admisiones = admisiones;
     }
-    
+    /**
+     * Metodo que agrega un estudio a la lista de estudios del paciente
+     * @param resu tipo {@code ResultadoEstudios}
+     * @see #agregarAdmision(com.mycompany.tallerpoo.AdmisionDeEmergencia) 
+     */
     public void agregarEstudio(ResultadoEstudios resu){
         this.estudios.add(resu);
     }
     
+    /**
+     * Metodo que agrega una admision a la lista de admisiones del paciente
+     * @param adm tipo {@code AdmisionDeEmergencia}
+     */
     public void agregarAdmision(AdmisionDeEmergencia adm){
         this.admisiones.add(adm);
     }
     
+    /**
+     * Metodo para calcular la edad del paciente en base a su fecha de nacimiento.
+     * @return {@code int} -  edad del paciente
+     */
     public int obtenerEdad(){
         
         int edad;
