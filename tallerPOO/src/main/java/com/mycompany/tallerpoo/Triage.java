@@ -12,10 +12,14 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
+ *Esta clase representa un registro de triaje en un entorno médico.
+ *
+ * La clase almacena información relacionada con el triaje de un paciente en un entorno médico, incluyendo su fecha, hora y varios indicadores de salud.
+ * Se utiliza para determinar el color sugerido de prioridad de atención del paciente.
  *
  * @author Matias
  */
-//
+
 public class Triage {
     private LocalDate Fecha;
     private LocalTime hora;
@@ -38,17 +42,32 @@ public class Triage {
     private Medico medico;
     private Enfermero enfermero;
     private AdmisionDeEmergencia admision;
-    
-    //public ArrayList<Enfermero> enfermero; 
+        
      
+    /**
+     * Constructor de la clase Triage con fecha y color sugerido.
+     *
+     * @param Fecha La fecha en la que se realiza el triaje.
+     * @param colorSugerido El color sugerido de prioridad de atención.
+     */
 
     public Triage (LocalDate Fecha, String colorSugerido) {
         this.Fecha = Fecha;
         this.colorSugerido = colorSugerido;
     }
     
-    
+   
+    /**
+     * Constructor predeterminado de Triage. Inicializa todos los campos de la instancia con valores predeterminados.
+     * 
+     * La fecha se establece en el 1 de enero del año 1.
+     * La hora se establece en las 00:00:00.
+     * Los valores de los indicadores y propiedades de triage se establecen en 0.
+     * Las cadenas de colorSugerido, motivoCambio y colorFinal se inicializan como cadenas vacías.
+     * Las instancias de AdmisionDeEmergencia y Medico se crean con sus constructores predeterminados.
+     */
 
+   
     public Triage() {
         
         this.Fecha = LocalDate.of(1, 1, 1);;
@@ -74,7 +93,29 @@ public class Triage {
     }
     
     
-
+    /**
+     * Constructor de la clase Triage parametrizado .
+     * @param Fecha
+     * @param hora
+     * @param respiracion
+     * @param pulso
+     * @param estadoMental
+     * @param consciencia
+     * @param dificultadRespiracion
+     * @param lesionesGraves
+     * @param edad
+     * @param fiebre
+     * @param vomitos
+     * @param dolorAbdominal
+     * @param signosShock
+     * @param lesionesLeves
+     * @param sangrado
+     * @param colorSugerido
+     * @param motivoCambio
+     * @param colorFinal
+     * @param admision 
+     */
+    
     public Triage(LocalDate Fecha, LocalTime hora, int respiracion, int pulso, int estadoMental, int consciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal, AdmisionDeEmergencia admision) {
         this.Fecha = Fecha;
         this.hora = hora;
@@ -98,6 +139,30 @@ public class Triage {
         this.medico=new Medico();
     }
 
+    /**
+     * Constructor de la clase Triage parametrizado .
+     * @param Fecha
+     * @param hora
+     * @param respiracion
+     * @param pulso
+     * @param estadoMental
+     * @param consciencia
+     * @param dificultadRespiracion
+     * @param lesionesGraves
+     * @param edad
+     * @param fiebre
+     * @param vomitos
+     * @param dolorAbdominal
+     * @param signosShock
+     * @param lesionesLeves
+     * @param sangrado
+     * @param colorSugerido
+     * @param motivoCambio
+     * @param colorFinal
+     * @param medico
+     * @param admision 
+     */
+    
     public Triage(LocalDate Fecha, LocalTime hora, int respiracion, int pulso, int estadoMental, int consciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal, Medico medico, AdmisionDeEmergencia admision) {
         this.Fecha = Fecha;
         this.hora = hora;
@@ -122,7 +187,7 @@ public class Triage {
     }
     
     
-
+    
     public LocalDate getFecha() {
         return Fecha;
     }
@@ -307,6 +372,12 @@ public class Triage {
         this.admision = admision;
     }
     //////////////////////////////////////////////////////////////////////
+    
+    /**
+     * Obtener el DNI del paciente asociado a la admisión.
+     *
+     * @return El número de DNI del paciente si está disponible, de lo contrario, "Documento no disponible".
+     */
     public String obtenerDNI() {
         if (admision != null && admision.getPaciente() != null) {
             return String.valueOf(admision.getPaciente().getDocumento());
@@ -314,7 +385,13 @@ public class Triage {
             return "Documento no disponible";
         } 
     }
-     public LocalDate obtenerFechaAdmision() {
+    
+    /**
+     * Obtener fecha de admisión vinculada.
+     *
+     * @return El número de DNI del paciente si está disponible, de lo contrario, "Documento no disponible".
+     */
+    public LocalDate obtenerFechaAdmision() {
         if (admision != null) {
             return admision.getFecha();
         } else {
@@ -322,8 +399,25 @@ public class Triage {
         }
     }
     
-    
-    
+    /**
+     * Obtener el color sugerido del triaje en función de varios indicadores de salud.
+     *
+     * @param respiracion La puntuación de respiración.
+     * @param pulso La puntuación de pulso.
+     * @param estadoMental La puntuación del estado mental.
+     * @param consciencia La puntuación de consciencia.
+     * @param dificultadRespiracion La puntuación de dificultad respiratoria.
+     * @param lesionesGraves La puntuación de lesiones graves.
+     * @param edad La puntuación de edad.
+     * @param fiebre La puntuación de fiebre.
+     * @param vomito La puntuación de vómito.
+     * @param dolorAbdominal La puntuación de dolor abdominal.
+     * @param signosShock La puntuación de signos de shock.
+     * @param lesionesLeves La puntuación de lesiones leves.
+     * @param sangrado La puntuación de sangrado.
+     *
+     * @return El color sugerido de prioridad de atención ("Rojo", "Naranja", "Amarillo", "Verde" o "Azul").
+     */
     
       
     public  String  obtenerColorSugerido  (int respiracion, int pulso 
@@ -351,7 +445,15 @@ public class Triage {
 
         }
 
-   
+    /**
+     * Obtiene la cantidad de triajes realizados en un rango de fechas y clasifica
+     * 
+     * @param fecha1 La fecha de inicio de rango.
+     * @param fecha2 La fecha de inicio de rango.
+     * @return Una lista de enteros que contiene la cantidad de triajes por cada color en el rango de fechas especificado.
+     * @throws FileNotFoundException Si hay un error al abrir el archivo "Triage.txt".
+     * @throws IOException  Si ocurre un error de entrada/salida al leer el archivo.
+     */        
       
     public static ArrayList<Integer> cantTriagePorFecha(LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {
         ArrayList<Integer> lista = new ArrayList<>();
@@ -406,8 +508,16 @@ public class Triage {
     return lista;
     }   
      
-     
-     
+  /**
+    * Obtiene la lista de colores cambiados en triaje en un rango de fechas.
+    *
+    * @param fecha1 La fecha de inicio del rango.
+    * @param fecha2 La fecha de fin del rango.
+    * @return Una lista de cadenas que describe los cambios de triaje en el rango de fechas especificado.
+    * @throws FileNotFoundException Si hay un error al abrir el archivo "Triage.txt".
+    * @throws IOException Si ocurre un error de entrada/salida al leer el archivo.
+    */
+
        public static ArrayList<String> obtenerTriageCambiadosPorFecha(LocalDate fecha1, LocalDate fecha2) throws FileNotFoundException, IOException {
     ArrayList<String> lista = new ArrayList<>();
    
@@ -445,6 +555,11 @@ public class Triage {
     return lista;
 }    
     
+    /**
+     * Devuelve una representación en forma de cadena de la instancia actual de Triage.
+     *
+     * @return Una cadena que incluye información sobre la fecha y el color sugerido de la instancia Triage.
+     */
      public String toString() {
         return "Triage{" + "Fecha=" + Fecha + ", colorSugerido=" + colorSugerido + '}';
     } 
