@@ -372,18 +372,18 @@ public class Triage {
                     String[] splitFecha = array[0].split("-");
                     LocalDate date = LocalDate.of(Integer.parseInt(splitFecha[0]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[2]));
                     tri = new Triage();
-                    tri.setColorSugerido(array[1]);
+                    tri.setColorFinal(array[2]);
 
                     if (date.isAfter(fecha1) && date.isBefore(fecha2)) {
-                        if (tri.getColorSugerido().equals("Rojo")) {
+                        if (tri.getColorFinal().equals("Rojo")) {
                             rojo++;
-                        } else if (tri.getColorSugerido().equals("Naranja")) {
+                        } else if (tri.getColorFinal().equals("Naranja")) {
                             naranja++;
-                        } else if (tri.getColorSugerido().equals("Amarillo")) {
+                        } else if (tri.getColorFinal().equals("Amarillo")) {
                             amarillo++;
-                        } else if (tri.getColorSugerido().equals("Verde")) {
+                        } else if (tri.getColorFinal().equals("Verde")) {
                             verde++;
-                        } else if (tri.getColorSugerido().trim().equals("Azul")) {
+                        } else if (tri.getColorFinal().trim().equals("Azul")) {
                             azul++;
                         }
                     }

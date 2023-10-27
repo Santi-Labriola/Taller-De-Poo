@@ -90,7 +90,7 @@ public class TallerPOO {
         
         /////////////////////////////////////////////////////////
        //METODOS TRIAGE
-        /*
+        
         Triage hola= new Triage();
         Triage opa= new Triage();
         ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
@@ -105,7 +105,7 @@ public class TallerPOO {
         
         for( int i=0; i<res.size() ;i++){
             System.out.println( res.get(i));}                
-        */
+        
        
        ////////////////////////////////////////////////////////////////////
        
@@ -113,7 +113,7 @@ public class TallerPOO {
        //METODOS DE REGISTRO MEDICO        
          
         String dniMedico="42218299"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
-       
+       /*
        int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico); //MUESTRA CUANTOS PACIENTES ATENDIO ESE MEDICO PASADO POR PARAMETROS
         System.out.println("Número de pacientes atendidos por el médico en el rango de fechas: " + numPacientes);
         
@@ -132,7 +132,7 @@ public class TallerPOO {
         int resultado = CalcularPacPorEdadesyFechas(fecha1, fecha2, edad1, edad2);        
         System.out.println("Número de pacientes en el rango de edades entre: "+edad1 + "  y   "+ edad2 +" en las fechas: "+ fecha1+"-"+fecha2+" es de: " +resultado);
        
-        
+        */
         //////////////////////////////////////////////////////////////////////////////////////           
         MenuGestorCentro abc=new MenuGestorCentro();
         abc.setVisible(true);
