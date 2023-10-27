@@ -2,8 +2,9 @@
 package com.mycompany.tallerpoo;
 
 /**
- *
- * @author Usuario
+ * Clase que almacena todas las listas con los datos que son leidos desde almacenamiento
+ * y luego usados en todo el programa.
+ * @author Lucas
  */
 public abstract class DatosTaller {
     private static ListaPacientes pacientes=new ListaPacientes();
@@ -12,7 +13,15 @@ public abstract class DatosTaller {
     private static ListaAdmisiones admisiones=new ListaAdmisiones();
     private static ListaEspecialidades especialidades=new ListaEspecialidades();
     private static ListaBox boxes=new ListaBox();
+    /**
+     * Lista que almacena a los pacientes que son admitidos, y estan a la espera
+     * de un triage.
+     */
     private static ListaPacientes pacientesSinTriage=new ListaPacientes();
+    /**
+     * Lista que almacena a los pacientes que se han realizado el triage, y estan
+     * a la espera de ser atendidos por un medico.
+     */
     private static ListaPacientes pacientesTriageados=new ListaPacientes();
     private static ListaAsignacionBox asignaciones=new ListaAsignacionBox();
     private static ListaEnfermeros enfermeros=new ListaEnfermeros();
@@ -108,23 +117,42 @@ public abstract class DatosTaller {
         DatosTaller.asignaciones = asignaciones;
     }
        
+    /**
+     * Agrega un paciente a la lista general de pacientes.
+     * @param paci paciente a agregar 
+     */
     public static void agregarPaciente(Paciente paci){
         pacientes.agregar(paci);
     }
     
+    /**
+     * Agrega un paciente a la lista de pacientes a la espera del triage.
+     * @param paci 
+     */
     public static void agregarPacienteAdmision(Paciente paci){
         pacientesSinTriage.agregar(paci);
     }
     
+    /**
+     * Elimina un paciente de la lista de pacientes en espera de ser triageados
+     * @param paci 
+     */
     public static void eliminarPacienteAdmision(Paciente paci){
         pacientesSinTriage.eliminar(paci);
     }
     
-    
+    /**
+     * Agrega un paciente a la lista de pacientes a la espera de ser atendidos.
+     * @param paci 
+     */
     public static void agregarPacienteTriage(Paciente paci){
         pacientesTriageados.agregar(paci);
     }
     
+    /**
+     * Elimina un paciente de la lista de pacientes en espera de ser atendidos.
+     * @param paci 
+     */
     public static void eliminarPacienteTriage(Paciente paci){
         pacientesTriageados.eliminar(paci);
     }
