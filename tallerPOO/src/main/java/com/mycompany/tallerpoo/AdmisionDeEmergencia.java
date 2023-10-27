@@ -19,7 +19,7 @@ public class AdmisionDeEmergencia {
         this.hora=LocalTime.of(0, 0,0);
         this.motivoDeConsulta="";
         this.paciente=new Paciente();
-        this.triage=new Triage();
+        this.triage=null;
         this.box=new Box();
     }
 
@@ -28,7 +28,7 @@ public class AdmisionDeEmergencia {
         this.hora = hora;
         this.motivoDeConsulta = motivoDeConsulta;
         this.paciente=new Paciente();
-        this.triage=new Triage();
+        this.triage=null;
     }
     
     public AdmisionDeEmergencia(LocalDate fecha, LocalTime hora, String motivoDeConsulta,Paciente paciente) {
@@ -36,7 +36,7 @@ public class AdmisionDeEmergencia {
         this.hora = hora;
         this.motivoDeConsulta = motivoDeConsulta;
         this.paciente=paciente;
-        this.triage=new Triage();
+        this.triage=null;
     }
 
     public AdmisionDeEmergencia(LocalDate fecha, LocalTime hora, String motivoDeConsulta, Paciente paciente, Triage triage) {

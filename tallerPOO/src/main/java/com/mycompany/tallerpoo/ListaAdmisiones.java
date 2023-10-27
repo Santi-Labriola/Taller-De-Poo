@@ -55,6 +55,9 @@ public class ListaAdmisiones {
         leerInterno(archivo,listapaci);
     }
     
+//    public AdmisionDeEmergencia buscar(int Dni,LocalDate fecha){
+//        
+//    }
     public void agregarAlArchivo(String archivoNombre, AdmisionDeEmergencia admi){
         PrintWriter salida= null;
         try {
@@ -79,15 +82,15 @@ public class ListaAdmisiones {
             
             while (linea!=null && !linea.isBlank()){
                 String[] split=linea.split(",");//splitea la linea
-                String[] splitFecha=split[1].split("/");//splitea la fecha 
+                String[] splitFecha=split[1].split("-");//splitea la fecha 
                 String[] splitHora=split[2].split(":");//splitea la hora
                 
                 AdmisionDeEmergencia adm=new AdmisionDeEmergencia();
                 
                 //se inicializar la fecha y hora
-                LocalDate fecha= LocalDate.of(Integer.parseInt(splitFecha[2]),
+                LocalDate fecha= LocalDate.of(Integer.parseInt(splitFecha[0]),
                                                 Integer.parseInt(splitFecha[1]),
-                                                Integer.parseInt(splitFecha[0]));
+                                                Integer.parseInt(splitFecha[2]));
                 
                 LocalTime hora= LocalTime.of(Integer.parseInt(splitHora[0]),
                                                 Integer.parseInt(splitHora[1]),

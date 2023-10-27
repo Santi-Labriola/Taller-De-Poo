@@ -9,4 +9,3 @@
 11223344,Carlos Martínez,10/07/1976,Calle Principal 101,3333333,7777777,Divorciado,carlosmartinez@email.com,Amigo de Carlos,30/11/2022,41293478
 54321678,Ana González,03/12/1998,Calle Secundaria 567,5555555,6666666,Soltero,anagonzalez@email.com,Hermana de Ana,01/10/2023,41293478
 11223344,Carlos Martínez,10/07/1976,Calle Principal 101,3333333,7777777,Divorciado,carlosmartinez@email.com,Amigo de Carlos,15/10/2023,22348901
-

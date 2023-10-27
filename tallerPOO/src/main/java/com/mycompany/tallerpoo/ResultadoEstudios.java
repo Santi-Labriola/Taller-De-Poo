@@ -5,7 +5,7 @@ import java.util.*;
 import java.io.*;
 
 /**
- *
+ * Clase en donde se almacenan los datos de los resultados de estudios.
  * @author Lucas
  */
 public class ResultadoEstudios {

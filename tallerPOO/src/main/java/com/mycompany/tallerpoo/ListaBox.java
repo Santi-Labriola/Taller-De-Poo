@@ -51,7 +51,7 @@ public class ListaBox{
         boxes.remove(box);
     }
     
-        public void agregarAlArchivo(String archivoNombre, Box box){
+    public void agregarAlArchivo(String archivoNombre, Box box){
         PrintWriter salida= null;
         try {
             File archivo= new File(archivoNombre);
