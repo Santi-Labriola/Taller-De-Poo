@@ -47,7 +47,7 @@ public class ListaPVarias {
             String linea = br.readLine();
             while (null!=linea && !linea.isBlank()) {
                 String [] campos = linea.split(",");
-                if(  campos.length<=11){
+                if(  campos.length<=5){
                 algo=campos[0]+campos[1]+campos[9];
                 
                 this.agregar(algo);

@@ -22,10 +22,11 @@ public class TallerPOO {
     public static void main(String[] args) throws IOException {        
        
         Medico medi=new Medico("Lucas Nuñez",LocalDate.of(2022,1,1),"Alegria 123",44092390,4438354,3454343,"Soltero","lucasmagiconunez@gmail.com",7827);
-        LocalDate fecha1 = LocalDate.of(2021, 7, 15);
-        LocalDate fecha2 = LocalDate.of(2023, 10, 24);
+        LocalDate fecha1 = LocalDate.of(2000, 7, 15);
+        LocalDate fecha2 = LocalDate.of(2025, 10, 24);
        
         String barra= File.separator;
+        
         ListaBox listaBox=new ListaBox();
         ListaPacientes listapaci=new ListaPacientes();
         ListaResEstudios listaresu=new ListaResEstudios();
@@ -37,8 +38,9 @@ public class TallerPOO {
         ListaPacientes listaPaciTriageados=new ListaPacientes();
         //ListaBox listaBox=new ListaBox();
         ////////////////////////////////////////////////
-        ListaPVarias listavarias=new ListaPVarias();
+//        ListaPVarias listavarias=new ListaPVarias();
         ListaTriage prueba = new ListaTriage();
+        
         listaBox.leer("Archivos/Boxes.txt");
         listapaci.leer("Archivos/Pacientes.txt");
         listaresu.leer("Archivos/ResEstudios.txt");
@@ -48,7 +50,7 @@ public class TallerPOO {
         listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
         listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
         //listaBox.leer("Archivos/Boxes.txt");
-        listavarias.leer("Archivos"+barra+"PacientesVariasConsultas.txt");
+//        listavarias.leer("Archivos/Triage.txt");
         prueba.leer("Archivos/Triage.txt");
         
         
@@ -62,11 +64,11 @@ public class TallerPOO {
         
         DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
         DatosTaller.setPacientesTriageados(listaPaciTriageados);
-        
+        /*
         LocalTime hora=LocalTime.of(1, 2,3);
         AdmisionDeEmergencia admi=new AdmisionDeEmergencia(fecha1, hora, "ahsdsa");
         
-        medi.hacerTriage(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,admi);
+        medi.hacerTriage(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,admi);/
         /////////////////////////////////////////////////////////////////////
         /*
         DatosTaller.setListavarias(listavarias);
@@ -113,7 +115,7 @@ public class TallerPOO {
        //METODOS DE REGISTRO MEDICO        
          
         String dniMedico="42218299"; //DNI DE UN MEDICO DE LA LISTA DE MEDICOS
-       /*
+       
        int numPacientes= RegistroMedico.calcularNumPacDeMedPorFecha(fecha1, fecha2, dniMedico); //MUESTRA CUANTOS PACIENTES ATENDIO ESE MEDICO PASADO POR PARAMETROS
         System.out.println("Número de pacientes atendidos por el médico en el rango de fechas: " + numPacientes);
         
@@ -129,10 +131,10 @@ public class TallerPOO {
         String edad2 = "60"; // Edad máxima
 
         // Llama al método CalcularPacPorEdadesyFechas y almacena el resultado en una variable
-        int resultado = CalcularPacPorEdadesyFechas(fecha1, fecha2, edad1, edad2);        
-        System.out.println("Número de pacientes en el rango de edades entre: "+edad1 + "  y   "+ edad2 +" en las fechas: "+ fecha1+"-"+fecha2+" es de: " +resultado);
+        int resultadoS = CalcularPacPorEdadesyFechas(fecha1, fecha2, edad1, edad2);        
+        System.out.println("Número de pacientes en el rango de edades entre: "+edad1 + "  y   "+ edad2 +" en las fechas: "+ fecha1+"-"+fecha2+" es de: " +resultadoS);
        
-        */
+       
         //////////////////////////////////////////////////////////////////////////////////////           
         MenuGestorCentro abc=new MenuGestorCentro();
         abc.setVisible(true);

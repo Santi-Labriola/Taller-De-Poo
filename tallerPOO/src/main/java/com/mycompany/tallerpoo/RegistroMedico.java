@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -91,22 +93,22 @@ public class RegistroMedico {
     
     //calcula  los pacientes que mas consultaron en un rango de fechas
     public static ArrayList<String> calcularMasConsPorFecha(LocalDate fecha1, LocalDate fecha2) {
-    String barra = File.separator;
+    
     ArrayList<String> personasConMasConsultas = new ArrayList<>();
 
-    try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Triage.txt"))) {
         String linea = br.readLine();
         ArrayList<String> dnis = new ArrayList<>();
         ArrayList<LocalDate> fechas = new ArrayList<>();
 
         while (linea != null) {
             String[] array = linea.split(",");
-            if(array.length>=10){
+            if(array.length>=4){
+                
+            String[] splitFecha = array[0].split("-");
+            LocalDate fechaConsulta = LocalDate.of(Integer.parseInt(splitFecha[0]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[2]));
             
-            String[] splitFecha = array[9].split("/");
-            LocalDate fechaConsulta = LocalDate.of(Integer.parseInt(splitFecha[2]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[0]));
-            
-            dnis.add(array[0]);
+            dnis.add(array[3]);
             fechas.add(fechaConsulta);
             }
             linea = br.readLine();
@@ -152,21 +154,22 @@ public class RegistroMedico {
         String barra = File.separator;
         ArrayList<String> paciAtenMedi = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Triage.txt"))) {
             String linea = br.readLine();
 
             while (linea != null) {
                 String[] array = linea.split(",");
-                if (array.length >= 11) { // Asegúrate de que haya suficientes campos en la línea
-                    String dniPaciente = array[0];
-                    String fechaAtencionStr = array[9];
-                    String medicoAsignado = array[10];
-
-                    String[] splitFecha = fechaAtencionStr.split("/");
+                if (array.length >= 4) { // Asegúrate de que haya suficientes campos en la línea
+                    String dniPaciente = array[3];
+                    
+                    String medicoAsignado = array[4];
+                    
+                    String[] splitFecha = array[0].split("-");
+                    
                     LocalDate fechaAtencion = LocalDate.of(
-                            Integer.parseInt(splitFecha[2]),
+                            Integer.parseInt(splitFecha[0]),
                             Integer.parseInt(splitFecha[1]),
-                            Integer.parseInt(splitFecha[0])
+                            Integer.parseInt(splitFecha[2])
                     );
 
                     if (medicoAsignado.equals(dniMedico) && fechaAtencion.isAfter(fecha1) && fechaAtencion.isBefore(fecha2)) {
@@ -189,21 +192,21 @@ public class RegistroMedico {
         String barra = File.separator;
         ArrayList<String> citas = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Triage.txt"))) {
             String linea = br.readLine();
 
             while (linea != null) {
                 String[] array = linea.split(",");
-                if (array.length >= 11) {
-                    String dniPaciente = array[0];
-                    String fechaAtencionStr = array[9];
-                    String medicoAsignado = array[10];
+                if (array.length >= 4) {
+                    String dniPaciente = array[3];
+                    String fechaAtencionStr = array[0];
+                    String medicoAsignado = array[4];
 
-                    String[] splitFecha = fechaAtencionStr.split("/");
+                    String[] splitFecha = fechaAtencionStr.split("-");
                     LocalDate fechaAtencion = LocalDate.of(
-                            Integer.parseInt(splitFecha[2]),
+                            Integer.parseInt(splitFecha[0]),
                             Integer.parseInt(splitFecha[1]),
-                            Integer.parseInt(splitFecha[0])
+                            Integer.parseInt(splitFecha[2])
                     );
 
                     if (fechaAtencion.isAfter(fecha1) && fechaAtencion.isBefore(fecha2) ) {
@@ -242,17 +245,23 @@ public class RegistroMedico {
     int edad2Int = Integer.parseInt(edad2);
     int cont = 0;
 
-    try (BufferedReader br = new BufferedReader(new FileReader("Archivos" + barra + "PacientesVariasConsultas.txt"))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("Archivos/Triage.txt"))) {
         String linea = br.readLine();
         LocalDate fechaActual = LocalDate.now();
         while (linea != null) {
             String[] array = linea.split(",");
-            if (array.length >= 10) {
-                String[] splitFecha = array[9].split("/");
-                LocalDate fechaConsulta = LocalDate.of(Integer.parseInt(splitFecha[2]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[0]));                
-                String[] splitNac = array[2].split("/");
-                LocalDate fechaNac = LocalDate.of(Integer.parseInt(splitNac[2]), Integer.parseInt(splitNac[1]), Integer.parseInt(splitNac[0]));
-
+            if (array.length >= 4) {
+                String[] splitFecha = array[0].split("-");
+                LocalDate fechaConsulta = LocalDate.of(Integer.parseInt(splitFecha[0]), Integer.parseInt(splitFecha[1]), Integer.parseInt(splitFecha[2]));                
+                
+                Paciente paci=DatosTaller.getPacientes().getPorDni(Integer.parseInt(array[3]));
+                
+                String fecha=paci.getFechaNacimiento().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                
+                String []vector = fecha.split("/");
+                LocalDate fechaNac= LocalDate.of(Integer.parseInt(vector[0]),Integer.parseInt(vector[1]) , Integer.parseInt(vector[2]));
+                
+                
                 if (fechaConsulta.isAfter(fecha1) && fechaConsulta.isBefore(fecha2)) {
                     if (fechaNac.isBefore(fechaActual)) {
                         int edad = fechaNac.until(fechaActual).getYears();
