@@ -3,8 +3,11 @@ package com.mycompany.tallerpoo;
 import java.time.*;
 
 /**
- *
+ *Esta clase abstracta representa a una persona y almacena información básica sobre ella,
+ * como nombre, fecha de nacimiento, domicilio, documento de identidad, números de teléfono,
+ * estado civil y correo electrónico.*
  * @author Matias
+ * 
  */
 public abstract class Persona {
     
@@ -17,8 +20,24 @@ public abstract class Persona {
     private String  estadoCivil;
     private String correoElectronico;
 
+    /**
+     * Constructor predeterminado.
+     */
     public Persona() {
     }
+    
+    /**
+     * Constructor que crea una instancia de Persona con la información proporcionada.
+     * 
+     * @param nombre           El nombre de la persona.
+     * @param fechaNacimiento  La fecha de nacimiento de la persona.
+     * @param domicilio        El domicilio de la persona.
+     * @param documento        El número de documento de identidad de la persona.
+     * @param telefoFijo       El número de teléfono fijo de la persona.
+     * @param telefonoCelular  El número de teléfono celular de la persona.
+     * @param estadoCivil      El estado civil de la persona.
+     * @param correoElectronico El correo electrónico de la persona.
+     */
     
     public Persona(String nombre, LocalDate fechaNacimiento, String domicilio, int documento, int telefoFijo, int telefonoCelular, String estadoCivil, String correoElectronico) {
         this.nombre = nombre;
@@ -30,6 +49,9 @@ public abstract class Persona {
         this.estadoCivil = estadoCivil;
         this.correoElectronico = correoElectronico;
     }
+        
+    // A continuación se presentan los métodos getter y setter de los atributos de la clase.
+
 
     public String getNombre() {
         return nombre;
@@ -95,6 +117,13 @@ public abstract class Persona {
         this.correoElectronico = correoElectronico;
     }
 
+    /**
+     * Sobrescribe el método toString para obtener una representación en cadena de la
+     * instancia de la clase Persona.
+     * 
+     * @return Una cadena que representa los atributos de la persona.
+     */
+    
     @Override
     public String toString() {
         return "Persona{" + "nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", domicilio=" + domicilio + ", documento=" + documento + ", telefoFijo=" + telefoFijo + ", telefonoCelular=" + telefonoCelular + ", estadoCivil=" + estadoCivil + ", correoElectronico=" + correoElectronico + '}';

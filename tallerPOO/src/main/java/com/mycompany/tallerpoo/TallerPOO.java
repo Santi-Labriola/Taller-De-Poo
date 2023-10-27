@@ -96,7 +96,7 @@ public class TallerPOO {
         Triage hola= new Triage();
         Triage opa= new Triage();
         ArrayList<Integer> resultado = hola.cantTriagePorFecha(fecha1,fecha2);
-        ArrayList<String> res=opa.obtenerTriageCambiadosPorFecha(fecha1,fecha2);
+        
         String colour="";    
         for (int i = 0; i < resultado.size(); i++) {
                 if (i==0){colour="Rojo";}if (i==1){colour="Naranja";}
@@ -105,6 +105,9 @@ public class TallerPOO {
                 System.out.println
         ("Recuento de categoría " + colour + ": " + resultado.get(i));}
         
+        
+        
+        ArrayList<String> res=opa.obtenerTriageCambiadosPorFecha(fecha1,fecha2);
         for( int i=0; i<res.size() ;i++){
             System.out.println( res.get(i));}                
         
