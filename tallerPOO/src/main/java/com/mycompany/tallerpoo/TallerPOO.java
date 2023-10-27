@@ -36,10 +36,11 @@ public class TallerPOO {
         ListaMedEsp listamedesp=new ListaMedEsp();
         ListaPacientes listaPaciSinTriage=new ListaPacientes();
         ListaPacientes listaPaciTriageados=new ListaPacientes();
-        //ListaBox listaBox=new ListaBox();
+        ListaTriage prueba = new ListaTriage();
+        ListaEnfermeros listaenfermeros=new ListaEnfermeros();
         ////////////////////////////////////////////////
 //        ListaPVarias listavarias=new ListaPVarias();
-        ListaTriage prueba = new ListaTriage();
+        
         
         listaBox.leer("Archivos/Boxes.txt");
         listapaci.leer("Archivos/Pacientes.txt");
@@ -49,11 +50,8 @@ public class TallerPOO {
         listaespe.leer("Archivos/Especialidades.txt",listamedi,listamedesp);
         listaPaciSinTriage.leer("Archivos/EnEsperaAlTriage.txt");
         listaPaciTriageados.leer("Archivos/EnEsperaPorAtender.txt");
-        //listaBox.leer("Archivos/Boxes.txt");
-//        listavarias.leer("Archivos/Triage.txt");
+        listaenfermeros.leer("Archivos/Enfermeros.txt");
         prueba.leer("Archivos/Triage.txt");
-        
-        
         
         DatosTaller.setPacientes(listapaci);
         DatosTaller.setMedicos(listamedi);
@@ -61,9 +59,11 @@ public class TallerPOO {
         DatosTaller.setAdmisiones(listaAdmisiones);
         DatosTaller.setEspecialidades(listaespe);
         DatosTaller.setBoxes(listaBox);
-        
+        DatosTaller.setTriages(prueba);
         DatosTaller.setPacientesSinTriage(listaPaciSinTriage);
         DatosTaller.setPacientesTriageados(listaPaciTriageados);
+        DatosTaller.setEnfermeros(listaenfermeros);
+        
         /*
         LocalTime hora=LocalTime.of(1, 2,3);
         AdmisionDeEmergencia admi=new AdmisionDeEmergencia(fecha1, hora, "ahsdsa");
@@ -71,7 +71,6 @@ public class TallerPOO {
         medi.hacerTriage(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,admi);/
         /////////////////////////////////////////////////////////////////////
         /*
-        DatosTaller.setListavarias(listavarias);
         DatosTaller.setTriages(prueba);
                 AdmisionDeEmergencia admision2 = new AdmisionDeEmergencia(
             LocalDate.of(2023, 10, 26),

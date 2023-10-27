@@ -17,13 +17,15 @@ import java.time.LocalTime;
 public class Enfermero extends Persona {
     //public ArrayList<Triage> triage;  
     
-    public Enfermero (String nombre, LocalDate fechaNacimiento, String domicilio, 
-                  int documento, int telefoFijo, int telefonoCelular, 
-                  String estadoCivil, String correoElectronico) {
-        
-        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, 
-            telefonoCelular, estadoCivil, correoElectronico);
-                      
+    
+    
+    public Enfermero () {
+        super();
+    }
+
+    public Enfermero(String nombre, LocalDate fechaNacimiento, String domicilio, int documento, int telefoFijo, int telefonoCelular, String estadoCivil, String correoElectronico) {
+        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo,
+                telefonoCelular, estadoCivil, correoElectronico);
     }
     
     public Triage hacerTriage(LocalDate Fecha, LocalTime hora, int respiracion, int pulso, int estadoMental, int conciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, AdmisionDeEmergencia admision){
