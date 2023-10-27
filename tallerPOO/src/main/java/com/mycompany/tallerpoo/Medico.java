@@ -5,13 +5,41 @@ import java.time.*;
 import java.util.*;
 
 /**
- *
+ * Esta clase representa un médico, y hereda los atributos de una persona.
+ * @see     Persona
+ * @see     Enfermero
+ * @see     ListaMedicos
  * @author Lucas
  */
 public class Medico extends Persona{
+    
+    /**
+     * Matricula de un medico.
+     * @see #getMatricula()
+     * @see #setMatricula(int) 
+     */
     private int matricula;
+    /**
+     * Lista de especialidades de un medico.
+     * @see Especialidad
+     * @see #getEspecialidad() 
+     * @see #setEspecialidad(java.util.ArrayList) 
+     * @see #agregarEspecialidad(com.mycompany.tallerpoo.Especialidad) 
+     */
     private ArrayList<Especialidad> especialidad;
   
+    /**
+     * Constructor parametrizado de medico.
+     * @param nombre
+     * @param fechaNacimiento
+     * @param domicilio
+     * @param documento
+     * @param telefoFijo
+     * @param telefonoCelular
+     * @param estadoCivil
+     * @param correoElectronico
+     * @param matricula 
+     */
     public Medico(String nombre, LocalDate fechaNacimiento, String domicilio, 
                   int documento, int telefoFijo, int telefonoCelular, 
                   String estadoCivil, String correoElectronico, int matricula) {
@@ -20,7 +48,10 @@ public class Medico extends Persona{
         this.matricula=matricula;
         this.especialidad=new ArrayList<Especialidad>();
     }
-
+    
+    /**
+     * Constructor por defecto de médico.
+     */
     public Medico() {
         this.especialidad=new ArrayList<Especialidad>();
     }
@@ -32,13 +63,32 @@ public class Medico extends Persona{
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
+
+    public ArrayList<Especialidad> getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(ArrayList<Especialidad> especialidad) {
+        this.especialidad = especialidad;
+    }
     
+    /**
+     * Agrega una especialidad a la lista de especialidades del medico
+     * <pre>
+     * Medico medico = new Medico();
+     * medico.agregarEspecialidad(new Especialidad());
+     * </pre>
+     * @param espe 
+     */
     public void agregarEspecialidad(Especialidad espe){
         this.especialidad.add(espe);
     }
     
-    //Atender paciente quita de la lista de pacientes para atender (ya triageados), asi los otros
-    //medicos ya no pueden verlo
+    /**
+     * Metodo que se utiliza por un medico a la hora de atender un paciente, lo
+     * cual implica que se lo quita de la lista de los pacientes en espera.
+     * @param paciente paciente a atender
+     */
     public void atenderPaciente(Paciente paciente){
         DatosTaller.eliminarPacienteTriage(paciente); 
     }
@@ -63,6 +113,8 @@ public class Medico extends Persona{
      * @param sangrado
      * @param admision
      * @return Objeto tipo Triage con los datos pasados por parametro, y con el color ya calculado.
+     * @see #modificarTriage(com.mycompany.tallerpoo.Triage, java.lang.String, java.lang.String) 
+     * @see ListaTriage
      */
     public Triage hacerTriage(int respiracion, int pulso, int estadoMental, int conciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, AdmisionDeEmergencia admision){
         Triage triage=new Triage();
@@ -108,6 +160,7 @@ public class Medico extends Persona{
      * @param triage triage a modificar
      * @param color color a seleccionar, debe ser uno de los siguientes: Rojo, Naranja, Amarillo, Verde, Azul
      * @param motivo motivo por el cual se realizo el cambio.
+     * @see #hacerTriage(int, int, int, int, int, int, int, int, int, int, int, int, int, com.mycompany.tallerpoo.AdmisionDeEmergencia) 
      */
     public void modificarTriage(Triage triage, String color, String motivo){
         triage.setColorFinal(color);
@@ -126,6 +179,9 @@ public class Medico extends Persona{
      * @param box box que desea asignarse.
      * @return devuelve true si pudo asignarse correctamente, devuelve false si el
      * box está ocupado.
+     * @see Box
+     * @see AdmisionDeEmergencia
+     * @see ListaBox
      */
     public boolean asignarBox(AdmisionDeEmergencia admi, Box box){
         if (box.isOcupado()){
@@ -144,6 +200,9 @@ public class Medico extends Persona{
      * @param numero numero de box que desea asignarse.
      * @return devuelve true si pudo asignarse correctamente, devuelve false si el
      * box está ocupado o si no existe.
+     * @see Box
+     * @see AdmisionDeEmergencia
+     * @see ListaBox
      */
     public boolean asignarBox(AdmisionDeEmergencia admi, int numero){
         
