@@ -47,7 +47,7 @@ public class SeleccionPacienteConsulta extends javax.swing.JFrame {
         });
     }
 
-    public void agregar(Paciente a) {
+    private void agregar(Paciente a) {
         if (a != null) {
             Object[] fila = {a.getNombre(), a.getMotivo()};
             tabla.addRow(fila);
@@ -59,12 +59,8 @@ public class SeleccionPacienteConsulta extends javax.swing.JFrame {
         CargarDatosPacientesConsultas pac = new CargarDatosPacientesConsultas();
         
         try {
-            ArrayList<Paciente> pacientes = pac.leer(Ubicacion);
-            System.out.println("va");
-            System.out.println(pacientes);
-            System.out.println("va x2");
+            ArrayList<Paciente> pacientes = pac.leer(Ubicacion);          
             if(pacientes !=null){
-                System.out.println("va x 3");
             for (Paciente paciente : pacientes) {
                 agregar(paciente);
                 System.out.println("b");
