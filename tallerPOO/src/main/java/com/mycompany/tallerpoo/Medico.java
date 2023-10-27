@@ -16,7 +16,7 @@ public class Medico extends Persona{
     /**
      * Matricula de un medico.
      * @see #getMatricula()
-     * @see #setMatricula(int) 
+     * @see #setMatricula(int)  
      */
     private int matricula;
     /**
