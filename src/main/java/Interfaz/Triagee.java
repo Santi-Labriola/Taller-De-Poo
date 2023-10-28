@@ -4,9 +4,9 @@ package Interfaz;
 import logica.ColorTriage;
 
 
-public class Triage extends javax.swing.JPanel {
+public class Triagee extends javax.swing.JPanel {
    
-    public Triage() {
+    public Triagee() {
         initComponents();   
     }
 

@@ -10,8 +10,8 @@ public class FuncionarioGeneral extends Persona{
     private String rol;
     private String sector;
     private String contrasenia;
-    public FuncionarioGeneral(){
-        super();
+
+    public FuncionarioGeneral() {
     }
     
     public FuncionarioGeneral(String nombre,String apellido, LocalDate fechaNacimiento, String domicilio,

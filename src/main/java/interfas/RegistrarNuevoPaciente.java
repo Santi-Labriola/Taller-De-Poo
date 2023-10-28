@@ -46,6 +46,7 @@ public class RegistrarNuevoPaciente extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtTelCel = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -156,6 +157,12 @@ public class RegistrarNuevoPaciente extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -167,8 +174,11 @@ public class RegistrarNuevoPaciente extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel10)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -182,7 +192,9 @@ public class RegistrarNuevoPaciente extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,7 +286,7 @@ public class RegistrarNuevoPaciente extends javax.swing.JFrame {
                         .addGap(133, 133, 133)
                         .addComponent(jButton1)
                         .addContainerGap(50, Short.MAX_VALUE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 252, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,21 +379,19 @@ public class RegistrarNuevoPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoElecActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String [] NomAp = txtNombre.getText().split(";");
-        String Nom="";
-        for(String dat : NomAp){
-            Nom+=dat + ";";
-        
-        }
-  
        
-        String datos= txtNacimiento.getText()+";"+
-        txtDomicilio.getText()+";"+txtDni.getText()+";"+txtTelFijo.getText()+";"+
-        txtTelCel.getText()+";"+txtEstadoCivil.getText()+","+txtPersonaCont.getText()+";"+
-        txtCorreoElec.getText()+";";
+        String datos= txtDni.getText()+","+txtNombre.getText()+","+
+                txtApellido.getText()+","+
+        txtNacimiento.getText()+","+txtDomicilio.getText()+","+txtTelFijo.getText()+","+
+        txtTelCel.getText()+","+txtEstadoCivil.getText()+","+txtPersonaCont.getText()+","+
+        txtCorreoElec.getText();
         CargarDatosNuevoPaciente cargar = new CargarDatosNuevoPaciente();
-        cargar.Carga(ubicacion, Nom, datos);
+        cargar.Carga(ubicacion, datos);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,6 +416,7 @@ public class RegistrarNuevoPaciente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCorreoElec;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtDomicilio;

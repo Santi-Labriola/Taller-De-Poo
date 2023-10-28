@@ -7,6 +7,7 @@ import com.mycompany.tallerpoo.Paciente;
 import interfas.IngresoDNI;
 import interfas.IngresoInfoPaciente;
 import interfas.PantallaLogin;
+import interfas.PantalllaTriage;
 import interfas.SeleccionPacienteConsulta;
 
 
@@ -16,9 +17,10 @@ public class Main {
     public static void main(String [] args){  
         ArrayList <Paciente>pacientes;
         
-    PantallaAdminSist login = new PantallaAdminSist();
+    PantalllaTriage login = new PantalllaTriage();
     login.setVisible(true);
     login.setLocationRelativeTo(null);
+    
     
     
     

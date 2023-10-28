@@ -56,23 +56,24 @@ public class ListaPacientes {
             
             while (linea!=null){
                 String[] split=linea.split(",");//splitea la linea
-                String[] splitFecha=split[2].split("/");//splitea la fecha 
+                String[] splitFecha=split[3].split("/");//splitea la fecha 
                 
                 Paciente paci=new Paciente();
                 
-                LocalDate fechanac= LocalDate.of(Integer.parseInt(splitFecha[2]),
+                LocalDate fechanac= LocalDate.of(Integer.parseInt(splitFecha[0]),
                                                 Integer.parseInt(splitFecha[1]),
-                                                Integer.parseInt(splitFecha[0]));
+                                                Integer.parseInt(splitFecha[2]));
                 
                 paci.setDocumento(Integer.parseInt(split[0]));
                 paci.setNombre(split[1]);
+                paci.setApellido(split[2]);
                 paci.setFechaNacimiento(fechanac);
-                paci.setDomicilio(split[3]);
-                paci.setTelefoFijo(Integer.parseInt(split[4]));
-                paci.setTelefonoCelular(Integer.parseInt(split[5]));
-                paci.setEstadoCivil(split[6]);
-                paci.setCorreoElectronico(split[7]);
-                paci.setPersonaContacto(split[8]);
+                paci.setDomicilio(split[4]);
+                paci.setTelefoFijo(Integer.parseInt(split[5]));
+                paci.setTelefonoCelular(Integer.parseInt(split[6]));
+                paci.setEstadoCivil(split[7]);
+                paci.setCorreoElectronico(split[8]);
+                paci.setPersonaDeContacto(split[9]);
                 
                 this.agregar(paci);
                 

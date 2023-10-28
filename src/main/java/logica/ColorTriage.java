@@ -1,6 +1,8 @@
 package logica;
 
-import Interfaz.Triage;
+
+import com.mycompany.taller.Triage;
+import interfas.PantalllaTriage;
 
 public class ColorTriage {
 
@@ -15,44 +17,46 @@ public class ColorTriage {
     int estadoMen;
     int concienciaa;
     int vomitoss;
+    int sangrado;
     int resultado;
+    int dolorAb;
     String triage;
 
     public void color(String[] obtener) {
-        if (obtener[0] == "Normal") {
+        if ("Normal".equals(obtener[0])) {
             res = 0;
         } else {
-            if (obtener[0] == "Moderada") {
+            if ("Moderada".equals(obtener[0])) {
                 res = 1;
             } else {
                 res = 2;
             }
         }
-        if (obtener[1] == "Normal") {
+        if ("Normal".equals(obtener[1])) {
             pulso = 0;
         } else {
             pulso = 1;
         }
-        if (obtener[2] == "No presente") {
+        if ("No presente".equals(obtener[9])) {
             estadoMen = 0;
         } else {
-            if (obtener[2] == "Noderado") {
+            if ("Moderado".equals(obtener[9])) {
                 estadoMen = 1;
             } else {
                 estadoMen = 2;
             }
         }
-        if (obtener[3] == "No presente") {
+        if ("No presente".equals(obtener[3])) {
             dolorPe = 0;
         } else {
             dolorPe = 1;
         }
-        if (obtener[4] == "No presente") {
+        if ("No presente".equals(obtener[4])) {
             lesionGrav = 0;
         } else {
             lesionGrav = 2;
         }
-        if (obtener[5] == "Adulto") {
+        if ("Adulto".equals(obtener[5])) {
             edadd = 0;
         } else {
             edadd = 1;
@@ -60,79 +64,78 @@ public class ColorTriage {
         if (obtener[6].equals("Sin fiebre")) {
             fiebree = 0;
         } else {
-            if (obtener[6] == "Moderada") {
+            if ("Moderada".equals(obtener[6])) {
                 fiebree = 1;
             } else {
                 fiebree = 2;
             }
         }
-        if (obtener[7] == "No presentes") {
+        if ("No presentes".equals(obtener[7])) {
             shockk = 0;
         } else {
             shockk = 3;
         }
-        if (obtener[8] == "No presentes") {
+        if ("No presentes".equals(obtener[8])) {
             lesionesLev = 0;
         } else {
             lesionesLev = 1;
         }
-        if (obtener[9] == "Normal") {
+        if ("Normal".equals(obtener[9])) {
             estadoMen = 0;
         } else {
-            if (obtener[9] == "Leve") {
+            if ("Leve".equals(obtener[9])) {
                 estadoMen = 1;
             } else {
                 estadoMen = 2;
             }
         }
-        if (obtener[10] == "Conciente y alerta") {
+        if ("Conciente y alerta".equals(obtener[10])) {
             concienciaa = 0;
         } else {
             concienciaa = 3;
         }
-        if (obtener[11] == "Sin vomitos") {
+        if ("Sin vomitos".equals(obtener[11])) {
             vomitoss = 0;
         } else {
-            if (obtener[11] == "Moderado") {
+            if ("Moderado".equals(obtener[11])) {
                 vomitoss = 1;
             } else {
                 vomitoss = 2;
             }
+              if(obtener[12].equals("No Presente")){   
+                    sangrado = 0;
+                    }else{
+                            if(obtener[12].equals("Sangrado moderado")){
+                            sangrado = 1;
+                            }else{
+                            sangrado = 2;
+                            
+                            }
+                            }
+              if("No presente".equals(obtener[2])){
+              dolorAb=0;
+              }else{
+                  if("Moderado".equals(obtener[2])){
+                      dolorAb=1;
+              }else{
+                      dolorAb=2;
+                      }
+            
         }
-        resultado = res + pulso + dolorPe + lesionGrav + lesionGrav + edadd
-         + fiebree + shockk + lesionesLev + estadoMen + concienciaa + vomitoss
-         + resultado;
-        System.out.println(resultado);
-        if(resultado>=15){
-        //triage ="ROJO";
-        Triage retorno = new Triage();
-        retorno.mostrar("ROJO");
-        }
-        if(resultado>=10 && resultado<=14){
-        //triage="NARANJA";
-        Triage retorno = new Triage();
-        retorno.mostrar("NARANAJA");
-        }
-        if(resultado>=5&&resultado<=9){
-        //triage="AMARILLO";
-        Triage retorno = new Triage();
-        retorno.mostrar("AMARILLO");
-        }
-        if(resultado>0 && resultado<=4){
-        //triage="AZUL";
-        Triage retorno = new Triage();
-        retorno.mostrar("AZUL");
-        }
-        if(resultado==0){
-        //triage="VERDE";
-         Triage retorno = new Triage();
-        retorno.mostrar("VERDE");
-        }
-        }
-        }
-        
-        /*Triage retorno = new Triage();
-        retorno.mostrar(triage);
-        System.out.println("si");*/
+        resultado = res + pulso + dolorPe + lesionGrav + edadd
+         + fiebree + shockk + lesionesLev + estadoMen + concienciaa + vomitoss+sangrado;
+      Triage obt = new Triage();
+      String a = obt.obtenerColorSugerido(res,pulso,estadoMen,concienciaa,lesionGrav,
+              edadd,fiebree,vomitoss,dolorAb,shockk,lesionesLev,sangrado);
+            System.out.println(a);
+      PantalllaTriage result = new PantalllaTriage();
+      result.cargar(a); 
+      
+      
+      
+    }
     
+}
+}
+        
 

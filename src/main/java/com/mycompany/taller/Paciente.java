@@ -9,62 +9,52 @@ import java.util.ArrayList;
  */
 public class Paciente extends Persona { //extender de persona
 
-    private String personaContacto;
+    
     private String motivo;
     private ArrayList<ResultadoEstudios> estudios;
     private ArrayList<AdmisionDeEmergencia> admisiones;
 
     public Paciente() {
-        this.personaContacto = "";
         this.estudios = new ArrayList<ResultadoEstudios>();
         this.admisiones = new ArrayList<AdmisionDeEmergencia>();
     }
 
-    public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
+    public Paciente(String nombre,String apellido,LocalDate fechaNacimiento, String domicilio,
             int documento, int telefoFijo, int telefonoCelular,
             String estadoCivil, String correoElectronico,
-            String personaContacto, String motivo) {
+            String personaDeContacto, String motivo) {
 
-        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
-        this.personaContacto = personaContacto;
+        super(nombre,apellido, fechaNacimiento, domicilio, documento,telefoFijo, telefonoCelular, estadoCivil, correoElectronico,personaDeContacto);
+        
         this.motivo = motivo;
     }
 
    
 
-    public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
+    public Paciente(String nombre,String apellido, LocalDate fechaNacimiento, String domicilio,
             int documento, int telefoFijo, int telefonoCelular,
             String estadoCivil, String correoElectronico, String motivo,
-            String personaContacto, ResultadoEstudios estudio, AdmisionDeEmergencia admision) {
+            String personaDeContacto, ResultadoEstudios estudio, AdmisionDeEmergencia admision) {
 
-        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
-        this.personaContacto = personaContacto;
+        super(nombre,apellido, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico,personaDeContacto);
         this.motivo = motivo;
         this.estudios.add(estudio);
         this.admisiones.add(admision);
     }
 
-    public Paciente(String nombre, LocalDate fechaNacimiento, String domicilio,
+    public Paciente(String nombre,String apellido, LocalDate fechaNacimiento, String domicilio,
             int documento, int telefoFijo, int telefonoCelular,
             String estadoCivil, String correoElectronico, String motivo,
-            String personaContacto, ArrayList<ResultadoEstudios> estudios,
+            String personaDeContacto, ArrayList<ResultadoEstudios> estudios,
             ArrayList<AdmisionDeEmergencia> admisiones) {
 
-        super(nombre, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico);
-        this.personaContacto = personaContacto;
+        super(nombre,apellido, fechaNacimiento, domicilio, documento, telefoFijo, telefonoCelular, estadoCivil, correoElectronico,personaDeContacto);
         this.motivo = motivo;
         this.estudios = estudios;
         this.admisiones = admisiones;
     }
 
-    public String getPersonaContacto() {
-        return personaContacto;
-    }
-
-    public void setPersonaContacto(String personaContacto) {
-        this.personaContacto = personaContacto;
-    }
-
+    
     public ArrayList<ResultadoEstudios> getEstudios() {
         return estudios;
     }
@@ -84,6 +74,8 @@ public class Paciente extends Persona { //extender de persona
      public String getMotivo() {
         return motivo;
     }
+     
+     
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;

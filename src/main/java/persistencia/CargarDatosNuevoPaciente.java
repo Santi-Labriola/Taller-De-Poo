@@ -11,13 +11,13 @@ import java.io.PrintWriter;
 
 public class CargarDatosNuevoPaciente {
     
-    public void Carga(String Ubicacion,String datoNomAp, String datos){
+    public void Carga(String Ubicacion,String datos){
         System.out.println(Ubicacion);
         File archivo= new File(Ubicacion);
         
         try{
        BufferedWriter escritor = new BufferedWriter(new FileWriter (archivo, true));
-       escritor.write(datoNomAp+","+datos +"\n");
+       escritor.write(datos);
        escritor.newLine();
         escritor.close(); 
 RegistrarNuevoPaciente a = new RegistrarNuevoPaciente();

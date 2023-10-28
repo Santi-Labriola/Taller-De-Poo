@@ -5,6 +5,7 @@
  */
 package com.mycompany.taller;
 
+import interfas.PantalllaTriage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,13 +22,13 @@ import java.util.ArrayList;
  */
 //
 public class Triage {
+    String color="";
     private LocalDate Fecha;
     private LocalTime hora;
     private int respiracion;
     private int pulso;
     private int estadoMental;
     private int consciencia;
-    private int dificultadRespiracion;
     private int lesionesGraves;
     private int edad;
     private int fiebre;
@@ -56,7 +57,6 @@ public class Triage {
         this.pulso = 0;
         this.estadoMental = 0;
         this.consciencia = 0;
-        this.dificultadRespiracion = 0;
         this.lesionesGraves = 0;
         this.edad = 0;
         this.fiebre = 0;
@@ -73,14 +73,13 @@ public class Triage {
     
     
 
-    public Triage(LocalDate Fecha, LocalTime hora, int respiracion, int pulso, int estadoMental, int consciencia, int dificultadRespiracion, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal, AdmisionDeEmergencia admision) {
+    public Triage(LocalDate Fecha, LocalTime hora, int respiracion, int pulso, int estadoMental, int consciencia, int lesionesGraves, int edad, int fiebre, int vomitos, int dolorAbdominal, int signosShock, int lesionesLeves, int sangrado, String colorSugerido, String motivoCambio, String colorFinal, AdmisionDeEmergencia admision) {
         this.Fecha = Fecha;
         this.hora = hora;
         this.respiracion = respiracion;
         this.pulso = pulso;
         this.estadoMental = estadoMental;
         this.consciencia = consciencia;
-        this.dificultadRespiracion = dificultadRespiracion;
         this.lesionesGraves = lesionesGraves;
         this.edad = edad;
         this.fiebre = fiebre;
@@ -152,15 +151,9 @@ public class Triage {
         }
     }
 
-    public int getDificultadRespiracion() {
-        return dificultadRespiracion;
-    }
+  
 
-    public void setDificultadRespiracion(int dificultadRespiracion) {
-        if(dificultadRespiracion>=0 && dificultadRespiracion<=1){
-            this.dificultadRespiracion = dificultadRespiracion;
-        }
-    }
+    
 
     public int getLesionesGraves() {
         return lesionesGraves;
@@ -267,29 +260,33 @@ public class Triage {
     
   
     public  String  obtenerColorSugerido  (int respiracion, int pulso 
-        ,int estadoMental,int conciencia, int dificultadRespiracion,
+        ,int estadoMental,int conciencia,
         int lesionesGraves, int edad, int fiebre, int vomito, 
         int dolorAbdominal, int signosShock, int lesionesLeves,int sangrado){
     
-        int suma = respiracion + pulso + estadoMental + conciencia + 
-            dificultadRespiracion + lesionesGraves + edad + fiebre + vomito + 
+        int suma = respiracion + pulso + estadoMental + conciencia +
+                lesionesGraves + edad + fiebre + vomito + 
                 dolorAbdominal + signosShock + lesionesLeves + sangrado;
-        String color;
+        
+        
+        
 
 
         if (suma >= 15) {
-            return "Rojo";
+            return color="Rojo";
         } else if (suma >= 10 && suma <= 14) {
-            return "Naranja";
+            return color="Naranja";
         } else if (suma>= 5 && suma <= 9) {
-            return "Amarillo";
+             return color="Amarillo";
         } else if (suma >= 0 && suma <= 4) {
-            return "Verde";
+             return color="Verde";
         } else {
-            return "Azul";
+             return color="Azul";
         }
+       
+    } 
 
-        }
+    
 
    
       
@@ -383,7 +380,10 @@ public class Triage {
     }
 
     return lista;
-}    
+
+
+
+
     /* - Cantidad de triage que fueron cambiados por quien efectuó el traigado indicando
     color propuesto por el sistema y el color asignado por el funcionario
         */
@@ -392,9 +392,10 @@ public class Triage {
     public String toString() {
         return "Triage{" + "Fecha=" + Fecha + ", hora=" + hora + ", respiracion=" + respiracion + ", pulso=" + pulso + ", estadoMental=" + estadoMental + ", consciencia=" + consciencia + ", dificultadRespiracion=" + dificultadRespiracion + ", lesionesGraves=" + lesionesGraves + ", edad=" + edad + ", fiebre=" + fiebre + ", vomitos=" + vomitos + ", dolorAbdominal=" + dolorAbdominal + ", signosShock=" + signosShock + ", lesionesLeves=" + lesionesLeves + ", sangrado=" + sangrado + ", colorSugerido=" + colorSugerido + ", motivoCambio=" + motivoCambio + ", colorFinal=" + colorFinal + '}';
     } */
-     public String toString() {
+    /* public String toString() {
         return "Triage{" + "Fecha=" + Fecha + ", colorSugerido=" + colorSugerido + '}';
-    } 
+    } */
+}
 }
     
 
