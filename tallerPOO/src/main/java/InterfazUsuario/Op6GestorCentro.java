@@ -1,49 +1,103 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package InterfazUsuario;
 
-/**
- *
- * @author 54345
- */
-
+import static InterfazUsuario.Op3GestorCentro.pacienteUpdate;
+import com.mycompany.tallerpoo.DatosTaller;
+import com.mycompany.tallerpoo.ListaTriage;
+import com.mycompany.tallerpoo.RegistroMedico;
+import com.mycompany.tallerpoo.Triage;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
-
+/**
+ *
+ * @author Matías
+ */
 public class Op6GestorCentro extends javax.swing.JFrame {
 
     /**
      * Creates new form Op6GestorCentro
      */
     
-    public static String tirageUpdate;
+    String barra = File.separator;
+    
+    String ubicacion = System.getProperty("user.dir") + barra + "Archivos" + barra + "Triage.txt";
+    public static String pacienteUpdate;
     DefaultTableModel tabla = new DefaultTableModel();
     
     public Op6GestorCentro() {
         initComponents();
-        /*
-        String [] titulo = new String []{"Triage", "Color sugerido", "Color final"};
-        jTableListaTriages.setColumnIdentifiers(titulo);
-        jTableListaTriages.setModel(tabla);
-        jTableListaTriages.addMouseListener(new MouseAdapter(){
+        String [] titulo =new String[]{"Triages"};
+        tabla.setColumnIdentifiers(titulo);
+        jTableTriage.setModel(tabla);
+        jTableTriage.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
-                int fila = jTableListaTriages.rowAtPoint(e.getPoint());
+                int fila = jTableTriage.rowAtPoint(e.getPoint());
                 int columna = 2; 
                 if (fila > -1){
-                    tirageUpdate = (String) jTableListaTriages.getValueAt(fila,columna);
-                    //Interfaz donde apararece la informacion del triage
-                    //Triage triage = new Triage();
-                    //triage.setVisible(true);
+                    pacienteUpdate = (String) jTableTriage.getValueAt(fila,columna);
+                    PantallaTriage triage = new PantallaTriage();
+                    triage.setVisible(true);
                 }
             }
         }
-        )*/
+        );
+        }
+   
+    private void agregar(ArrayList<String> triage) {
+        try {
+            if (triage.size() > 0) {
+                Object[] fila = new Object[triage.size()]; // Crear un arreglo de objetos para la fila
+                for (int i = 0; i < triage.size(); i++){
+                    fila[0] = triage.get(i); // Agregar los elementos a la fila
+                    tabla.addRow(fila);// Agregar la fila a la tabla
+                }
+            }
+           
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+    
+        private void llamar(LocalDate a, LocalDate b) throws IOException {
+        ArrayList<String> triages = Triage.obtenerTriageCambiadosPorFecha( a ,b);
+        
+        try {
+ 
+                agregar(triages);
+                   
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+    }
+    
+    private void buscar(LocalDate fechaUno, LocalDate fechaDos) throws IOException{
+        String barra = File.separator;
+        ListaTriage listavarias = new ListaTriage();
+        Triage lista = new Triage();
+        try {
+            listavarias.leer(ubicacion);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+            ArrayList<String> triages = lista.obtenerTriageCambiadosPorFecha(
+            fechaUno, fechaDos);
+            for (String color : triages) {
+                //System.out.println("DNI: " + dni);
+                tabla.addRow(new Object[]{color});
+            } 
     }
 
     /**
@@ -55,98 +109,61 @@ public class Op6GestorCentro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButtonAnterior = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableListaTriages = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableTriage = new javax.swing.JTable();
+        actualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setText("Total:");
-
-        jButtonAnterior.setText("<< Atrás");
-        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorActionPerformed(evt);
-            }
-        });
-
-        jTableListaTriages.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTriage.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Lista de Triages", "Color sugerido", "Color final"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
+        ));
+        jScrollPane1.setViewportView(jTableTriage);
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+        actualizar.setText("Actualizar");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
             }
         });
-        jScrollPane2.setViewportView(jTableListaTriages);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButtonAnterior))
-                        .addGap(0, 440, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAnterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(actualizar))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(actualizar))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        MenuGestorCentroEliminar atras = new MenuGestorCentroEliminar();
-        atras.setVisible(true);
-        atras.setLocationRelativeTo(null);
-        dispose();
-    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        LocalDate primeraFecha = LocalDate.of(0001, 01, 01);
+        LocalDate segundaFecha = LocalDate.of(2024, 01, 01);
+        try {
+            llamar(primeraFecha, segundaFecha);
+        } catch (Exception ex) {
+            Logger.getLogger(Op5GestorCentro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,11 +171,8 @@ public class Op6GestorCentro extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAnterior;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableListaTriages;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton actualizar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableTriage;
     // End of variables declaration//GEN-END:variables
 }

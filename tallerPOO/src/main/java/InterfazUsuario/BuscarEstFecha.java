@@ -176,7 +176,7 @@ public class BuscarEstFecha extends javax.swing.JFrame {
                                      Integer.parseInt(jDia.getText()));
             System.out.println(jAnio.getText()+jMes.getText()+jDia.getText());
             
-            ArrayList <ResultadoEstudios> listaCoin=ResultadoEstudios.obtenerResultadoEstudios(fecha);
+            ArrayList <ResultadoEstudios> listaCoin=DatosTaller.getResultados().getListaPorFecha(fecha);
            
             Paciente paci;
             System.out.println(listaCoin);

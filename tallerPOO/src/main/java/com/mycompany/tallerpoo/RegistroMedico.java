@@ -18,10 +18,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * La clase RegistroMedico representa un registro de atención médica, 
+ * que incluye información sobre la fecha, hora
+ * , lugar de atención, diagnóstico y diagnóstico clínico. 
+ * También permite realizar diversas operaciones 
+ * relacionadas con el registro médico, como calcular pacientes 
+ * que consultaron en un rango de fechas, calcular el número 
+ * de pacientes atendidos por un médico en un rango de fechas y más.
+ * 
  * @author Matias
  */
-
 public class RegistroMedico {
     
     private LocalDate fecha;
@@ -34,6 +40,15 @@ public class RegistroMedico {
     public ArrayList<Medico> medico;
     public Paciente paciente;
 
+    /**
+     * Constructor de la clase RegistroMedico parametrizado . 
+     * @param fecha
+     * @param hora
+     * @param lugarAtendido
+     * @param diagnostico
+     * @param diagnosticoClinico 
+     */
+    
     public RegistroMedico(LocalDate fecha, LocalTime hora, String lugarAtendido, String diagnostico, String diagnosticoClinico) {
         this.fecha = fecha;
         this.hora = hora;
@@ -41,7 +56,14 @@ public class RegistroMedico {
         this.diagnostico = diagnostico;
         this.diagnosticoClinico = diagnosticoClinico;
     }
-	
+
+    /**
+     * Constructor que inicializa un objeto RegistroMedico con valores por defecto.
+     * La fecha se establece en 1 de enero del año 1.
+     * La hora se establece en 00:00:00.
+     * Los campos de lugarAtendido, diagnostico y diagnosticoClinico se inicializan como cadenas vacías. 
+     */
+    
     public RegistroMedico() {
         this.fecha = LocalDate.of(1, 1, 1);
         this.hora = LocalTime.of(0, 0,0);
@@ -91,7 +113,14 @@ public class RegistroMedico {
     }
 
     
-    //calcula  los pacientes que mas consultaron en un rango de fechas
+    /**
+     * Calcula y devuelve una lista de DNIs de pacientes que más consultaron en un rango de fechas.
+     *
+     * @param fecha1 Fecha de inicio del rango.
+     * @param fecha2 Fecha de fin del rango.
+     * @return Una lista de DNIs de pacientes que más consultaron en el rango de fechas especificado.
+     */
+    
     public static ArrayList<String> calcularMasConsPorFecha(LocalDate fecha1, LocalDate fecha2) {
     
     ArrayList<String> personasConMasConsultas = new ArrayList<>();
@@ -148,7 +177,14 @@ public class RegistroMedico {
     return personasConMasConsultas;
     }
         
-
+    /**
+     * Calcula el número de pacientes que un médico atendió en un rango de fechas.
+     *
+     * @param fecha1    Fecha de inicio del rango.
+     * @param fecha2    Fecha de fin del rango.
+     * @param dniMedico DNI del médico.
+     * @return El número de pacientes atendidos por el médico en el rango de fechas especificado.
+     */
     //calcula el numero pacientes de que un medico ,ingresado por dni, atendio
     public static int calcularNumPacDeMedPorFecha(LocalDate fecha1, LocalDate fecha2, String dniMedico) {
         String barra = File.separator;
@@ -184,10 +220,19 @@ public class RegistroMedico {
         }
         int cont=paciAtenMedi.size();
         return cont;
-       // return 10;
+    
     }
 
-    //////// medico que tuvo mas pacientes por fecha/////ACAAAAAAA
+    /**
+     * Calcula y devuelve el médico que atendió a la mayoría de pacientes en un rango de fechas.
+     *
+     * @param fecha1 Fecha de inicio del rango.
+     * @param fecha2 Fecha de fin del rango.
+     * @return El DNI del médico que atendió a la mayoría de pacientes en el rango de fechas especificado. 
+     * @param fecha1
+     * @param fecha2
+     * @return 
+     */
     public static String calcularMedMasPacPorFecha(LocalDate fecha1, LocalDate fecha2) {
         String barra = File.separator;
         ArrayList<String> citas = new ArrayList<>();
@@ -238,7 +283,15 @@ public class RegistroMedico {
         return medicoConMasPacientes;
     }    
         
-/////////////////////////////////////////////////////////////////   CALCULA EN UN RANGO DE FECHAS Y EDADES CUANTOS PACIENTES HUBO
+    /**
+     * Calcula el número de pacientes dentro de un rango de edades y fechas de consulta.
+     *
+     * @param fecha1  Fecha de inicio del rango.
+     * @param fecha2  Fecha de fin del rango.
+     * @param edad1   Edad mínima del rango.
+     * @param edad2   Edad máxima del rango.
+     * @return El número de pacientes que cumplen con los criterios de edad y fechas de consulta especificados.
+     */
     public static int CalcularPacPorEdadesyFechas(LocalDate fecha1, LocalDate fecha2, String edad1, String edad2) {
     String barra = File.separator;
     int edad1Int = Integer.parseInt(edad1);
@@ -283,21 +336,12 @@ public class RegistroMedico {
     return cont;
 }
 
+    /**
+     * Devuelve una representación en forma de cadena de un objeto RegistroMedico.
+     *
+     * @return Una cadena que representa el objeto RegistroMedico.
+     */
 
-
-
-
-
-
-   /* public int CalcularPacPorEdadesyFechas(int edad1, int edad2, LocalDate fecha1, LocalDate fecha2){
-        
-    }
-    
-    
-    
-    
-   */
-    
     @Override
     public String toString() {
         return "RegistroMedico{" + "fecha=" + fecha + ", hora=" + hora + ", lugarAtendido=" + lugarAtendido + ", diagnostico=" + diagnostico + ", diagnosticoClinico=" + diagnosticoClinico + '}';

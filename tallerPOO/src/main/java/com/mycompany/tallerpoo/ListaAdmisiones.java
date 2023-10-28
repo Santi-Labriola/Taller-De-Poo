@@ -16,48 +16,99 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Representa una lista de admisiones de pacientes en un entorno de atención médica de emergencia.
+ * Tiene métodos para gestionar las admisiones, agregar y eliminar admisiones, así como leer y escribir admisiones en un archivo.
+ * Cada admisión se asocia a un paciente, una fecha, una hora y un motivo de consulta.
+ * Si se da una lista de pacientes, se establece la relación entre pacientes y admisiones.
  *
  * @author Usuario
  */
 public class ListaAdmisiones {
     
     protected ArrayList <AdmisionDeEmergencia> admisiones;
-
+    
+    /**
+     * Constructor parametrizado.
+     * @param admisiones 
+     */
+    
     public ListaAdmisiones(ArrayList<AdmisionDeEmergencia> admisiones) {
         this.admisiones = admisiones;
     }
-
+    /**
+     * Constructor de la clase `ListaAdmisiones`.
+     * Inicializa una lista vacía de admisiones.
+     */
     public ListaAdmisiones() {
         this.admisiones=new ArrayList <AdmisionDeEmergencia>();
     }
 
+    /**
+     * Obtiene la lista de admisiones.
+     *
+     * @return La lista de admisiones almacenada en la instancia.
+     */
+    
     public ArrayList<AdmisionDeEmergencia> getAdmisiones() {
         return admisiones;
     }
 
+    /**
+     * Establece la lista de admisiones.
+     *
+     * @param admisiones La lista de admisiones que se desea establecer.
+     */
     public void setAdmisiones(ArrayList<AdmisionDeEmergencia> admisiones) {
         this.admisiones = admisiones;
     }
     
+    /**
+     * Agrega una admisión a la lista de admisiones.
+     *
+     * @param adm La admisión que se desea agregar a la lista.
+     */
     public void agregar(AdmisionDeEmergencia adm){
         admisiones.add(adm);
     }
+    
+    /**
+     * Elimina una admisión de la lista de admisiones.
+     *
+     * @param adm La admisión que se desea eliminar de la lista.
+     */
     
     public void eliminar(AdmisionDeEmergencia adm){
         admisiones.remove(adm);
     }
     
+    /**
+     * Lee admisiones desde el archivo y agrega las admisiones a la lista.
+     *
+     * @param archivo El nombre del archivo desde el cual se leen las admisiones.
+     */
     public void leer(String archivo){
         leerInterno(archivo,null);
     }
+    
+    /**
+     * Lee admisiones desde un archivo y agrega las admisiones a la lista.
+     * También se proporciona una lista de pacientes para establecer la relación entre pacientes y admisiones.
+     *
+     * @param archivo      El nombre del archivo desde el cual se leen las admisiones.
+     * @param listapaci    La lista de pacientes para establecer la relación entre pacientes y admisiones.
+     */
     
     public void leer(String archivo, ListaPacientes listapaci){
         leerInterno(archivo,listapaci);
     }
     
-//    public AdmisionDeEmergencia buscar(int Dni,LocalDate fecha){
-//        
-//    }
+    /**
+     * Agrega una admisión al archivo especificado.
+     *
+     * @param archivoNombre El nombre del archivo en el que se agregarán las admisiones.
+     * @param admi          La admisión que se desea agregar al archivo.
+     */
+    
     public void agregarAlArchivo(String archivoNombre, AdmisionDeEmergencia admi){
         PrintWriter salida= null;
         try {
@@ -73,7 +124,15 @@ public class ListaAdmisiones {
             salida.close();
         }
     }
-        
+
+
+    /**
+     * Lee admisiones desde un archivo y agrega las admisiones a la lista interna de la clase.
+     * Si se proporciona una lista de pacientes, establece la relación entre pacientes y admisiones.
+     *
+     * @param archivo     El nombre del archivo desde el cual se leen las admisiones.
+     * @param listapaci   La lista de pacientes utilizada para establecer relaciones con las admisiones.
+     */            
     private void leerInterno(String archivo, ListaPacientes listapaci){
         
         try {
